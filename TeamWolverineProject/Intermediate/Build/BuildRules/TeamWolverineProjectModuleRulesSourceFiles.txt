@@ -1,0 +1,3 @@
+D:\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\TeamWolverineProject.Build.cs
+D:\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject.Target.cs
+D:\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProjectEditor.Target.cs

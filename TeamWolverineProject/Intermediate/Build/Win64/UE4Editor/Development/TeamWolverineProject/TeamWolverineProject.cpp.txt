@@ -1,0 +1,2 @@
+D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Definitions.TeamWolverineProject.h
+d:\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProject.h

@@ -474,7 +474,11 @@
     <ClInclude Include="..\..\Source\TeamWolverineProject\TeamWolverineProject.h"/>
     <ClCompile Include="..\..\Source\TeamWolverineProject\TeamWolverineProjectGameModeBase.cpp"/>
     <ClInclude Include="..\..\Source\TeamWolverineProject\TeamWolverineProjectGameModeBase.h"/>
+    <ClCompile Include="..\..\Source\TeamWolverineProject\Private\ObjectManager.cpp"/>
+    <ClCompile Include="..\..\Source\TeamWolverineProject\Private\PlantableObject.cpp"/>
     <ClCompile Include="..\..\Source\TeamWolverineProject\Private\Tile.cpp"/>
+    <ClInclude Include="..\..\Source\TeamWolverineProject\Public\ObjectManager.h"/>
+    <ClInclude Include="..\..\Source\TeamWolverineProject\Public\PlantableObject.h"/>
     <ClInclude Include="..\..\Source\TeamWolverineProject\Public\Tile.h"/>
   </ItemGroup>
   <PropertyGroup>

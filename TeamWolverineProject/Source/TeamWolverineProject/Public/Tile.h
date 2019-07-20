@@ -30,7 +30,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:
+private:	
 
 	UPROPERTY(EditAnywhere, Meta=(DisplayName="TileType"))
 	ETileType mTileType;

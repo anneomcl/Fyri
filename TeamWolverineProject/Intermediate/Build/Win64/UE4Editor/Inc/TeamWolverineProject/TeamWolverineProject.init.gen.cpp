@@ -21,8 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeTeamWolverineProject_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x47D4FEB8,
-				0xD973E4BA,
+				0x742010F1,
+				0x68FFC323,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

@@ -58,7 +58,6 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ATile); \
 
 
 #define TeamWolverineProject_Source_TeamWolverineProject_Public_Tile_h_20_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__mColor() { return STRUCT_OFFSET(ATile, mColor); } \
 	FORCEINLINE static uint32 __PPO__mTileType() { return STRUCT_OFFSET(ATile, mTileType); }
 
 

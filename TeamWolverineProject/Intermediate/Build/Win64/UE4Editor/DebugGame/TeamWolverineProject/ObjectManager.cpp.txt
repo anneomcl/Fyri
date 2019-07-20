@@ -1,0 +1,5 @@
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\Definitions.TeamWolverineProject.h
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\Public\ObjectManager.h
+c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\public\PlantableObject.h
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Inc\TeamWolverineProject\PlantableObject.generated.h
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Inc\TeamWolverineProject\ObjectManager.generated.h

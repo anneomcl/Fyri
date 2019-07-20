@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-TeamWolverineProject-3969.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\Engine\SharedPCH.Engine.h.obj"
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\TeamWolverineProject.cpp.obj"
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\TeamWolverineProjectGameModeBase.cpp.obj"
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\TeamWolverineProject.init.gen.cpp.obj"
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\TeamWolverineProjectGameModeBase.gen.cpp.obj"
+"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Default.rc2.res"
+/OUT:"D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-3969.lib"
+/INCLUDE:IMPLEMENT_MODULE_TeamWolverineProject

@@ -1,0 +1,22 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+  Creating makefile for TeamWolverineProjectEditor (no existing makefile)
+  Parsing headers for TeamWolverineProjectEditor
+    Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\DebugGame\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+  Reflection code generated for TeamWolverineProjectEditor in 4.8830052 seconds
+  Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 11 actions with 6 processes...
+    [1/11] Default.rc2
+    [2/11] SharedPCH.Engine.NonOptimized.cpp
+    [3/11] TeamWolverineProject.cpp
+    [4/11] TeamWolverineProject.init.gen.cpp
+    [5/11] Tile.cpp
+    [6/11] Tile.gen.cpp
+    [7/11] TeamWolverineProjectGameModeBase.cpp
+    [8/11] TeamWolverineProjectGameModeBase.gen.cpp
+    [9/11] UE4Editor-TeamWolverineProject-Win64-DebugGame.lib
+       Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\UE4Editor-TeamWolverineProject-Win64-DebugGame.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\UE4Editor-TeamWolverineProject-Win64-DebugGame.exp
+    [10/11] UE4Editor-TeamWolverineProject-Win64-DebugGame.dll
+       Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\UE4Editor-TeamWolverineProject-Win64-DebugGame.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\UE4Editor-TeamWolverineProject-Win64-DebugGame.suppressed.exp
+    [11/11] TeamWolverineProjectEditor-Win64-DebugGame.target
+  Total time in Parallel executor: 16.52 seconds
+  Total execution time: 22.99 seconds

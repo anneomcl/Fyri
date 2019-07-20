@@ -1,2 +1,2 @@
-D:\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Definitions.TeamWolverineProject.h
-d:\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProject.h
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Definitions.TeamWolverineProject.h
+c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProject.h

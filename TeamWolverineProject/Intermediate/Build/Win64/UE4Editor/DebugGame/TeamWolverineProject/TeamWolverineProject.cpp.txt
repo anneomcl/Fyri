@@ -1,0 +1,2 @@
+C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\Definitions.TeamWolverineProject.h
+c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProject.h

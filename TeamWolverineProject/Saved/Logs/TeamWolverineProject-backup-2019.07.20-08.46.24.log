@@ -1,0 +1,1049 @@
+﻿Log file open, 07/20/19 10:09:23
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: TeamWolverineProject
+LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 5 named threads and 20 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 0.247997
+LogD3D11RHI: Loaded GFSDK_Aftermath_Lib.x64.dll
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin AnimationSharing
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MaterialAnalyzer
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleVision
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin HTML5Networking
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin SkeletalReduction
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin LinearTimecode
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin NetcodeUnitTest
+LogPluginManager: Mounting plugin NUTUnrealEngine4
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin Firebase
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SignificanceManager
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogInit: Warning: Incompatible or missing module: TeamWolverineProject
+Running C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" -TargetType=Editor -Progress -NoHotReloadFromIDE
+Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+@progress push 5%
+Parsing headers for TeamWolverineProjectEditor
+  Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+Reflection code generated for TeamWolverineProjectEditor in 5.5961235 seconds
+@progress pop
+Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+Building 9 actions with 6 processes...
+  @progress 'Compiling C++ source code...' 0%
+  @progress 'Compiling C++ source code...' 11%
+  [1/9] Default.rc2
+  @progress 'Compiling C++ source code...' 22%
+  [2/9] SharedPCH.Engine.cpp
+  @progress 'Compiling C++ source code...' 33%
+  [3/9] TeamWolverineProject.cpp
+  @progress 'Compiling C++ source code...' 44%
+  [4/9] TeamWolverineProject.init.gen.cpp
+  @progress 'Compiling C++ source code...' 56%
+  [5/9] TeamWolverineProjectGameModeBase.cpp
+  @progress 'Compiling C++ source code...' 67%
+  [6/9] TeamWolverineProjectGameModeBase.gen.cpp
+  @progress 'Compiling C++ source code...' 78%
+  [7/9] UE4Editor-TeamWolverineProject.lib
+     Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject.exp
+  @progress 'Compiling C++ source code...' 89%
+  [8/9] UE4Editor-TeamWolverineProject.dll
+     Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject.suppressed.exp
+  @progress 'Compiling C++ source code...' 100%
+  [9/9] TeamWolverineProjectEditor.target
+Total time in Parallel executor: 18.04 seconds
+Total execution time: 30.38 seconds
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.1.1
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogInit: Build: ++UE4+Release-4.22-CL-7053642
+LogInit: Engine Version: 4.22.3-7053642+++UE4+Release-4.22
+LogInit: Compatible Engine Version: 4.22.0-5660361+++UE4+Release-4.22
+LogInit: Net CL: 5660361
+LogInit: OS: Windows 10 (Release 1903) (), CPU: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz, GPU: Intel(R) UHD Graphics 630
+LogInit: Compiled (64-bit): Jun 18 2019 03:09:11
+LogInit: Compiled with Visual C++: 19.16.27025.01
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.22
+LogInit: Command Line: 
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 23
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 3
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 30
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 35
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 2
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 28
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 11
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 2
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 2
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 25
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 6
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 2
+LogInit: Presizing for max 16777216 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+[2019.07.20-08.09.55:996][  0]LogConfig: Setting CVar [[r.VSync:0]]
+[2019.07.20-08.09.55:996][  0]LogConfig: Setting CVar [[r.RHICmdBypass:0]]
+[2019.07.20-08.09.55:996][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.55:996][  0]LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.55:997][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.MaxObjectsInEditor:16777216]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2019.07.20-08.09.55:997][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.55:997][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.56:000][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.07.20-08.09.56:000][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.07.20-08.09.56:001][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.07.20-08.09.56:002][  0]LogInit: Selected Device Profile: [Windows]
+[2019.07.20-08.09.56:002][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2019.07.20-08.09.56:024][  0]LogHAL: Display: Platform has ~ 16 GB [17013702656 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Vulkan.UseRealUBs:0		; Required until we fix HLR fall-out]]
+[2019.07.20-08.09.56:024][  0]LogInit: Going up to parent DeviceProfile []
+[2019.07.20-08.09.56:024][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.07.20-08.09.56:024][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:024][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Scalability.ini]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Setting CVar [[p.chaos.AllowCreatePhysxBodies:1]]
+[2019.07.20-08.09.56:025][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Config/Windows/Engine.ini]
+[2019.07.20-08.09.56:026][  0]LogInit: Computer: PC34
+[2019.07.20-08.09.56:026][  0]LogInit: User: Nordsken
+[2019.07.20-08.09.56:026][  0]LogInit: CPU Page size=4096, Cores=6
+[2019.07.20-08.09.56:026][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2019.07.20-08.09.56:026][  0]LogMemory: Memory total: Physical=15.8GB (16GB approx)
+[2019.07.20-08.09.56:026][  0]LogMemory: Platform Memory Stats for Windows
+[2019.07.20-08.09.56:026][  0]LogMemory: Process Physical Memory: 100.59 MB used, 100.59 MB peak
+[2019.07.20-08.09.56:026][  0]LogMemory: Process Virtual Memory: 84.79 MB used, 84.79 MB peak
+[2019.07.20-08.09.56:026][  0]LogMemory: Physical Memory: 5368.53 MB used,  10857.00 MB free, 16225.53 MB total
+[2019.07.20-08.09.56:026][  0]LogMemory: Virtual Memory: 4681.68 MB used,  134213048.00 MB free, 134217728.00 MB total
+[2019.07.20-08.09.56:120][  0]LogInit: Using OS detected language (en-US).
+[2019.07.20-08.09.56:120][  0]LogInit: Using OS detected locale (en-US).
+[2019.07.20-08.09.56:121][  0]LogTextLocalizationManager: No specific localization for 'en-US' exists, so the 'en' localization will be used.
+[2019.07.20-08.09.56:285][  0]LogInit: Setting process to per monitor DPI aware
+[2019.07.20-08.09.56:327][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2019.07.20-08.09.56:327][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2019.07.20-08.09.57:749][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.07.20-08.09.57:749][  0]LogD3D11RHI: D3D11 adapters:
+[2019.07.20-08.09.57:764][  0]LogD3D11RHI:    0. 'Intel(R) UHD Graphics 630' (Feature Level 11_0)
+[2019.07.20-08.09.57:764][  0]LogD3D11RHI:       128/0/8112 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x8086
+[2019.07.20-08.09.57:820][  0]LogD3D11RHI:    1. 'NVIDIA GeForce GTX 1060 3GB' (Feature Level 11_0)
+[2019.07.20-08.09.57:820][  0]LogD3D11RHI:       2988/0/8112 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x10de
+[2019.07.20-08.09.57:822][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2019.07.20-08.09.57:822][  0]LogD3D11RHI:       0/0/8112 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2019.07.20-08.09.57:822][  0]LogD3D11RHI: Chosen D3D11 Adapter: 1
+[2019.07.20-08.09.57:827][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2019.07.20-08.09.57:827][  0]LogD3D11RHI:     GPU DeviceId: 0x1c02 (for the marketing name, search the web for "GPU Device Id")
+[2019.07.20-08.09.57:827][  0]LogWindows: EnumDisplayDevices:
+[2019.07.20-08.09.57:827][  0]LogWindows:    0. 'Intel(R) UHD Graphics 630' (P:1 D:1)
+[2019.07.20-08.09.57:827][  0]LogWindows:    1. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.07.20-08.09.57:828][  0]LogWindows:    2. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.07.20-08.09.57:828][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1060 3GB' (P:0 D:0)
+[2019.07.20-08.09.57:828][  0]LogWindows:    4. 'NVIDIA GeForce GTX 1060 3GB' (P:0 D:0)
+[2019.07.20-08.09.57:828][  0]LogWindows:    5. 'NVIDIA GeForce GTX 1060 3GB' (P:0 D:0)
+[2019.07.20-08.09.57:828][  0]LogWindows:    6. 'NVIDIA GeForce GTX 1060 3GB' (P:0 D:0)
+[2019.07.20-08.09.57:829][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter FoundDriverCount:4 
+[2019.07.20-08.09.57:829][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 1060 3GB
+[2019.07.20-08.09.57:829][  0]LogD3D11RHI:   Driver Version: 430.86 (internal:26.21.14.3086, unified:430.86)
+[2019.07.20-08.09.57:829][  0]LogD3D11RHI:      Driver Date: 5-22-2019
+[2019.07.20-08.09.57:829][  0]LogRHI: Texture pool is 2091 MB (70% of 2988 MB)
+[2019.07.20-08.09.57:861][  0]LogD3D11RHI: Async texture creation enabled
+[2019.07.20-08.09.57:864][  0]LogRendererCore: FGlobalReadBuffer::InitRHI
+[2019.07.20-08.09.57:864][  0]LogRendererCore: FGlobalReadBuffer::InitRHI
+[2019.07.20-08.09.57:864][  0]LogRendererCore: FGlobalReadBuffer::InitRHI
+[2019.07.20-08.09.57:872][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 1)
+[2019.07.20-08.09.58:116][  0]LogTemp: Display: Module 'AllDesktopTargetPlatform' loaded TargetPlatform 'AllDesktop'
+[2019.07.20-08.09.58:128][  0]LogTemp: Display: Module 'MacClientTargetPlatform' loaded TargetPlatform 'MacClient'
+[2019.07.20-08.09.58:139][  0]LogTemp: Display: Module 'MacNoEditorTargetPlatform' loaded TargetPlatform 'MacNoEditor'
+[2019.07.20-08.09.58:151][  0]LogTemp: Display: Module 'MacServerTargetPlatform' loaded TargetPlatform 'MacServer'
+[2019.07.20-08.09.58:166][  0]LogTemp: Display: Module 'MacTargetPlatform' loaded TargetPlatform 'Mac'
+[2019.07.20-08.09.58:178][  0]LogTemp: Display: Module 'WindowsClientTargetPlatform' loaded TargetPlatform 'WindowsClient'
+[2019.07.20-08.09.58:190][  0]LogTemp: Display: Module 'WindowsNoEditorTargetPlatform' loaded TargetPlatform 'WindowsNoEditor'
+[2019.07.20-08.09.58:201][  0]LogTemp: Display: Module 'WindowsServerTargetPlatform' loaded TargetPlatform 'WindowsServer'
+[2019.07.20-08.09.58:207][  0]LogTemp: Display: Module 'WindowsTargetPlatform' loaded TargetPlatform 'Windows'
+[2019.07.20-08.09.58:280][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android'
+[2019.07.20-08.09.58:280][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ASTC'
+[2019.07.20-08.09.58:280][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ATC'
+[2019.07.20-08.09.58:280][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_DXT'
+[2019.07.20-08.09.58:280][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC1'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC1a'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC2'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_PVRTC'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'AndroidClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ASTCClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ATCClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_DXTClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC1Client'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC1aClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_ETC2Client'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_PVRTCClient'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_Multi'
+[2019.07.20-08.09.58:281][  0]LogTemp: Display: Module 'AndroidTargetPlatform' loaded TargetPlatform 'Android_MultiClient'
+[2019.07.20-08.09.58:282][  0]LogTemp: Display: Module 'HTML5TargetPlatform' loaded TargetPlatform 'HTML5'
+[2019.07.20-08.09.58:333][  0]LogTemp: Display: Module 'IOSTargetPlatform' loaded TargetPlatform 'IOSClient'
+[2019.07.20-08.09.58:333][  0]LogTemp: Display: Module 'IOSTargetPlatform' loaded TargetPlatform 'IOS'
+[2019.07.20-08.09.58:354][  0]LogTemp: Display: Module 'TVOSTargetPlatform' loaded TargetPlatform 'TVOSClient'
+[2019.07.20-08.09.58:354][  0]LogTemp: Display: Module 'TVOSTargetPlatform' loaded TargetPlatform 'TVOS'
+[2019.07.20-08.09.58:364][  0]LogTemp: Display: Module 'LinuxClientTargetPlatform' loaded TargetPlatform 'LinuxClient'
+[2019.07.20-08.09.58:375][  0]LogTemp: Display: Module 'LinuxNoEditorTargetPlatform' loaded TargetPlatform 'LinuxNoEditor'
+[2019.07.20-08.09.58:385][  0]LogTemp: Display: Module 'LinuxServerTargetPlatform' loaded TargetPlatform 'LinuxServer'
+[2019.07.20-08.09.58:401][  0]LogTemp: Display: Module 'LinuxTargetPlatform' loaded TargetPlatform 'Linux'
+[2019.07.20-08.09.58:439][  0]LogTemp: Display: Module 'LuminTargetPlatform' loaded TargetPlatform 'Lumin'
+[2019.07.20-08.09.58:439][  0]LogTemp: Display: Module 'LuminTargetPlatform' loaded TargetPlatform 'LuminClient'
+[2019.07.20-08.09.58:439][  0]LogTargetPlatformManager: Display: Building Assets For Windows
+[2019.07.20-08.09.58:467][  0]LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+[2019.07.20-08.09.58:526][  0]LogShaderCompilers: Guid format shader working directory is -36 characters bigger than the processId version (../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Intermediate/Shaders/WorkingDirectory/13872/).
+[2019.07.20-08.09.58:526][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Nordsken/AppData/Local/Temp/UnrealShaderWorkingDir/24BBFB8240FA5574EE4B12B79F49C568/'.
+[2019.07.20-08.09.58:528][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2019.07.20-08.09.58:528][  0]LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+[2019.07.20-08.09.58:528][  0]LogShaderCompilers: Display: Using Local Shader Compiler.
+[2019.07.20-08.09.59:973][  0]LogDerivedDataCache: Display: Max Cache Size: 512 MB
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: Loaded boot cache 0.04s 71MB C:/Users/Nordsken/AppData/Local/UnrealEngine/4.22/DerivedDataCache/Boot.ddc.
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Nordsken/AppData/Local/UnrealEngine/4.22/DerivedDataCache/Boot.ddc
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.07.20-08.10.00:016][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2019.07.20-08.10.00:030][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2019.07.20-08.10.00:030][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.07.20-08.10.00:030][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2019.07.20-08.10.00:043][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Nordsken/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2019.07.20-08.10.00:043][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2019.07.20-08.10.00:043][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2019.07.20-08.10.00:060][  0]LogMaterial: Verifying Global Shaders for PCD3D_SM5
+[2019.07.20-08.10.00:061][  0]LogSlate: Using FreeType 2.6.0
+[2019.07.20-08.10.00:071][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2019.07.20-08.10.00:248][  0]LogAssetRegistry: FAssetRegistry took 0.0319 seconds to start up
+[2019.07.20-08.10.00:520][  0]LogInit: Selected Device Profile: [Windows]
+[2019.07.20-08.10.00:689][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2019.07.20-08.10.00:689][  0]LogMeshReduction: Using SimplygonMeshReduction for automatic skeletal mesh reduction
+[2019.07.20-08.10.00:689][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2019.07.20-08.10.00:689][  0]LogMeshReduction: No distributed automatic mesh merging module available
+[2019.07.20-08.10.00:689][  0]LogMeshMerging: No distributed automatic mesh merging module available
+[2019.07.20-08.10.00:711][  0]LogNetVersion: TeamWolverineProject 1.0.0, NetCL: 5660361, EngineNetVer: 10, GameNetVer: 0 (Checksum: 899134691)
+[2019.07.20-08.10.01:435][  0]LogPackageLocalizationCache: Processed 10 localized package path(s) for 1 prioritized culture(s) in 0.092590 seconds
+[2019.07.20-08.10.01:441][  0]LogUObjectArray: 42205 objects as part of root set at end of initial load.
+[2019.07.20-08.10.01:441][  0]LogUObjectAllocator: 7325032 out of 0 bytes used by permanent object pool.
+[2019.07.20-08.10.01:441][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2019.07.20-08.10.03:187][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2019.07.20-08.10.03:200][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2019.07.20-08.10.03:316][  0]SourceControl: Source control is disabled
+[2019.07.20-08.10.03:966][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2019.07.20-08.10.04:087][  0]LogOcInput: OculusInput pre-init called
+[2019.07.20-08.10.04:684][  0]LogEngine: Initializing Engine...
+[2019.07.20-08.10.04:685][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.07.20-08.10.04:686][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+[2019.07.20-08.10.04:863][  0]LogInit: Initializing FReadOnlyCVARCache
+[2019.07.20-08.10.04:875][  0]LogAIModule: Creating AISystem for world Untitled
+[2019.07.20-08.10.04:903][  0]LogInit: XAudio2 using 'BenQ GL2760 (Intel(R) bildskärmsljud)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.07.20-08.10.04:931][  0]LogInit: FAudioDevice initialized.
+[2019.07.20-08.10.04:931][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2019.07.20-08.10.04:998][  0]LogDerivedDataCache: Saved boot cache 0.07s 71MB C:/Users/Nordsken/AppData/Local/UnrealEngine/4.22/DerivedDataCache/Boot.ddc.
+[2019.07.20-08.10.05:001][  0]LogInit: Texture streaming: Enabled
+[2019.07.20-08.10.05:016][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2019.07.20-08.10.05:035][  0]LogInit: Transaction tracking system initialized
+[2019.07.20-08.10.05:056][  0]BlueprintLog: New page: Editor Load
+[2019.07.20-08.10.05:129][  0]LocalizationService: Localization service is disabled
+[2019.07.20-08.10.05:386][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/' took 0.02s
+[2019.07.20-08.10.05:386][  0]LogCook: Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2019.07.20-08.10.05:386][  0]LogCook: Display: Mobile HDR setting 1
+[2019.07.20-08.10.05:588][  0]Cmd: MAP LOAD FILE="../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/StarterContent/Maps/Minimal_Default.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.07.20-08.10.05:592][  0]LightingResults: New page: Lighting Build
+[2019.07.20-08.10.05:594][  0]MapCheck: New page: Map Check
+[2019.07.20-08.10.05:594][  0]LightingResults: New page: Lighting Build
+[2019.07.20-08.10.05:617][  0]LogUObjectHash: Compacting FUObjectHashTables data took   1.29ms
+[2019.07.20-08.10.05:664][  0]LogLinker: Warning: Can't find file '/Game/StarterContent/Maps/Minimal_Default_BuiltData'
+[2019.07.20-08.10.05:664][  0]LogLinker: Warning: Can't find file for asset '/Game/StarterContent/Maps/Minimal_Default_BuiltData' while loading NULL.
+[2019.07.20-08.10.05:740][  0]LogLinker: Warning: Can't find file '/Game/StarterContent/Maps/Minimal_Default_BuiltData'
+[2019.07.20-08.10.05:740][  0]LogLinker: Warning: Can't find file for asset '/Game/StarterContent/Maps/Minimal_Default_BuiltData' while loading NULL.
+[2019.07.20-08.10.05:798][  0]LogLinker: Warning: Can't find file '/Game/StarterContent/Maps/Minimal_Default_BuiltData'
+[2019.07.20-08.10.05:798][  0]LogLinker: Warning: Can't find file for asset '/Game/StarterContent/Maps/Minimal_Default_BuiltData' while loading NULL.
+[2019.07.20-08.10.05:798][  0]LogLinker: Warning: Can't find file '/Game/StarterContent/Maps/Minimal_Default_BuiltData'
+[2019.07.20-08.10.05:798][  0]LogLinker: Warning: Can't find file for asset '/Game/StarterContent/Maps/Minimal_Default_BuiltData' while loading NULL.
+[2019.07.20-08.10.05:810][  0]LogLinker: Warning: Can't find file '/Game/StarterContent/Maps/Minimal_Default_BuiltData'
+[2019.07.20-08.10.05:810][  0]LoadErrors: Failed to load /Game/StarterContent/Maps/Minimal_Default_BuiltData.Minimal_Default_BuiltData Referenced by PersistentLevel
+[2019.07.20-08.10.05:810][  0]LogLinker: Warning: Can't find file for asset '/Game/StarterContent/Maps/Minimal_Default_BuiltData' while loading NULL.
+[2019.07.20-08.10.05:934][  0]LogStaticMesh: Building static mesh Floor_400x400...
+[2019.07.20-08.10.05:938][  0]LogStaticMesh: Built static mesh [0.00s] /Game/StarterContent/Architecture/Floor_400x400.Floor_400x400
+[2019.07.20-08.10.05:998][  0]LogAIModule: Creating AISystem for world Minimal_Default
+[2019.07.20-08.10.06:003][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.07.20-08.10.06:026][  0]LogUObjectHash: Compacting FUObjectHashTables data took   1.73ms
+[2019.07.20-08.10.06:027][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.07.20-08.10.06:027][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.123ms to complete.
+[2019.07.20-08.10.06:027][  0]LogFileHelpers: Loading map 'Minimal_Default' took 0.439
+[2019.07.20-08.10.06:188][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.07.20-08.10.06:195][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.07.20-08.10.06:202][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.07.20-08.10.06:208][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.07.20-08.10.06:220][  0]LogCollectionManager: Loaded 0 collections in 0.001383 seconds
+[2019.07.20-08.10.06:273][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Collections/' took 0.01s
+[2019.07.20-08.10.06:273][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/Developers/Nordsken/Collections/' took 0.01s
+[2019.07.20-08.10.06:273][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/Collections/' took 0.01s
+[2019.07.20-08.10.06:273][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000000 seconds
+[2019.07.20-08.10.06:282][  0]LogContentBrowser: Native class hierarchy populated in 0.0083 seconds. Added 2733 classes and 661 folders.
+[2019.07.20-08.10.06:297][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0003 seconds. Added 0 classes and 0 folders.
+[2019.07.20-08.10.06:306][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:321][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:339][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:344][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:349][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:354][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:357][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:362][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:374][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:383][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:390][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:395][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:400][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:405][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:409][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:414][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:437][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:441][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:446][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:450][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:454][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:458][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:462][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:467][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:471][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:476][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.07.20-08.10.06:619][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0003 seconds. Added 0 classes and 0 folders.
+[2019.07.20-08.10.06:632][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0003 seconds. Added 1 classes and 2 folders.
+[2019.07.20-08.10.06:687][  0]LogSlate: Took 0.003225 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2019.07.20-08.10.06:692][  0]LogSlate: Took 0.002946 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2019.07.20-08.10.06:702][  0]LogSlate: Took 0.005468 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2019.07.20-08.10.06:782][  0]LogRenderer: Reallocating scene render targets to support 1208x572 Format 10 NumSamples 1 (Frame:1).
+[2019.07.20-08.10.06:900][  0]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.10.06:936][  0]LogSlate: Window 'Tutorials' being destroyed
+[2019.07.20-08.10.06:966][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0003 seconds. Added 0 classes and 0 folders.
+[2019.07.20-08.10.06:966][  0]LogLoad: (Engine Initialization) Total time: 45.09 seconds
+[2019.07.20-08.10.06:966][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2019.07.20-08.10.07:081][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2019.07.20-08.10.07:084][  0]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.10.07:109][  0]LogSlate: Took 0.004258 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.07.20-08.10.10:443][385]LogAssetRegistry: Asset discovery search completed in 10.2169 seconds
+[2019.07.20-08.10.10:445][385]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000000 seconds (found 0 objects)
+[2019.07.20-08.10.10:445][385]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000056 seconds (updated 0 objects)
+[2019.07.20-08.10.14:779][881]LogTemp: IOS device listing is disabled (to many failed attempts)!
+[2019.07.20-08.10.15:254][931]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.07.20-08.11.03:350][676]LogSlate: Took 0.000228 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.07.20-08.11.03:362][676]Running C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -projectfiles -project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" -game -rocket -progress
+[2019.07.20-08.11.04:039][676]Discovering modules, targets and source code for project...
+[2019.07.20-08.11.05:849][676]Binding IntelliSense data...
+[2019.07.20-08.11.07:564][676]Binding IntelliSense data... 100%
+[2019.07.20-08.11.07:564][676]Writing project files...
+[2019.07.20-08.11.11:086][676]Writing project files... 100%
+[2019.07.20-08.11.23:798][727]LogSlate: Took 0.009169 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2019.07.20-08.11.59:433][986]Running C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -projectfiles -project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" -game -rocket -progress
+[2019.07.20-08.11.59:737][986]Discovering modules, targets and source code for project...
+[2019.07.20-08.12.01:145][986]Binding IntelliSense data...
+[2019.07.20-08.12.02:457][986]Binding IntelliSense data... 100%
+[2019.07.20-08.12.02:457][986]Writing project files...
+[2019.07.20-08.12.04:269][986]Writing project files... 100%
+[2019.07.20-08.12.04:549][986]LogVSAccessor: Warning: Couldn't access Visual Studio
+[2019.07.20-08.12.04:551][986]Candidate modules for hot reload:
+[2019.07.20-08.12.04:551][986]  TeamWolverineProject
+[2019.07.20-08.12.04:552][986]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,7862 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:12:13 PM
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (no existing makefile)
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.4050721 seconds
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Building 9 actions with 6 processes...
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [1/9] TeamWolverineProject.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [2/9] Tile.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [3/9] TeamWolverineProject.init.gen.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [4/9] TeamWolverineProjectGameModeBase.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [5/9] Tile.gen.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [6/9] TeamWolverineProjectGameModeBase.gen.cpp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [7/9] UE4Editor-TeamWolverineProject-7862.lib
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-7862.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-7862.exp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [8/9] UE4Editor-TeamWolverineProject-7862.dll
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-7862.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-7862.suppressed.exp
+[2019.07.20-08.12.13:011][986]CompilerResultsLog:   [9/9] TeamWolverineProjectEditor.target
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Total time in Parallel executor: 1.43 seconds
+[2019.07.20-08.12.13:011][986]CompilerResultsLog: Total execution time: 8.39 seconds
+[2019.07.20-08.12.13:011][986]LogMainFrame: MainFrame: Module compiling took 8.461 seconds
+[2019.07.20-08.12.13:034][986]LogUObjectHash: Compacting FUObjectHashTables data took   0.95ms
+[2019.07.20-08.12.13:045][986]LogClass: Could not find existing class Tile in package /Script/TeamWolverineProject for HotReload, assuming new class
+[2019.07.20-08.12.13:047][986]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.12.13:048][986]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.12.13:157][986]LogUObjectHash: Compacting FUObjectHashTables data took   0.87ms
+[2019.07.20-08.12.13:168][986]LogContentBrowser: Native class hierarchy populated in 0.0071 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.12.13:168][986]Display: HotReload took  8.6s.
+[2019.07.20-08.12.13:169][986]Warning: HotReload operation took  8.6s.
+[2019.07.20-08.12.13:183][986]LogSlate: Window 'Add C++ Class' being destroyed
+[2019.07.20-08.12.13:191][986]LogHotReload: New module detected: UE4Editor-TeamWolverineProject-7862.dll
+[2019.07.20-08.12.13:210][987]LogHotReload: Starting Hot-Reload from IDE
+[2019.07.20-08.12.13:252][987]LogUObjectHash: Compacting FUObjectHashTables data took   0.53ms
+[2019.07.20-08.12.13:255][987]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.12.13:258][987]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.12.13:279][987]LogUObjectHash: Compacting FUObjectHashTables data took   0.49ms
+[2019.07.20-08.12.13:289][987]LogContentBrowser: Native class hierarchy populated in 0.0073 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.12.13:292][987]Display: HotReload took  0.1s.
+[2019.07.20-08.13.07:277][299]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (53.982 sec). This should never happen. Something is wrong with the timer delegate!
+[2019.07.20-08.18.18:609][106]Candidate modules for hot reload:
+[2019.07.20-08.18.18:609][106]  TeamWolverineProject
+[2019.07.20-08.18.18:609][106]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,6938 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.18.18:613][106]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.18.26:578][ 46]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:18:26 PM
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.4727027 seconds
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Building 5 actions with 6 processes...
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   [1/5] Tile.cpp
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   [2/5] Tile.gen.cpp
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   [3/5] UE4Editor-TeamWolverineProject-6938.lib
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6938.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6938.exp
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   [4/5] UE4Editor-TeamWolverineProject-6938.dll
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6938.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6938.suppressed.exp
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog:   [5/5] TeamWolverineProjectEditor.target
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Total time in Parallel executor: 1.47 seconds
+[2019.07.20-08.18.26:579][ 46]CompilerResultsLog: Total execution time: 7.88 seconds
+[2019.07.20-08.18.26:580][ 46]LogMainFrame: MainFrame: Module compiling took 7.973 seconds
+[2019.07.20-08.18.26:598][ 46]LogUObjectHash: Compacting FUObjectHashTables data took   0.70ms
+[2019.07.20-08.18.26:611][ 46]LogClass: Could not find existing class Tile in package /Script/TeamWolverineProject for HotReload, assuming new class
+[2019.07.20-08.18.26:613][ 46]LogHotReload: Re-instancing Tile after hot-reload.
+[2019.07.20-08.18.26:668][ 46]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.18.26:670][ 46]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.18.26:711][ 46]LogUObjectHash: Compacting FUObjectHashTables data took   0.91ms
+[2019.07.20-08.18.26:721][ 46]LogContentBrowser: Native class hierarchy populated in 0.0070 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.18.26:721][ 46]Display: HotReload took  8.1s.
+[2019.07.20-08.19.06:882][558]LogSlate: Window 'Pick Parent Class' being destroyed
+[2019.07.20-08.19.23:792][520]LogUObjectHash: Compacting FUObjectHashTables data took   1.43ms
+[2019.07.20-08.19.23:792][520]LogMetaData: Removing '/Game/BP_Tile.BP_Tile:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:792][520]LogMetaData: Removing '/Game/BP_Tile.SKEL_BP_Tile_C' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:792][520]LogMetaData: Removing '/Game/BP_Tile.BP_Tile_C' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:793][520]LogMetaData: Removing '/Game/BP_Tile.BP_Tile:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:793][520]LogMetaData: Removing '/Game/BP_Tile.BP_Tile:EventGraph.K2Node_Event_1' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:793][520]LogMetaData: Removing '/Game/BP_Tile.BP_Tile:EventGraph.K2Node_Event_2' ref from Metadata '/Game/Tile.PackageMetaData'
+[2019.07.20-08.19.23:812][520]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/BP_Tile" FILE="../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/BP_Tile.uasset" SILENT=true
+[2019.07.20-08.19.23:825][520]LogSavePackage: Moving '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/BP_Tile8AC6C58E407843996950B1A114741AD1.tmp' to '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Content/BP_Tile.uasset'
+[2019.07.20-08.19.24:093][520]LogUObjectHash: Compacting FUObjectHashTables data took   1.06ms
+[2019.07.20-08.19.24:118][520]LogUObjectHash: Compacting FUObjectHashTables data took   1.22ms
+[2019.07.20-08.19.24:140][520]LogUObjectHash: Compacting FUObjectHashTables data took   0.49ms
+[2019.07.20-08.19.30:687][300]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/BP_Tile.BP_Tile
+[2019.07.20-08.19.30:924][300]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0007 seconds. Added 121 classes and 0 folders.
+[2019.07.20-08.19.35:016][594]LogRenderer: Reallocating scene render targets to support 1208x900 Format 10 NumSamples 1 (Frame:296).
+[2019.07.20-08.22.46:563][ 93]LogSlate: Window 'BP_Tile' being destroyed
+[2019.07.20-08.22.49:201][408]Candidate modules for hot reload:
+[2019.07.20-08.22.49:201][408]  TeamWolverineProject
+[2019.07.20-08.22.49:201][408]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,6929 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.22.49:205][408]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.22.56:267][238]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:22:56 PM
+[2019.07.20-08.22.56:268][238]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.22.56:268][238]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.22.56:268][238]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.22.56:268][238]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.22.56:268][238]CompilerResultsLog: Error: C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Source/TeamWolverineProject/Public/Tile.h(37)  : LogCompile: Error: Found more than one edit/visibility specifier (VisibleAnywhere), only one is allowed
+[2019.07.20-08.22.56:268][238]CompilerResultsLog: Error: C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Source/TeamWolverineProject/Public/Tile.h(38)  : Error: Unrecognized type 'ETileType' - type must be a UCLASS, USTRUCT or UENUM
+[2019.07.20-08.22.56:268][238]LogMainFrame: MainFrame: Module compiling took 7.069 seconds
+[2019.07.20-08.22.56:268][238]Warning: HotReload failed, recompile failed
+[2019.07.20-08.23.50:892][ 73]Candidate modules for hot reload:
+[2019.07.20-08.23.50:893][ 73]  TeamWolverineProject
+[2019.07.20-08.23.50:893][ 73]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,1493 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.23.50:897][ 73]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:23:59 PM
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.5144761 seconds
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Building 6 actions with 6 processes...
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [1/6] Tile.cpp
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [2/6] TeamWolverineProject.init.gen.cpp
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [3/6] Tile.gen.cpp
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [4/6] UE4Editor-TeamWolverineProject-1493.lib
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-1493.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-1493.exp
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [5/6] UE4Editor-TeamWolverineProject-1493.dll
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-1493.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-1493.suppressed.exp
+[2019.07.20-08.23.59:998][148]CompilerResultsLog:   [6/6] TeamWolverineProjectEditor.target
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Total time in Parallel executor: 1.60 seconds
+[2019.07.20-08.23.59:998][148]CompilerResultsLog: Total execution time: 9.01 seconds
+[2019.07.20-08.23.59:998][148]LogMainFrame: MainFrame: Module compiling took 9.108 seconds
+[2019.07.20-08.24.00:030][148]LogUObjectHash: Compacting FUObjectHashTables data took   2.72ms
+[2019.07.20-08.24.00:030][148]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (unloaded)
+[2019.07.20-08.24.00:044][148]LogClass: Could not find existing class Tile in package /Script/TeamWolverineProject for HotReload, assuming new class
+[2019.07.20-08.24.00:044][148]LogClass: Could not find existing type ETileType for HotReload. Assuming new
+[2019.07.20-08.24.00:050][148]LogHotReload: Re-instancing Tile after hot-reload.
+[2019.07.20-08.24.00:439][148]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (loaded)
+[2019.07.20-08.24.00:439][148]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.24.00:442][148]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.24.00:498][148]LogUObjectHash: Compacting FUObjectHashTables data took   2.10ms
+[2019.07.20-08.24.00:498][148]LogBlueprintActionDatabase: Requesting refresh due to hot reload
+[2019.07.20-08.24.00:512][148]LogContentBrowser: Native class hierarchy populated in 0.0074 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.24.00:512][148]Display: HotReload took  9.6s.
+[2019.07.20-08.24.06:678][849]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.07.20-08.24.06:802][864]LogSlate: Window 'Message Log' being destroyed
+[2019.07.20-08.24.32:636][960]LogSlate: Took 0.005584 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2019.07.20-08.25.14:796][223]LogUObjectHash: Compacting FUObjectHashTables data took   3.71ms
+[2019.07.20-08.25.14:796][223]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/StarterContent/Maps/Minimal_Default' took 0.046
+[2019.07.20-08.25.14:797][223]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/BP_Tile] ([1] browsable assets)...
+[2019.07.20-08.25.14:797][223]OBJ SavePackage: Finished generating thumbnails for package [/Game/BP_Tile]
+[2019.07.20-08.25.14:812][223]LogSavePackage: Moving '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/BP_Tile_Auto1FF00F5454CEA0FDDF327479A2AC16CE2.tmp' to '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Autosaves/Game/BP_Tile_Auto1.uasset'
+[2019.07.20-08.25.14:812][223]LogFileHelpers: Auto-saving content packages took 0.016
+[2019.07.20-08.26.52:471][847]Candidate modules for hot reload:
+[2019.07.20-08.26.52:471][847]  TeamWolverineProject
+[2019.07.20-08.26.52:471][847]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,5838 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.26.52:475][847]Warning: Starting HotReload took  0.2s.
+[2019.07.20-08.26.59:461][662]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:26:59 PM
+[2019.07.20-08.26.59:461][662]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.26.59:461][662]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.26.59:461][662]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.26.59:461][662]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.26.59:461][662]CompilerResultsLog: Error: C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Source/TeamWolverineProject/Public/Tile.h(38)  : Error: Missing ',' in Variable declaration specifier
+[2019.07.20-08.26.59:461][662]LogMainFrame: MainFrame: Module compiling took 6.991 seconds
+[2019.07.20-08.26.59:461][662]Warning: HotReload failed, recompile failed
+[2019.07.20-08.27.59:632][512]Candidate modules for hot reload:
+[2019.07.20-08.27.59:632][512]  TeamWolverineProject
+[2019.07.20-08.27.59:633][512]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,9509 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.27.59:638][512]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.28.06:538][731]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:28:06 PM
+[2019.07.20-08.28.06:538][731]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.28.06:539][731]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.28.06:539][731]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.28.06:539][731]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.28.06:539][731]CompilerResultsLog: Error: C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Source/TeamWolverineProject/Public/Tile.h(38)  : Error: Missing ',' in Variable declaration specifier
+[2019.07.20-08.28.06:539][731]LogMainFrame: MainFrame: Module compiling took 6.910 seconds
+[2019.07.20-08.28.06:539][731]Warning: HotReload failed, recompile failed
+[2019.07.20-08.28.21:890][958]LogSlate: Window 'Message Log' being destroyed
+[2019.07.20-08.28.21:893][958]LogSlate: Window 'Message Log' being destroyed
+[2019.07.20-08.28.22:671][ 50]Candidate modules for hot reload:
+[2019.07.20-08.28.22:671][ 50]  TeamWolverineProject
+[2019.07.20-08.28.22:671][ 50]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,6158 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.28.22:675][ 50]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:28:31 PM
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.28.31:133][187]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.0101713 seconds
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.28.31:133][187]CompilerResultsLog: Building 6 actions with 6 processes...
+[2019.07.20-08.28.31:133][187]CompilerResultsLog:   [1/6] Tile.cpp
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:   [2/6] TeamWolverineProject.init.gen.cpp
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:   [3/6] Tile.gen.cpp
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:   [4/6] UE4Editor-TeamWolverineProject-6158.lib
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6158.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6158.exp
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:   [5/6] UE4Editor-TeamWolverineProject-6158.dll
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6158.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-6158.suppressed.exp
+[2019.07.20-08.28.31:134][187]CompilerResultsLog:   [6/6] TeamWolverineProjectEditor.target
+[2019.07.20-08.28.31:134][187]CompilerResultsLog: Total time in Parallel executor: 1.32 seconds
+[2019.07.20-08.28.31:134][187]CompilerResultsLog: Total execution time: 8.06 seconds
+[2019.07.20-08.28.31:134][187]LogMainFrame: MainFrame: Module compiling took 8.466 seconds
+[2019.07.20-08.28.31:163][187]LogUObjectHash: Compacting FUObjectHashTables data took   1.90ms
+[2019.07.20-08.28.31:163][187]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (unloaded)
+[2019.07.20-08.28.31:177][187]LogClass: Could not find existing class Tile in package /Script/TeamWolverineProject for HotReload, assuming new class
+[2019.07.20-08.28.31:177][187]LogClass: ETileType HotReload.
+[2019.07.20-08.28.31:183][187]LogHotReload: Re-instancing Tile after hot-reload.
+[2019.07.20-08.28.31:415][187]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (loaded)
+[2019.07.20-08.28.31:415][187]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.28.31:419][187]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.28.31:483][187]LogUObjectHash: Compacting FUObjectHashTables data took   2.65ms
+[2019.07.20-08.28.31:483][187]LogBlueprintActionDatabase: Requesting refresh due to hot reload
+[2019.07.20-08.28.31:496][187]LogContentBrowser: Native class hierarchy populated in 0.0074 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.28.31:496][187]Display: HotReload took  8.8s.
+[2019.07.20-08.29.09:037][814]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.29.13:824][383]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.29.24:412][645]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.07.20-08.29.43:227][734]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.30.47:155][628]LogBlueprintActionDatabase: Requesting refresh due to module change: HierarchicalLODUtilities (loaded)
+[2019.07.20-08.35.15:476][432]LogUObjectHash: Compacting FUObjectHashTables data took   5.16ms
+[2019.07.20-08.35.15:476][432]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/StarterContent/Maps/Minimal_Default' took 0.096
+[2019.07.20-08.35.15:477][432]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/BP_Tile] ([1] browsable assets)...
+[2019.07.20-08.35.15:495][432]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/BP_Tile.BP_Tile]
+[2019.07.20-08.35.15:495][432]OBJ SavePackage: Finished generating thumbnails for package [/Game/BP_Tile]
+[2019.07.20-08.35.15:516][432]LogSavePackage: Moving '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/BP_Tile_Auto26E6DC8BB433D662E11CBF69CA4982F87.tmp' to '../../../../../../Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/Saved/Autosaves/Game/BP_Tile_Auto2.uasset'
+[2019.07.20-08.35.15:517][432]LogFileHelpers: Auto-saving content packages took 0.040
+[2019.07.20-08.42.20:386][264]Candidate modules for hot reload:
+[2019.07.20-08.42.20:386][264]  TeamWolverineProject
+[2019.07.20-08.42.20:386][264]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,3687 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.42.20:390][264]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:42:28 PM
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Creating makefile for TeamWolverineProjectEditor (ini files are newer than makefile)
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.42.28:034][890]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.3156007 seconds
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.42.28:034][890]CompilerResultsLog: Building 4 actions with 6 processes...
+[2019.07.20-08.42.28:034][890]CompilerResultsLog:   [1/4] Tile.cpp
+[2019.07.20-08.42.28:034][890]CompilerResultsLog:    C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\Private\Tile.cpp(30) : error C2039: 'CreateDynamicMaterialInstance': is not a member of 'UStaticMesh'
+[2019.07.20-08.42.28:034][890]CompilerResultsLog:   C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine/StaticMesh.h(550): note: see declaration of 'UStaticMesh'
+[2019.07.20-08.42.28:034][890]LogMainFrame: MainFrame: Module compiling took 7.650 seconds
+[2019.07.20-08.42.28:034][890]Warning: HotReload failed, recompile failed
+[2019.07.20-08.44.41:832][271]Candidate modules for hot reload:
+[2019.07.20-08.44.41:832][271]  TeamWolverineProject
+[2019.07.20-08.44.41:833][271]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,2595 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.44.41:836][271]Warning: Starting HotReload took  0.0s.
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:44:49 PM
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.44.49:987][145]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.7540258 seconds
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.44.49:987][145]CompilerResultsLog: Building 4 actions with 6 processes...
+[2019.07.20-08.44.49:987][145]CompilerResultsLog:   [1/4] Tile.cpp
+[2019.07.20-08.44.49:987][145]CompilerResultsLog:   [2/4] UE4Editor-TeamWolverineProject-2595.lib
+[2019.07.20-08.44.49:987][145]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-2595.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-2595.exp
+[2019.07.20-08.44.49:988][145]CompilerResultsLog:   [3/4] UE4Editor-TeamWolverineProject-2595.dll
+[2019.07.20-08.44.49:988][145]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-2595.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-2595.suppressed.exp
+[2019.07.20-08.44.49:988][145]CompilerResultsLog:   [4/4] TeamWolverineProjectEditor.target
+[2019.07.20-08.44.49:988][145]CompilerResultsLog: Total time in Parallel executor: 1.39 seconds
+[2019.07.20-08.44.49:988][145]CompilerResultsLog: Total execution time: 8.06 seconds
+[2019.07.20-08.44.49:988][145]LogMainFrame: MainFrame: Module compiling took 8.158 seconds
+[2019.07.20-08.44.50:050][145]LogUObjectHash: Compacting FUObjectHashTables data took   3.52ms
+[2019.07.20-08.44.50:050][145]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (unloaded)
+[2019.07.20-08.44.50:066][145]LogClass: ETileType HotReload.
+[2019.07.20-08.44.50:068][145]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (loaded)
+[2019.07.20-08.44.50:069][145]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.44.50:073][145]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.44.50:139][145]LogUObjectHash: Compacting FUObjectHashTables data took   1.39ms
+[2019.07.20-08.44.50:139][145]LogBlueprintActionDatabase: Requesting refresh due to hot reload
+[2019.07.20-08.44.50:152][145]LogContentBrowser: Native class hierarchy populated in 0.0074 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.44.50:152][145]Display: HotReload took  8.3s.
+[2019.07.20-08.45.07:288][656]Candidate modules for hot reload:
+[2019.07.20-08.45.07:288][656]  TeamWolverineProject
+[2019.07.20-08.45.07:289][656]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.22/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=TeamWolverineProject,8151 Win64 Development -TargetType=Editor -Project="C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject" "C:/Users/Nordsken/Documents/GitHub/TeamWolverine/TeamWolverineProject/TeamWolverineProject.uproject"  -IgnoreJunk]
+[2019.07.20-08.45.07:473][656]Warning: Starting HotReload took  0.2s.
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: New page: Compilation - Jul 20, 2019, 12:45:15 PM
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\Nordsken\Documents\GitHub\TeamWolverine).
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Parsing headers for TeamWolverineProjectEditor
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\TeamWolverineProject.uproject" "C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\TeamWolverineProjectEditor\Development\TeamWolverineProjectEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Reflection code generated for TeamWolverineProjectEditor in 5.5511035 seconds
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.16299.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Building 6 actions with 6 processes...
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [1/6] Tile.cpp
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [2/6] TeamWolverineProject.init.gen.cpp
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [3/6] Tile.gen.cpp
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [4/6] UE4Editor-TeamWolverineProject-8151.lib
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-8151.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-8151.exp
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [5/6] UE4Editor-TeamWolverineProject-8151.dll
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:      Creating library C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-8151.suppressed.lib and object C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\UE4Editor-TeamWolverineProject-8151.suppressed.exp
+[2019.07.20-08.45.15:766][629]CompilerResultsLog:   [6/6] TeamWolverineProjectEditor.target
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Total time in Parallel executor: 1.69 seconds
+[2019.07.20-08.45.15:766][629]CompilerResultsLog: Total execution time: 8.21 seconds
+[2019.07.20-08.45.15:766][629]LogMainFrame: MainFrame: Module compiling took 8.479 seconds
+[2019.07.20-08.45.15:824][629]LogUObjectHash: Compacting FUObjectHashTables data took   3.40ms
+[2019.07.20-08.45.15:824][629]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (unloaded)
+[2019.07.20-08.45.15:839][629]LogClass: Could not find existing class Tile in package /Script/TeamWolverineProject for HotReload, assuming new class
+[2019.07.20-08.45.15:839][629]LogClass: ETileType HotReload.
+[2019.07.20-08.45.15:844][629]LogHotReload: Re-instancing Tile after hot-reload.
+[2019.07.20-08.45.16:120][629]LogBlueprintActionDatabase: Requesting refresh due to module change: TeamWolverineProject (loaded)
+[2019.07.20-08.45.16:120][629]LogContentBrowser: Native class hierarchy updated for 'TeamWolverineProject' in 0.0004 seconds. Added 2 classes and 3 folders.
+[2019.07.20-08.45.16:124][629]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2019.07.20-08.45.16:209][629]LogUObjectHash: Compacting FUObjectHashTables data took   3.70ms
+[2019.07.20-08.45.16:209][629]LogBlueprintActionDatabase: Requesting refresh due to hot reload
+[2019.07.20-08.45.16:222][629]LogContentBrowser: Native class hierarchy populated in 0.0073 seconds. Added 2735 classes and 664 folders.
+[2019.07.20-08.45.16:222][629]Display: HotReload took  8.9s.
+[2019.07.20-08.45.28:666][925]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Table)
+[2019.07.20-08.45.29:930][ 60]Cmd: DELETE
+[2019.07.20-08.45.29:930][ 60]Cmd: ACTOR DELETE
+[2019.07.20-08.45.30:013][ 60]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.30:093][ 60]LogUObjectHash: Compacting FUObjectHashTables data took   3.56ms
+[2019.07.20-08.45.30:093][ 60]LogEditorActor: Deleted 1 Actors (0.111 secs)
+[2019.07.20-08.45.30:886][150]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Chair)
+[2019.07.20-08.45.32:144][297]Cmd: DELETE
+[2019.07.20-08.45.32:144][297]Cmd: ACTOR DELETE
+[2019.07.20-08.45.32:145][297]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.32:189][297]LogUObjectHash: Compacting FUObjectHashTables data took   2.61ms
+[2019.07.20-08.45.32:189][297]LogEditorActor: Deleted 1 Actors (0.044 secs)
+[2019.07.20-08.45.32:624][349]Cmd: ACTOR SELECT ALL
+[2019.07.20-08.45.33:338][434]Cmd: DELETE
+[2019.07.20-08.45.33:338][434]Cmd: ACTOR DELETE
+[2019.07.20-08.45.33:338][434]LogEditorActor: Cannot delete special actor Brush /Game/StarterContent/Maps/Minimal_Default.Minimal_Default:PersistentLevel.Brush_1
+[2019.07.20-08.45.33:341][434]LogEditorActor: Actor Light Source is referenced by BP_Sky_Sphere.
+[2019.07.20-08.45.33:345][434]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.45.39:219][434]LogSlate: Window 'Message' being destroyed
+[2019.07.20-08.45.39:223][434]LogEditorActor: Deleted Actor: PlayerStart
+[2019.07.20-08.45.39:224][434]LogEditorActor: Deleted Actor: InstancedFoliageActor
+[2019.07.20-08.45.39:224][434]LogEditorActor: Deleted Actor: AtmosphericFog
+[2019.07.20-08.45.39:225][434]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.39:226][434]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.39:226][434]LogEditorActor: Deleted Actor: SphereReflectionCapture
+[2019.07.20-08.45.39:227][434]LogEditorActor: Deleted Actor: PostProcessVolume
+[2019.07.20-08.45.39:228][434]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.39:229][434]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.39:229][434]LogEditorActor: Deleted Actor: AmbientSound
+[2019.07.20-08.45.39:229][434]LogEditorActor: Deleted Actor: BP_Sky_Sphere_C
+[2019.07.20-08.45.39:230][434]LogEditorActor: Deleted Actor: SkyLight
+[2019.07.20-08.45.39:230][434]LogEditorActor: Deleted Actor: SphereReflectionCapture
+[2019.07.20-08.45.39:262][434]LogUObjectHash: Compacting FUObjectHashTables data took   1.48ms
+[2019.07.20-08.45.39:266][434]LogEditorActor: Deleted 13 Actors (5.928 secs)
+[2019.07.20-08.45.42:503][818]Cmd: TRANSACTION UNDO
+[2019.07.20-08.45.42:503][818]LogEditorTransaction: Undo Delete Actors
+[2019.07.20-08.45.43:571][941]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2019.07.20-08.45.44:753][ 78]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Chair)
+[2019.07.20-08.45.45:798][199]Cmd: DELETE
+[2019.07.20-08.45.45:799][199]Cmd: ACTOR DELETE
+[2019.07.20-08.45.45:800][199]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.45:828][199]LogUObjectHash: Compacting FUObjectHashTables data took   1.44ms
+[2019.07.20-08.45.45:828][199]LogEditorActor: Deleted 1 Actors (0.029 secs)
+[2019.07.20-08.45.50:762][788]LogEditorViewport: Clicking on Actor (LMB): BP_Sky_Sphere_C (BP_Sky_Sphere)
+[2019.07.20-08.45.51:236][841]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Statue)
+[2019.07.20-08.45.52:820][ 26]Cmd: DELETE
+[2019.07.20-08.45.52:820][ 26]Cmd: ACTOR DELETE
+[2019.07.20-08.45.52:821][ 26]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.45.52:851][ 26]LogUObjectHash: Compacting FUObjectHashTables data took   0.66ms
+[2019.07.20-08.45.52:852][ 26]LogEditorActor: Deleted 1 Actors (0.031 secs)
+[2019.07.20-08.45.57:063][529]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.07.20-08.45.59:874][863]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2019.07.20-08.46.01:280][ 28]Cmd: DELETE
+[2019.07.20-08.46.01:280][ 28]Cmd: ACTOR DELETE
+[2019.07.20-08.46.01:282][ 28]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.46.01:314][ 28]LogUObjectHash: Compacting FUObjectHashTables data took   1.85ms
+[2019.07.20-08.46.01:315][ 28]LogEditorActor: Deleted 1 Actors (0.033 secs)
+[2019.07.20-08.46.02:513][172]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (Floor)
+[2019.07.20-08.46.03:070][235]Cmd: DELETE
+[2019.07.20-08.46.03:070][235]Cmd: ACTOR DELETE
+[2019.07.20-08.46.03:071][235]LogEditorActor: Deleted Actor: StaticMeshActor
+[2019.07.20-08.46.03:096][235]LogUObjectHash: Compacting FUObjectHashTables data took   0.66ms
+[2019.07.20-08.46.03:097][235]LogEditorActor: Deleted 1 Actors (0.026 secs)
+[2019.07.20-08.46.04:461][399]LogEditorViewport: Clicking on Actor (LMB): BP_Tile_C (BP_Tile)
+[2019.07.20-08.46.07:731][786]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.46.15:916][766]LogSlate: Window 'Color Picker' being destroyed
+[2019.07.20-08.46.17:935][  6]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.07.20-08.46.22:637][567]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.07.20-08.46.22:753][581]LogTemp: Repeating last play command: Selected Viewport
+[2019.07.20-08.46.22:765][581]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/StarterContent/Maps/Minimal_Default.Minimal_Default:PersistentLevel' has LevelScriptBlueprint '/Game/StarterContent/Maps/Minimal_Default.Minimal_Default:PersistentLevel.Minimal_Default' with GeneratedClass '/Game/StarterContent/Maps/Minimal_Default.Minimal_Default_C' with ClassGeneratedBy '/Game/StarterContent/Maps/Minimal_Default.Minimal_Default:PersistentLevel.Minimal_Default'
+[2019.07.20-08.46.22:766][581]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.07.20-08.46.22:766][581]PIE: New page: PIE session: Minimal_Default (Jul 20, 2019, 12:46:22 PM)
+[2019.07.20-08.46.22:778][581]LogPlayLevel: Creating play world package: /Game/StarterContent/Maps/UEDPIE_0_Minimal_Default
+[2019.07.20-08.46.22:782][581]LogPlayLevel: PIE: StaticDuplicateObject took: (0.002997s)
+[2019.07.20-08.46.22:782][581]LogAIModule: Creating AISystem for world Minimal_Default
+[2019.07.20-08.46.22:782][581]LogPlayLevel: PIE: World Init took: (0.000585s)
+[2019.07.20-08.46.22:782][581]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/StarterContent/Maps/Minimal_Default.Minimal_Default to /Game/StarterContent/Maps/UEDPIE_0_Minimal_Default.Minimal_Default (0.003902s)
+[2019.07.20-08.46.22:814][581]LogUObjectHash: Compacting FUObjectHashTables data took   2.06ms
+[2019.07.20-08.46.22:836][581]LogInit: XAudio2 using 'BenQ GL2760 (Intel(R) bildskärmsljud)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.07.20-08.46.22:842][581]LogInit: FAudioDevice initialized.
+[2019.07.20-08.46.22:886][581]LogUObjectGlobals: Warning: Failed to find object 'Class /Script/TeamWolverineProject.TeamWolverineProjectGameMode'
+[2019.07.20-08.46.22:886][581]LogLoad: Game class is 'GameModeBase'
+[2019.07.20-08.46.22:893][581]LogWorld: Bringing World /Game/StarterContent/Maps/UEDPIE_0_Minimal_Default.Minimal_Default up for play (max tick rate 0) at 2019.07.20-10.46.22
+[2019.07.20-08.46.22:894][581]LogWorld: Bringing up level for play took: 0.002108
+[2019.07.20-08.46.22:953][581]LogBlueprintActionDatabase: Requesting refresh due to module change: Voice (loaded)
+[2019.07.20-08.46.22:956][581]LogBlueprintActionDatabase: Requesting refresh due to module change: MovieSceneCapture (loaded)
+[2019.07.20-08.46.22:958][581]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0005 seconds. Added 20 classes and 0 folders.
+[2019.07.20-08.46.24:258][581]LogWindows: Error: === Critical error: ===
+[2019.07.20-08.46.24:258][581]LogWindows: Error: 
+[2019.07.20-08.46.24:258][581]LogWindows: Error: Fatal error!
+[2019.07.20-08.46.24:258][581]LogWindows: Error: 
+[2019.07.20-08.46.24:258][581]LogWindows: Error: Unhandled Exception: EXCEPTION_ACCESS_VIOLATION reading address 0x00000000
+[2019.07.20-08.46.24:258][581]LogWindows: Error: 
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffc212d1d50 UE4Editor-TeamWolverineProject-8151.dll!ATile::BeginPlay() [c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\private\tile.cpp:23]
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbdb161af6 UE4Editor-Engine.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbdc27cb99 UE4Editor-Engine.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbdb7e2911 UE4Editor-Engine.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbdc23754e UE4Editor-Engine.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbdb7a99af UE4Editor-Engine.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbd999be44 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbd99bb044 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbd99d319f UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbd94afc4a UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffbd9ccd396 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ff7f9926bb1 UE4Editor.exe!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ff7f993554c UE4Editor.exe!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ff7f99355ca UE4Editor.exe!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ff7f994316c UE4Editor.exe!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ff7f9945b8e UE4Editor.exe!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffc38f67bd4 KERNEL32.DLL!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: [Callstack] 0x00007ffc3ae4ce71 ntdll.dll!UnknownFunction []
+[2019.07.20-08.46.24:258][581]LogWindows: Error: 
+[2019.07.20-08.46.24:273][581]LogExit: Executing StaticShutdownAfterError
+[2019.07.20-08.46.24:275][581]LogWindows: FPlatformMisc::RequestExit(1)
+[2019.07.20-08.46.24:285][581]Log file closed, 07/20/19 10:46:24

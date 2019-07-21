@@ -1,3 +1,0 @@
-C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\TeamWolverineProject.Build.cs
-C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject.Target.cs
-C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProjectEditor.Target.cs

@@ -11,69 +11,69 @@
 #include "EngineUtils.h"
 #include "DrawDebugHelpers.h"
 
-UObjectManagerComponent::UObjectManagerComponent()
+AObjectManagerComponent::AObjectManagerComponent()
+	:mObjectIndex(0)
 {
-	mObjectIndex = 0;
+	
 }
 
-UObjectManagerComponent::~UObjectManagerComponent()
+AObjectManagerComponent::~AObjectManagerComponent()
 {
 }
 
-void UObjectManagerComponent::BeginPlay()
+void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void UObjectManagerComponent::Init(TArray<ATile*> tiles)
+void AObjectManagerComponent::Init(TArray<ATile*> tiles)
 {
 	mTiles = tiles;
 }
 
-void UObjectManagerComponent::UpdateCurrentObject(int objectIndex)
+void AObjectManagerComponent::UpdateCurrentObject(uint8 objectIndex)
 {
 	mObjectIndex = objectIndex;
 }
 
-void UObjectManagerComponent::SpawnObject()
+void AObjectManagerComponent::SpawnObject()
 {
-	TSubclassOf<APlantableObject> PlantableObject;
+	if (!mObjectInventory.IsValidIndex(mObjectIndex))
+		return;
 
-	//TODO: Pick the right object from inventory
-	if (UBlueprint* blueprint = Cast<UBlueprint>(mObjectInventory[mObjectIndex]))
+	FHitResult hit;
+	GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursor(ECollisionChannel::ECC_WorldStatic, false, hit);
+
+	if (hit.GetActor() != nullptr)
 	{
-		PlantableObject = blueprint->GeneratedClass;
+		ATile* closestTile = nullptr;
+		float closestDistance = 99999999.f;
 
-		FHitResult hit;
-		GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursor(ECollisionChannel::ECC_WorldStatic, false, hit);
-
-		if (hit.GetActor() != nullptr)
+		for (ATile* tile : mTiles)
 		{
-			ATile* closestTile = nullptr;
-			float closestDistance = 99999999.f;
-			for (ATile* tile : mTiles)
-			{
-				const FVector actorLocation = tile->GetActorLocation();
-				const float distance = FVector::Distance(actorLocation, hit.Location);
+			const FVector actorLocation = tile->GetActorLocation();
+			const float distance = FVector::Distance(actorLocation, hit.Location);
 
-				if (distance < closestDistance)
-				{
-					closestDistance = distance;
-					closestTile = tile;
-				}
+			if (distance < closestDistance)
+			{
+				closestDistance = distance;
+				closestTile = tile;
 			}
+		}
 
-			if (closestTile != nullptr)
+		if (closestTile != nullptr)
+		{
+			TSubclassOf<APlantableObject> plantableObject = mObjectInventory[mObjectIndex];
+			FActorSpawnParameters spawnInfo;
+
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(plantableObject, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
-				FActorSpawnParameters SpawnInfo;
-				if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(PlantableObject, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, SpawnInfo))
-				{
-					mObjects.Add(spawnedObject);
-					spawnedObject->OnSpawn(closestTile);
+				mObjects.Add(spawnedObject);
+				spawnedObject->OnSpawn(closestTile);
 
-					//todo: calculate neighbours
-				}
+				//todo: calculate neighbours
 			}
 		}
 	}
+
 }

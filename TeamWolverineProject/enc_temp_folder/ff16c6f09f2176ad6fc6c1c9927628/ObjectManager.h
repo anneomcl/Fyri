@@ -6,7 +6,7 @@
 #include "Engine\Classes\Engine\DataAsset.h"
 #include "PlantableObject.h"
 #include "Engine\Classes\Components\ActorComponent.h"
-#include "GameFramework/Actor.h"
+#include <GameFramework/Actor.h>
 #include "ObjectManager.generated.h"
 
 class ATile;

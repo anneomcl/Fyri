@@ -1,3 +1,0 @@
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\TeamWolverineProject.Build.cs
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject.Target.cs
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProjectEditor.Target.cs

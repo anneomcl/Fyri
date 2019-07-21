@@ -25,3 +25,8 @@ void APlantableObject::Tick(float DeltaTime)
 
 }
 
+void APlantableObject::OnSpawn(ATile* closestTile)
+{
+	mCurrentTile = closestTile;
+}
+

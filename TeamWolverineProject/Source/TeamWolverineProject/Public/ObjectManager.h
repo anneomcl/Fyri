@@ -49,18 +49,34 @@ class UObjectInteraction : public UDataAsset
 UCLASS(meta=(BlueprintSpawnableComponent))
 class TEAMWOLVERINEPROJECT_API UObjectManagerComponent : public UActorComponent
 {
-GENERATED_BODY()
+	GENERATED_BODY()
 public:
 	UObjectManagerComponent();
 	~UObjectManagerComponent();
 
+	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable)
+	void Init(TArray<ATile*> tiles);
+
+	UFUNCTION(BlueprintCallable)
+	void SpawnObject();
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateCurrentObject(int objectIndex);
+
 private:
-	UPROPERTY(EditAnywhere)
+	//UPROPERTY(EditAnywhere, meta = (DisplayName = "Tiles"))
 	TArray<ATile*> mTiles;
 
-	UPROPERTY(EditAnywhere)
+	//UPROPERTY(EditAnywhere, meta = (DisplayName = "Objects"))
 	TArray<APlantableObject*> mObjects;
 
-	UPROPERTY(EditAnywhere)
+	int mObjectIndex;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Inventory"))
+	TArray<UObject*> mObjectInventory;
 };

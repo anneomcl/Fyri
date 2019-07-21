@@ -1,2 +1,0 @@
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Definitions.TeamWolverineProject.h
-d:\valkyriejam\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProject.h

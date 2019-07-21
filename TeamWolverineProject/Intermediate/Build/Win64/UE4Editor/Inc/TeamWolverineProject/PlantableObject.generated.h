@@ -8,13 +8,36 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class ATile;
 #ifdef TEAMWOLVERINEPROJECT_PlantableObject_generated_h
 #error "PlantableObject.generated.h already included, missing '#pragma once' in PlantableObject.h"
 #endif
 #define TEAMWOLVERINEPROJECT_PlantableObject_generated_h
 
-#define TeamWolverineProject_Source_TeamWolverineProject_Public_PlantableObject_h_21_RPC_WRAPPERS
-#define TeamWolverineProject_Source_TeamWolverineProject_Public_PlantableObject_h_21_RPC_WRAPPERS_NO_PURE_DECLS
+#define TeamWolverineProject_Source_TeamWolverineProject_Public_PlantableObject_h_21_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnSpawn) \
+	{ \
+		P_GET_OBJECT(ATile,Z_Param_closestTile); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnSpawn(Z_Param_closestTile); \
+		P_NATIVE_END; \
+	}
+
+
+#define TeamWolverineProject_Source_TeamWolverineProject_Public_PlantableObject_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnSpawn) \
+	{ \
+		P_GET_OBJECT(ATile,Z_Param_closestTile); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->OnSpawn(Z_Param_closestTile); \
+		P_NATIVE_END; \
+	}
+
+
 #define TeamWolverineProject_Source_TeamWolverineProject_Public_PlantableObject_h_21_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPlantableObject(); \

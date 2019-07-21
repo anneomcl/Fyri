@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class ATile;
 #ifdef TEAMWOLVERINEPROJECT_ObjectManager_generated_h
 #error "ObjectManager.generated.h already included, missing '#pragma once' in ObjectManager.h"
 #endif
@@ -167,8 +168,46 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 template<> TEAMWOLVERINEPROJECT_API UClass* StaticClass<class UObjectInteraction>();
 
-#define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_RPC_WRAPPERS
-#define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_RPC_WRAPPERS_NO_PURE_DECLS
+#define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSpawnObject) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SpawnObject(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execInit) \
+	{ \
+		P_GET_TARRAY(ATile*,Z_Param_tiles); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->Init(Z_Param_tiles); \
+		P_NATIVE_END; \
+	}
+
+
+#define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSpawnObject) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->SpawnObject(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execInit) \
+	{ \
+		P_GET_TARRAY(ATile*,Z_Param_tiles); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->Init(Z_Param_tiles); \
+		P_NATIVE_END; \
+	}
+
+
 #define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUObjectManagerComponent(); \
@@ -212,9 +251,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UObjectManagerComponent); \
 
 
 #define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_52_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__mTiles() { return STRUCT_OFFSET(UObjectManagerComponent, mTiles); } \
-	FORCEINLINE static uint32 __PPO__mObjects() { return STRUCT_OFFSET(UObjectManagerComponent, mObjects); } \
-	FORCEINLINE static uint32 __PPO__mObjectInteractions() { return STRUCT_OFFSET(UObjectManagerComponent, mObjectInteractions); }
+	FORCEINLINE static uint32 __PPO__mObjectInteractions() { return STRUCT_OFFSET(UObjectManagerComponent, mObjectInteractions); } \
+	FORCEINLINE static uint32 __PPO__mObjectInventory() { return STRUCT_OFFSET(UObjectManagerComponent, mObjectInventory); }
 
 
 #define TeamWolverineProject_Source_TeamWolverineProject_Public_ObjectManager_h_49_PROLOG

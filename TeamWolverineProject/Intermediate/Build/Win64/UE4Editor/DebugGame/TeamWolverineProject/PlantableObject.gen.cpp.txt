@@ -1,5 +1,5 @@
 C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\Definitions.TeamWolverineProject.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+D:\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+D:\UE_4.22\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
 C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject/Public/PlantableObject.h
 c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\intermediate\build\win64\ue4editor\inc\teamwolverineproject\PlantableObject.generated.h

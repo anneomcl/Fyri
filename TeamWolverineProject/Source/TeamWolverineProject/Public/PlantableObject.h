@@ -26,7 +26,8 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		// Called every frame
 		virtual void Tick(float DeltaTime) override;
 
-		void OnSpawn();
+		UFUNCTION(BlueprintCallable)
+		void OnSpawn(ATile* closestTile);
 
 	protected:
 		// Called when the game starts or when spawned

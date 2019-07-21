@@ -26,8 +26,10 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_UObjectManagerComponent_NoRegister();
 	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_UObjectManagerComponent();
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
-	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_APlantableObject_NoRegister();
+	TEAMWOLVERINEPROJECT_API UFunction* Z_Construct_UFunction_UObjectManagerComponent_Init();
 	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_ATile_NoRegister();
+	TEAMWOLVERINEPROJECT_API UFunction* Z_Construct_UFunction_UObjectManagerComponent_SpawnObject();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 // End Cross Module References
 	void UInteractionResult::StaticRegisterNativesUInteractionResult()
 	{
@@ -235,6 +237,69 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UObjectInteraction);
 	void UObjectManagerComponent::StaticRegisterNativesUObjectManagerComponent()
 	{
+		UClass* Class = UObjectManagerComponent::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "Init", &UObjectManagerComponent::execInit },
+			{ "SpawnObject", &UObjectManagerComponent::execSpawnObject },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UObjectManagerComponent_Init_Statics
+	{
+		struct ObjectManagerComponent_eventInit_Parms
+		{
+			TArray<ATile*> tiles;
+		};
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_tiles;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_tiles_Inner;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::NewProp_tiles = { "tiles", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ObjectManagerComponent_eventInit_Parms, tiles), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::NewProp_tiles_Inner = { "tiles", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_ATile_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::NewProp_tiles,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::NewProp_tiles_Inner,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/ObjectManager.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UObjectManagerComponent, nullptr, "Init", sizeof(ObjectManagerComponent_eventInit_Parms), Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UObjectManagerComponent_Init()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UObjectManagerComponent_Init_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/ObjectManager.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UObjectManagerComponent, nullptr, "SpawnObject", 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UObjectManagerComponent_SpawnObject()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UObjectManagerComponent_SpawnObject_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_UObjectManagerComponent_NoRegister()
 	{
@@ -243,24 +308,20 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 	struct Z_Construct_UClass_UObjectManagerComponent_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mObjectInventory_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_mObjectInventory;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_mObjectInventory_Inner;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mObjectInteractions_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_mObjectInteractions;
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_mObjectInteractions_Inner;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mObjects_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_mObjects;
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_mObjects_Inner;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mTiles_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_mTiles;
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_mTiles_Inner;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -268,6 +329,10 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 	UObject* (*const Z_Construct_UClass_UObjectManagerComponent_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_UActorComponent,
 		(UObject* (*)())Z_Construct_UPackage__Script_TeamWolverineProject,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_UObjectManagerComponent_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UObjectManagerComponent_Init, "Init" }, // 85503087
+		{ &Z_Construct_UFunction_UObjectManagerComponent_SpawnObject, "SpawnObject" }, // 470840734
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UObjectManagerComponent_Statics::Class_MetaDataParams[] = {
@@ -277,36 +342,28 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory_MetaData[] = {
+		{ "Category", "ObjectManagerComponent" },
+		{ "DisplayName", "Object Inventory" },
+		{ "ModuleRelativePath", "Public/ObjectManager.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory = { "mObjectInventory", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UObjectManagerComponent, mObjectInventory), METADATA_PARAMS(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory_MetaData, ARRAY_COUNT(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory_Inner = { "mObjectInventory", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions_MetaData[] = {
 		{ "Category", "ObjectManagerComponent" },
+		{ "DisplayName", "Object Interactions" },
 		{ "ModuleRelativePath", "Public/ObjectManager.h" },
 	};
 #endif
 	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions = { "mObjectInteractions", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UObjectManagerComponent, mObjectInteractions), METADATA_PARAMS(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions_MetaData, ARRAY_COUNT(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions_MetaData)) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions_Inner = { "mObjectInteractions", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_UObjectInteraction_NoRegister, METADATA_PARAMS(nullptr, 0) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects_MetaData[] = {
-		{ "Category", "ObjectManagerComponent" },
-		{ "ModuleRelativePath", "Public/ObjectManager.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects = { "mObjects", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UObjectManagerComponent, mObjects), METADATA_PARAMS(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects_MetaData, ARRAY_COUNT(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects_MetaData)) };
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects_Inner = { "mObjects", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_APlantableObject_NoRegister, METADATA_PARAMS(nullptr, 0) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles_MetaData[] = {
-		{ "Category", "ObjectManagerComponent" },
-		{ "ModuleRelativePath", "Public/ObjectManager.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles = { "mTiles", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UObjectManagerComponent, mTiles), METADATA_PARAMS(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles_MetaData, ARRAY_COUNT(Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles_MetaData)) };
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles_Inner = { "mTiles", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_ATile_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UObjectManagerComponent_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInventory_Inner,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjectInteractions_Inner,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mObjects_Inner,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectManagerComponent_Statics::NewProp_mTiles_Inner,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UObjectManagerComponent_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UObjectManagerComponent>::IsAbstract,
@@ -316,11 +373,11 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_UObjectManagerComponent_Statics::PropPointers,
 		nullptr,
 		ARRAY_COUNT(DependentSingletons),
-		0,
+		ARRAY_COUNT(FuncInfo),
 		ARRAY_COUNT(Z_Construct_UClass_UObjectManagerComponent_Statics::PropPointers),
 		0,
 		0x00B000A4u,
@@ -335,7 +392,7 @@ void EmptyLinkFunctionForGeneratedCodeObjectManager() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UObjectManagerComponent, 255886859);
+	IMPLEMENT_CLASS(UObjectManagerComponent, 2427114938);
 	template<> TEAMWOLVERINEPROJECT_API UClass* StaticClass<UObjectManagerComponent>()
 	{
 		return UObjectManagerComponent::StaticClass();

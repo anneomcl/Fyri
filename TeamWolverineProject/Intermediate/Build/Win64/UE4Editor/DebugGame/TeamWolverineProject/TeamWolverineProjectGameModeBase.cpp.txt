@@ -1,7 +1,7 @@
 C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\DebugGame\TeamWolverineProject\Definitions.TeamWolverineProject.h
 c:\users\nordsken\documents\github\teamwolverine\teamwolverineproject\source\teamwolverineproject\TeamWolverineProjectGameModeBase.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
-C:\Program Files\Epic Games\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+D:\UE_4.22\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+D:\UE_4.22\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+D:\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+D:\UE_4.22\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
 C:\Users\Nordsken\Documents\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Inc\TeamWolverineProject\TeamWolverineProjectGameModeBase.generated.h

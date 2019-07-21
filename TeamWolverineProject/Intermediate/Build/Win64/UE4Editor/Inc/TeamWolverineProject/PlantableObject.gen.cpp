@@ -18,6 +18,8 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_APlantableObject_NoRegister();
 	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_APlantableObject();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	TEAMWOLVERINEPROJECT_API UFunction* Z_Construct_UFunction_APlantableObject_OnSpawn();
+	TEAMWOLVERINEPROJECT_API UClass* Z_Construct_UClass_ATile_NoRegister();
 // End Cross Module References
 	static UEnum* EObjectType_StaticEnum()
 	{
@@ -72,6 +74,43 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 	}
 	void APlantableObject::StaticRegisterNativesAPlantableObject()
 	{
+		UClass* Class = APlantableObject::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "OnSpawn", &APlantableObject::execOnSpawn },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_APlantableObject_OnSpawn_Statics
+	{
+		struct PlantableObject_eventOnSpawn_Parms
+		{
+			ATile* closestTile;
+		};
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_closestTile;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::NewProp_closestTile = { "closestTile", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(PlantableObject_eventOnSpawn_Parms, closestTile), Z_Construct_UClass_ATile_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::NewProp_closestTile,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PlantableObject.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlantableObject, nullptr, "OnSpawn", sizeof(PlantableObject_eventOnSpawn_Parms), Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::PropPointers, ARRAY_COUNT(Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::Function_MetaDataParams, ARRAY_COUNT(Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APlantableObject_OnSpawn()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_APlantableObject_OnSpawn_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_APlantableObject_NoRegister()
 	{
@@ -80,6 +119,7 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 	struct Z_Construct_UClass_APlantableObject_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -89,6 +129,9 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 	UObject* (*const Z_Construct_UClass_APlantableObject_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_AActor,
 		(UObject* (*)())Z_Construct_UPackage__Script_TeamWolverineProject,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_APlantableObject_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_APlantableObject_OnSpawn, "OnSpawn" }, // 3946993470
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlantableObject_Statics::Class_MetaDataParams[] = {
@@ -104,11 +147,11 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 		nullptr,
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		nullptr,
 		nullptr,
 		ARRAY_COUNT(DependentSingletons),
-		0,
+		ARRAY_COUNT(FuncInfo),
 		0,
 		0,
 		0x009000A0u,
@@ -123,7 +166,7 @@ void EmptyLinkFunctionForGeneratedCodePlantableObject() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlantableObject, 2761083310);
+	IMPLEMENT_CLASS(APlantableObject, 2321110501);
 	template<> TEAMWOLVERINEPROJECT_API UClass* StaticClass<APlantableObject>()
 	{
 		return APlantableObject::StaticClass();

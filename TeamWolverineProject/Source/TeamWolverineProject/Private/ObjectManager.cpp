@@ -243,13 +243,14 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr)
+		if (closestTile != nullptr && !mUsedTiles.Contains(closestTile))
 		{
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(mObjectInventory[mObjectIndex], closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
+				mUsedTiles.Add(closestTile);
 				mObjects.Add(spawnedObject);
 
 				//Find Neighbors for newly spawned object

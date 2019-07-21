@@ -80,6 +80,9 @@ private:
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
 
 	TArray<ATile*> mTiles;
+	
+	TSet<ATile*> mUsedTiles;
+
 	TArray<APlantableObject*> mObjects;
 
 	uint8 mObjectIndex;

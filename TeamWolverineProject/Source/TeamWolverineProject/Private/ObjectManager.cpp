@@ -13,11 +13,11 @@
 
 UObjectManagerComponent::UObjectManagerComponent()
 {
+	mObjectIndex = 0;
 }
 
 UObjectManagerComponent::~UObjectManagerComponent()
 {
-	mObjectIndex = 0;
 }
 
 void UObjectManagerComponent::BeginPlay()

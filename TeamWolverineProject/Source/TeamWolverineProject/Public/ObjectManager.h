@@ -41,7 +41,7 @@ class UObjectInteraction : public UDataAsset
 	EObjectType mTypeB;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<UInteractionResult> mInteractionResult;
+	UInteractionResult* mInteractionResult;
 };
 
 UCLASS(meta=(BlueprintSpawnableComponent))
@@ -64,7 +64,7 @@ public:
 	void UpdateCurrentObject(uint8 objectIndex);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Interactions"))
-	TArray<TSubclassOf<UObjectInteraction>> mObjectInteractions;
+	TArray<UObjectInteraction*> mObjectInteractions;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
 	TArray<TSubclassOf<APlantableObject>> mObjectInventory;

@@ -10,9 +10,17 @@ class ATile;
 UENUM()
 enum class EObjectType
 {
-	Flower,
+	Plant,
 	Food,
 	Tree
+};
+
+enum class ENeighborLocationType 
+{ 
+	Left, 
+	Right, 
+	Up, 
+	Down 
 };
 
 UCLASS()
@@ -20,23 +28,24 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 {
 	GENERATED_BODY()
 	public:	
-		// Sets default values for this actor's properties
 		APlantableObject();
 
-		// Called every frame
 		virtual void Tick(float DeltaTime) override;
 
-		UFUNCTION(BlueprintCallable)
-		void OnSpawn(ATile* closestTile);
+		void OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors);
+		void SetNeighbor(APlantableObject* newNeighbor, ENeighborLocationType locationType);
+
+		EObjectType GetObjectType() const { return mObjectType; }
+		const TMap<ENeighborLocationType, APlantableObject*>& GetNeighbors() { return mNeighbors; }
+		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
 	protected:
-		// Called when the game starts or when spawned
 		virtual void BeginPlay() override;
 
 	private:
-		TArray<APlantableObject*> mNeighbors;
-
-		EObjectType mObjectType;
-
+		TMap<ENeighborLocationType, APlantableObject*> mNeighbors;
 		ATile* mCurrentTile;
+
+		UPROPERTY(EditAnywhere, meta=(DisplayName = "Object Type"))
+		EObjectType mObjectType;
 };

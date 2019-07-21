@@ -6,7 +6,7 @@
 #include "Engine\Classes\Engine\DataAsset.h"
 #include "PlantableObject.h"
 #include "Engine\Classes\Components\ActorComponent.h"
-#include "GameFramework/Actor.h"
+#include "GameFramework\Actor.h"
 #include "ObjectManager.generated.h"
 
 class ATile;
@@ -19,6 +19,7 @@ class UInteractionResult : public UDataAsset
 {
 	GENERATED_BODY()
 
+public:
 	UPROPERTY(EditAnywhere)
 	UAnimInstance* mAnimation;
 
@@ -34,6 +35,7 @@ class UObjectInteraction : public UDataAsset
 {
 	GENERATED_BODY()
 
+public:
 	UPROPERTY(EditAnywhere)
 	EObjectType mTypeA;
 
@@ -53,6 +55,7 @@ public:
 	~AObjectManagerComponent();
 
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
 
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
@@ -63,13 +66,19 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateCurrentObject(uint8 objectIndex);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Interactions"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Inventory"))
 	TArray<TSubclassOf<APlantableObject>> mObjectInventory;
 
 private:
+	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
+	void DebugRenderObject(APlantableObject* objectToRender) const;
+
+	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
+	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
+
 	TArray<ATile*> mTiles;
 	TArray<APlantableObject*> mObjects;
 

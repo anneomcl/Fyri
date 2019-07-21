@@ -3,30 +3,48 @@
 
 #include "PlantableObject.h"
 
-// Sets default values
 APlantableObject::APlantableObject()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
-// Called when the game starts or when spawned
 void APlantableObject::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
-// Called every frame
 void APlantableObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
-void APlantableObject::OnSpawn(ATile* closestTile)
+ENeighborLocationType APlantableObject::GetOppositeLocationType(ENeighborLocationType originalType)
+{
+	if (originalType == ENeighborLocationType::Right)
+		return ENeighborLocationType::Left;
+	else if (originalType == ENeighborLocationType::Left)
+		return ENeighborLocationType::Right;
+	else if (originalType == ENeighborLocationType::Up)
+		return ENeighborLocationType::Down;
+	else //if (originalType == ENeighborLocationType::Down)
+		return ENeighborLocationType::Up;
+}
+
+void APlantableObject::OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors)
 {
 	mCurrentTile = closestTile;
+	mNeighbors = neighbors;
+}
+
+void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocationType locationType)
+{
+	if (mNeighbors.Contains(locationType))
+	{
+		mNeighbors[locationType] = newNeighbor;
+	}
+	else
+	{
+		mNeighbors.Add(locationType, newNeighbor);
+	}
 }
 

@@ -11,7 +11,7 @@ UENUM()
 enum class EObjectType
 {
 	Flower,
-	Bush,
+	Food,
 	Tree
 };
 

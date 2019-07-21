@@ -62,12 +62,17 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SpawnObject();
 
+	UFUNCTION(BlueprintCallable)
+	void UpdateCurrentObject(int objectIndex);
+
 private:
 	//UPROPERTY(EditAnywhere, meta = (DisplayName = "Tiles"))
 	TArray<ATile*> mTiles;
 
 	//UPROPERTY(EditAnywhere, meta = (DisplayName = "Objects"))
 	TArray<APlantableObject*> mObjects;
+
+	int mObjectIndex;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;

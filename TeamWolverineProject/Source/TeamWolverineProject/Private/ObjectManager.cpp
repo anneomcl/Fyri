@@ -17,6 +17,7 @@ UObjectManagerComponent::UObjectManagerComponent()
 
 UObjectManagerComponent::~UObjectManagerComponent()
 {
+	mObjectIndex = 0;
 }
 
 void UObjectManagerComponent::BeginPlay()
@@ -29,12 +30,17 @@ void UObjectManagerComponent::Init(TArray<ATile*> tiles)
 	mTiles = tiles;
 }
 
+void UObjectManagerComponent::UpdateCurrentObject(int objectIndex)
+{
+	mObjectIndex = objectIndex;
+}
+
 void UObjectManagerComponent::SpawnObject()
 {
 	TSubclassOf<APlantableObject> PlantableObject;
 
 	//TODO: Pick the right object from inventory
-	if (UBlueprint* blueprint = Cast<UBlueprint>(mObjectInventory[0]))
+	if (UBlueprint* blueprint = Cast<UBlueprint>(mObjectInventory[mObjectIndex]))
 	{
 		PlantableObject = blueprint->GeneratedClass;
 

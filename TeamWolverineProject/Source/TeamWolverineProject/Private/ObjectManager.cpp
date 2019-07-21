@@ -61,19 +61,19 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr)
+		if (closestTile != nullptr && !mUsedTiles.Contains(closestTile))
 		{
 			TSubclassOf<APlantableObject> plantableObject = mObjectInventory[mObjectIndex];
 			FActorSpawnParameters spawnInfo;
 
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(plantableObject, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
-				mObjects.Add(spawnedObject);
-				spawnedObject->OnSpawn(closestTile);
-
-				//todo: calculate neighbours
+					mUsedTiles.Add(closestTile);
+					mObjects.Add(spawnedObject);
+					spawnedObject->OnSpawn(closestTile);
 			}
+
+			//todo: calculate neighbours
 		}
 	}
-
 }

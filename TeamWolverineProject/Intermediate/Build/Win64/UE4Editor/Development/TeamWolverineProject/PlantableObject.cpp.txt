@@ -1,3 +1,0 @@
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Development\TeamWolverineProject\Definitions.TeamWolverineProject.h
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Source\TeamWolverineProject\Public\PlantableObject.h
-D:\ValkyrieJam\GitHub\TeamWolverine\TeamWolverineProject\Intermediate\Build\Win64\UE4Editor\Inc\TeamWolverineProject\PlantableObject.generated.h

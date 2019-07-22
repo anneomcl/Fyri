@@ -28,7 +28,7 @@ protected:
 
 private:	
 
-	UPROPERTY(EditAnywhere, Meta=(DisplayName="TileType"))
+	UPROPERTY(EditAnywhere, Meta = (DisplayName="Tile Type"))
 	ETileType mTileType;
 
 	bool mHasBeenInteractedWith;

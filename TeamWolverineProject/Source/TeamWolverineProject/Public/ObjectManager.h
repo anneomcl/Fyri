@@ -41,19 +41,19 @@ class UObjectInteraction : public UDataAsset
 
 public:
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta=(DisplayName = "Type A"))
 	EPlantableObjectType mTypeA;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Type"))
 	EObjectType mObjectType;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Plantable Object Type"))
 	EPlantableObjectType mPlantableObjectType;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Terrain Type"))
 	ETileType mTerrainType;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Result"))
 	UInteractionResult* mInteractionResult;
 
 #if WITH_EDITOR
@@ -67,13 +67,13 @@ class USpawnTierProbabilities : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Common Probability"))
 	uint8 mCommonProbability;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Fancy Probability"))
 	uint8 mFancyProbability;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Mythical Probability"))
 	uint8 mMythicalProbability;
 };
 
@@ -83,16 +83,16 @@ class UGameSpawnProbabilities : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Plant Probabilities"))
 	USpawnTierProbabilities* mPlantProbabilities;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Tree Probabilities"))
 	USpawnTierProbabilities* mTreeProbabilities;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Edible Probabilities"))
 	USpawnTierProbabilities* mEdibleProbabilities;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Probabilities"))
 	USpawnTierProbabilities* mAnimalProbabilities;
 };
 
@@ -104,13 +104,13 @@ class UPlantableInventory : public UDataAsset
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Common Plantable Inventory"))
-		TArray<TSubclassOf<APlantableObject>> mCommonObjectInventory;
+	TArray<TSubclassOf<APlantableObject>> mCommonObjectInventory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Fancy Plantable Inventory"))
-		TArray<TSubclassOf<APlantableObject>> mFancyObjectInventory;
+	TArray<TSubclassOf<APlantableObject>> mFancyObjectInventory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Mythical Plantable Inventory"))
-		TArray<TSubclassOf<APlantableObject>> mMythicalObjectInventory;
+	TArray<TSubclassOf<APlantableObject>> mMythicalObjectInventory;
 };
 
 UCLASS()
@@ -150,7 +150,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Spawn")
 	void SpawnObject();
 
 	UFUNCTION(BlueprintCallable)

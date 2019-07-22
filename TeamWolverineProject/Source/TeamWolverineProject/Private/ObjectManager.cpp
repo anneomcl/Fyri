@@ -13,6 +13,7 @@
 #include "PlantableObject.h"
 #include "Engine/Engine.h"
 #include <Experimental/Chaos/Public/Chaos/Pair.h>
+#include "GameFramework/Actor.h"
 
 #define BIG_FLOAT 99999999999.f
 
@@ -217,10 +218,83 @@ FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationT
 		return FVector::ForwardVector;
 }
 
+TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
+{
+	UPlantableInventory* invCategory = nullptr;
+	switch (mObjectIndex)
+	{
+	case 0:
+		invCategory = mObjectInventory->mPlantInventory;
+		break;
+	case 1:
+		invCategory = mObjectInventory->mTreeInventory;
+		break;
+	case 2:
+		invCategory = mObjectInventory->mEdibleInventory;
+		break;
+	}
+
+	USpawnTierProbabilities* probability = nullptr;
+	switch (mObjectIndex)
+	{
+	case 0:
+		probability = mSpawnProbabilities->mPlantProbabilities;
+		break;
+	case 1:
+		probability = mSpawnProbabilities->mTreeProbabilities;
+		break;
+	case 2:
+		probability = mSpawnProbabilities->mEdibleProbabilities;
+		break;
+	}
+
+	SpawnTier tier;
+	if (probability != nullptr)
+	{
+		float randVal = FMath::RandRange(0.f, 100.f);
+		if (randVal <= probability->mCommonProbability)
+		{
+			tier = SpawnTier::Common;
+		}
+		else if (randVal >= probability->mMythicalProbability)
+		{
+			tier = SpawnTier::Mythical;
+		}
+		else
+		{
+			tier = SpawnTier::Fancy;
+		}
+	}
+
+	TArray<TSubclassOf<APlantableObject>> inventory;
+	if (invCategory != nullptr)
+	{
+		switch (tier)
+		{
+		case SpawnTier::Common:
+			inventory = invCategory->mCommonObjectInventory;
+			break;
+		case SpawnTier::Fancy:
+			inventory = invCategory->mFancyObjectInventory;
+			break;
+		case SpawnTier::Mythical:
+			inventory = invCategory->mMythicalObjectInventory;
+			break;
+		}
+	}
+
+	if (inventory.Num() > 0)
+	{
+		float itemIndex = FMath::RandRange(0, inventory.Num() - 1);
+		return inventory[itemIndex];
+	}
+
+	return NULL;
+}
+
 void AObjectManagerComponent::SpawnObject()
 {
-	if (!mObjectInventory.IsValidIndex(mObjectIndex))
-		return;
+	TSubclassOf<APlantableObject> objectToSpawn = GetObject();
 
 	FHitResult hitResult;
 	GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursor(ECollisionChannel::ECC_WorldStatic, false, hitResult);
@@ -248,7 +322,7 @@ void AObjectManagerComponent::SpawnObject()
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
-			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(mObjectInventory[mObjectIndex], closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
 				mUsedTiles.Add(closestTile);
 				mObjects.Add(spawnedObject);

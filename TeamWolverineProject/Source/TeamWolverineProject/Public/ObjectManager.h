@@ -20,13 +20,13 @@ class UInteractionResult : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UAnimInstance* mAnimation;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	USoundBase* mSound;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UParticleSystem* mParticleEffect;
 };
 
@@ -57,6 +57,12 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
+	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
+	
+	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
+	void OnObjectSpawned(APlantableObject* spawnedObject);
+
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
 
@@ -66,18 +72,18 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateCurrentObject(uint8 objectIndex);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
-	TArray<UObjectInteraction*> mObjectInteractions;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Inventory"))
-	TArray<TSubclassOf<APlantableObject>> mObjectInventory;
-
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
 	void DebugRenderObject(APlantableObject* objectToRender) const;
 
 	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
+	TArray<UObjectInteraction*> mObjectInteractions;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Inventory"))
+	TArray<TSubclassOf<APlantableObject>> mObjectInventory;
 
 	TArray<ATile*> mTiles;
 	

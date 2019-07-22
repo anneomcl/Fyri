@@ -34,9 +34,12 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		void OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors);
 		void SetNeighbor(APlantableObject* newNeighbor, ENeighborLocationType locationType);
+		void OnInteract(ENeighborLocationType locationTypeForNeighbor);
 
 		EObjectType GetObjectType() const { return mObjectType; }
 		const TMap<ENeighborLocationType, APlantableObject*>& GetNeighbors() { return mNeighbors; }
+		bool HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const;
+
 		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
 	protected:
@@ -45,6 +48,8 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 	private:
 		TMap<ENeighborLocationType, APlantableObject*> mNeighbors;
 		ATile* mCurrentTile;
+
+		TArray<ENeighborLocationType> mNeighborsWeHaveHadInteractionWith;
 
 		UPROPERTY(EditAnywhere, meta=(DisplayName = "Object Type"))
 		EObjectType mObjectType;

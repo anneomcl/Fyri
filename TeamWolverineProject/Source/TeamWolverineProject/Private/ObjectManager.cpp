@@ -16,7 +16,7 @@
 
 #define BIG_FLOAT 99999999999.f
 
-#define DEBUG_RENDER false
+//#define DEBUG_RENDER
 
 AObjectManagerComponent::AObjectManagerComponent()
 	:mObjectIndex(0)
@@ -51,24 +51,17 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 		{
 			for (UObjectInteraction* interaction : mObjectInteractions)
 			{
-				if (interaction != nullptr)
+				if (interaction != nullptr && !object->HasInteractedWithNeighborBefore(neighbor.Key))
 				{
+					//TODO.PKH: should location be object or neighbor, or in between the two?
+
 					const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mTypeB) || object->GetObjectType() == interaction->mTypeB && neighbor.Value->GetObjectType() == interaction->mTypeA);
 
 					if (isObjectInteraction && interaction->mInteractionResult != nullptr)
 					{
-						if (interaction->mInteractionResult->mAnimation != nullptr)
-						{
-							//TODO.PKH: play animation through bps
-						}
-						if (interaction->mInteractionResult->mSound != nullptr)
-						{
-							UGameplayStatics::PlaySoundAtLocation(this, interaction->mInteractionResult->mSound, object->GetActorLocation());
-						}
-						if (interaction->mInteractionResult->mParticleEffect != nullptr)
-						{
-							UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), interaction->mInteractionResult->mParticleEffect, object->GetActorLocation());
-						}
+						object->OnInteract(neighbor.Key);
+						neighbor.Value->OnInteract(APlantableObject::GetOppositeLocationType(neighbor.Key));
+						OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 					}
 				}
 			}
@@ -263,6 +256,8 @@ void AObjectManagerComponent::SpawnObject()
 				}
 
 				spawnedObject->OnSpawn(closestTile, newNeighbors);
+
+				OnObjectSpawned(spawnedObject);
 			}
 		}
 	}

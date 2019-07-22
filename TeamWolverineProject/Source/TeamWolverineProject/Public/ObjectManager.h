@@ -14,6 +14,14 @@ class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
 
+UENUM()
+enum class SpawnTier
+{
+	Common,
+	Fancy,
+	Mythical
+};
+
 UCLASS()
 class UInteractionResult : public UDataAsset
 {
@@ -46,6 +54,75 @@ public:
 	UInteractionResult* mInteractionResult;
 };
 
+UCLASS()
+class USpawnTierProbabilities : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+	uint8 mCommonProbability;
+
+	UPROPERTY(EditAnywhere)
+	uint8 mFancyProbability;
+
+	UPROPERTY(EditAnywhere)
+	uint8 mMythicalProbability;
+};
+
+UCLASS()
+class UGameSpawnProbabilities : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+	USpawnTierProbabilities* mPlantProbabilities;
+
+	UPROPERTY(EditAnywhere)
+	USpawnTierProbabilities* mTreeProbabilities;
+
+	UPROPERTY(EditAnywhere)
+	USpawnTierProbabilities* mEdibleProbabilities;
+
+	UPROPERTY(EditAnywhere)
+	USpawnTierProbabilities* mAnimalProbabilities;
+};
+
+UCLASS()
+class UPlantableInventory : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Common Plantable Inventory"))
+		TArray<TSubclassOf<APlantableObject>> mCommonObjectInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Fancy Plantable Inventory"))
+		TArray<TSubclassOf<APlantableObject>> mFancyObjectInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Mythical Plantable Inventory"))
+		TArray<TSubclassOf<APlantableObject>> mMythicalObjectInventory;
+};
+
+UCLASS()
+class UGameObjectInventory : public UDataAsset
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Plant Inventory"))
+		UPlantableInventory* mPlantInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Tree Inventory"))
+		UPlantableInventory* mTreeInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Edible Inventory"))
+		UPlantableInventory* mEdibleInventory;
+};
+
 UCLASS(meta=(BlueprintSpawnableComponent))
 class TEAMWOLVERINEPROJECT_API AObjectManagerComponent : public AActor
 {
@@ -72,12 +149,22 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateCurrentObject(uint8 objectIndex);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
+	TArray<UObjectInteraction*> mObjectInteractions;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
+	UGameObjectInventory* mObjectInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Game Spawn Probabilities"))
+	UGameSpawnProbabilities* mSpawnProbabilities;
+
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
 	void DebugRenderObject(APlantableObject* objectToRender) const;
 
 	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
+	TSubclassOf<APlantableObject> GetObject() const;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;

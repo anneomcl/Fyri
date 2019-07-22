@@ -18,6 +18,11 @@ void APlantableObject::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+bool APlantableObject::HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const
+{
+	return mNeighborsWeHaveHadInteractionWith.Contains(neighborLocationType);
+}
+
 ENeighborLocationType APlantableObject::GetOppositeLocationType(ENeighborLocationType originalType)
 {
 	if (originalType == ENeighborLocationType::Right)
@@ -46,5 +51,10 @@ void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocat
 	{
 		mNeighbors.Add(locationType, newNeighbor);
 	}
+}
+
+void APlantableObject::OnInteract(ENeighborLocationType locationTypeForNeighbor)
+{
+	mNeighborsWeHaveHadInteractionWith.Add(locationTypeForNeighbor);
 }
 

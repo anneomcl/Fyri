@@ -166,12 +166,6 @@ private:
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
 	TSubclassOf<APlantableObject> GetObject() const;
 
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
-	TArray<UObjectInteraction*> mObjectInteractions;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Inventory"))
-	TArray<TSubclassOf<APlantableObject>> mObjectInventory;
-
 	TArray<ATile*> mTiles;
 	
 	TSet<ATile*> mUsedTiles;

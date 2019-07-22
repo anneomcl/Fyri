@@ -7,6 +7,8 @@
 #include "PlantableObject.h"
 #include "Engine\Classes\Components\ActorComponent.h"
 #include "GameFramework\Actor.h"
+#include "GameData.h"
+
 #include "ObjectManager.generated.h"
 
 class ATile;
@@ -14,13 +16,7 @@ class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
 
-UENUM()
-enum class SpawnTier
-{
-	Common,
-	Fancy,
-	Mythical
-};
+
 
 UCLASS()
 class UInteractionResult : public UDataAsset
@@ -44,14 +40,25 @@ class UObjectInteraction : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
-	EObjectType mTypeA;
 
 	UPROPERTY(EditAnywhere)
-	EObjectType mTypeB;
+	EPlantableObjectType mTypeA;
+
+	UPROPERTY(EditAnywhere)
+	EObjectType mObjectType;
+
+	UPROPERTY(EditAnywhere)
+	EPlantableObjectType mPlantableObjectType;
+
+	UPROPERTY(EditAnywhere)
+	ETileType mTerrainType;
 
 	UPROPERTY(EditAnywhere)
 	UInteractionResult* mInteractionResult;
+
+#if WITH_EDITOR
+	virtual bool CanEditChange(const UProperty* InProperty) const override;
+#endif
 };
 
 UCLASS()
@@ -167,9 +174,7 @@ private:
 	TSubclassOf<APlantableObject> GetObject() const;
 
 	TArray<ATile*> mTiles;
-	
-	TSet<ATile*> mUsedTiles;
-
+	TSet<ATile*> mUsedTiles; //TODO: move to be on tile
 	TArray<APlantableObject*> mObjects;
 
 	uint8 mObjectIndex;

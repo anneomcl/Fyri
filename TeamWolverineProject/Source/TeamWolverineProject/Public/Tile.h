@@ -4,15 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Tile.generated.h"
+#include "GameData.h"
 
-UENUM()
-enum class ETileType
-{
-	Grass,
-	Water,
-	Sand
-};
+#include "Tile.generated.h"
 
 UCLASS()
 class TEAMWOLVERINEPROJECT_API ATile : public AActor
@@ -20,18 +14,22 @@ class TEAMWOLVERINEPROJECT_API ATile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ATile();
 
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void OnInteractWithObjectOnTile();
+
+	ETileType GetTileType() const { return mTileType; }
+	bool HasBeenInteractedWith() const { return mHasBeenInteractedWith; }
+
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:	
 
 	UPROPERTY(EditAnywhere, Meta=(DisplayName="TileType"))
 	ETileType mTileType;
+
+	bool mHasBeenInteractedWith;
 };

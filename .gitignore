@@ -72,3 +72,4 @@ TeamWolverineProject/Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 TeamWolverineProject/DerivedDataCache/*
+TeamWolverineProject/enc_temp_folder/*

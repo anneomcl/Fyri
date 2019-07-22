@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "PlantableObject.h"
+#include "Tile.h"
 
 APlantableObject::APlantableObject()
+	: mObjectType(EPlantableObjectType::Plant)
 {
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -21,6 +21,11 @@ void APlantableObject::Tick(float DeltaTime)
 bool APlantableObject::HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const
 {
 	return mNeighborsWeHaveHadInteractionWith.Contains(neighborLocationType);
+}
+
+bool APlantableObject::HasInteractedWithCurrentTileBefore() const
+{
+	return mCurrentTile->HasBeenInteractedWith();
 }
 
 ENeighborLocationType APlantableObject::GetOppositeLocationType(ENeighborLocationType originalType)
@@ -53,8 +58,18 @@ void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocat
 	}
 }
 
-void APlantableObject::OnInteract(ENeighborLocationType locationTypeForNeighbor)
+void APlantableObject::OnInteractWithNeighbor(ENeighborLocationType locationTypeForNeighbor)
 {
 	mNeighborsWeHaveHadInteractionWith.Add(locationTypeForNeighbor);
+}
+
+void APlantableObject::OnInteractWithTile()
+{
+	mCurrentTile->OnInteractWithObjectOnTile();
+}
+
+ETileType APlantableObject::GetTileTypeForCurrentTile() const
+{
+	return mCurrentTile->GetTileType();
 }
 

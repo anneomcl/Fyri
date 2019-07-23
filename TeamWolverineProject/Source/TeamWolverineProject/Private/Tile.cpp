@@ -11,6 +11,7 @@ ATile::ATile()
 	, mHasBeenInteractedWith(false)
 {
 	PrimaryActorTick.bCanEverTick = true;
+	mIsTraversable = true;
 }
 
 void ATile::BeginPlay()

@@ -134,6 +134,9 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnAnimal();
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
 	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
 	
@@ -154,6 +157,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
 	UGameObjectInventory* mObjectInventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Animal Inventory"))
+	UGameObjectInventory* mAnimalInventory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Game Spawn Probabilities"))
 	UGameSpawnProbabilities* mSpawnProbabilities;

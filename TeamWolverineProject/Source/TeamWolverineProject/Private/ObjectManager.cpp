@@ -336,3 +336,27 @@ void AObjectManagerComponent::SpawnObject()
 		}
 	}
 }
+
+void AObjectManagerComponent::SpawnAnimal()
+{
+	TSubclassOf<AAnimal> objectToSpawn = mAnimalInventory[0];
+	FActorSpawnParameters spawnInfo;
+	if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+	{
+		mUsedTiles.Add(closestTile);
+		mObjects.Add(spawnedObject);
+
+		//Find Neighbors for newly spawned object
+		const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
+
+		//Also add the the newly spawned object as a neighbour to its neighbor
+		for (const TPair<ENeighborLocationType, APlantableObject*>& neighbor : newNeighbors)
+		{
+			neighbor.Value->SetNeighbor(spawnedObject, APlantableObject::GetOppositeLocationType(neighbor.Key));
+		}
+
+		spawnedObject->OnSpawn(closestTile, newNeighbors);
+
+		OnObjectSpawned(spawnedObject);
+	}
+}

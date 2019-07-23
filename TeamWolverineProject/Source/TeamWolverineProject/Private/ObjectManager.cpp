@@ -14,6 +14,8 @@
 #include "Engine/Engine.h"
 #include <Experimental/Chaos/Public/Chaos/Pair.h>
 #include "GameFramework/Actor.h"
+#include "AnimalController.h"
+#include "AnimalCharacter.h"
 
 #define BIG_FLOAT 99999999999.f
 
@@ -40,6 +42,16 @@ AObjectManagerComponent::~AObjectManagerComponent()
 void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
 }
 
 void AObjectManagerComponent::Init(TArray<ATile*> tiles)
@@ -49,6 +61,16 @@ void AObjectManagerComponent::Init(TArray<ATile*> tiles)
 
 void AObjectManagerComponent::Tick(float DeltaSeconds)
 {
+	for (AAnimalCharacter* animal : mAnimals)
+	{
+		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
+		if (controller->mCurrentState == EAnimalState::Kill)
+		{
+			mAnimals.Remove(animal);
+			animal->Destroy();
+		}
+	}
+
 	for (APlantableObject* object : mObjects)
 	{
 #ifdef DEBUG_RENDER //TODO.PKH: make this changeable in runtime instead!
@@ -366,15 +388,15 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr && !mUsedTiles.Contains(closestTile))
+		if (closestTile != nullptr && closestTile->mIsTraversable && !closestTile->HasBeenInteractedWith())
 		{
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
-				mUsedTiles.Add(closestTile);
 				mObjects.Add(spawnedObject);
+				closestTile->OnInteractWithObjectOnTile();
 
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
@@ -389,6 +411,37 @@ void AObjectManagerComponent::SpawnObject()
 
 				OnObjectSpawned(spawnedObject);
 			}
+		}
+	}
+}
+
+void AObjectManagerComponent::SpawnAnimal()
+{
+	TSubclassOf<AAnimalCharacter> objectToSpawn = mAnimalInventory[0];
+
+	TArray<ATile*> availableTiles;
+	for (ATile* tile : mTiles)
+	{
+		if (tile->mIsTraversable)
+		{
+			availableTiles.Add(tile);
+		}
+	}
+
+	ATile* spawnTile = availableTiles[FMath::RandRange(0, mTiles.Num() - 1)];
+
+	FActorSpawnParameters spawnInfo;
+	if (AAnimalCharacter* spawnedObject = GetWorld()->SpawnActor<AAnimalCharacter>(objectToSpawn, spawnTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+	{
+
+		AAnimalController* controller =
+			Cast<AAnimalController>(spawnedObject->GetController());
+
+		if (controller != nullptr)
+		{
+			controller->OnSpawn();
+			mAnimals.Add(spawnedObject);
+			OnAnimalSpawned(spawnedObject);
 		}
 	}
 }
@@ -409,28 +462,7 @@ bool UObjectInteraction::CanEditChange(const UProperty* InProperty) const
 	{
 		return mObjectType == EObjectType::ETerrain;
 	}
+
+	return true;
 }
-
-void AObjectManagerComponent::SpawnAnimal()
-{
-	TSubclassOf<AAnimal> objectToSpawn = mAnimalInventory[0];
-	FActorSpawnParameters spawnInfo;
-	if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
-	{
-		mUsedTiles.Add(closestTile);
-		mObjects.Add(spawnedObject);
-
-		//Find Neighbors for newly spawned object
-		const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
-
-		//Also add the the newly spawned object as a neighbour to its neighbor
-		for (const TPair<ENeighborLocationType, APlantableObject*>& neighbor : newNeighbors)
-		{
-			neighbor.Value->SetNeighbor(spawnedObject, APlantableObject::GetOppositeLocationType(neighbor.Key));
-		}
-
-		spawnedObject->OnSpawn(closestTile, newNeighbors);
-
-		OnObjectSpawned(spawnedObject);
-	}
-}
+#endif

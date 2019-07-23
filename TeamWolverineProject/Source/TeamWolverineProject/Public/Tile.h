@@ -23,6 +23,8 @@ public:
 	ETileType GetTileType() const { return mTileType; }
 	bool HasBeenInteractedWith() const { return mHasBeenInteractedWith; }
 
+	bool mIsTraversable;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -32,4 +34,5 @@ private:
 	ETileType mTileType;
 
 	bool mHasBeenInteractedWith;
+
 };

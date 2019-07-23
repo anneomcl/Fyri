@@ -6,7 +6,8 @@
 #include "AIController.h"
 #include "Engine/TargetPoint.h"
 #include "Animation/AnimInstance.h"
-#include "Animal.generated.h"
+#include "AnimalController.generated.h"
+
 
 UENUM(BlueprintType)
 enum class EAnimalState : uint8
@@ -15,11 +16,22 @@ enum class EAnimalState : uint8
 	Traverse,
 	Idle,
 	Exit,
+	Kill,
+	Interact
+};
+
+UENUM(BlueprintType)
+enum class EAnimalTransition : uint8
+{
+	SpawnToTraverse,
+	TraverseToIdle,
+	IdleToTraverse,
+	IdleToExit,
 	Interact
 };
 
 UCLASS()
-class TEAMWOLVERINEPROJECT_API AAnimal : public AAIController
+class TEAMWOLVERINEPROJECT_API AAnimalController : public AAIController
 {
 	GENERATED_BODY()
 
@@ -29,17 +41,17 @@ public:
 
 	virtual void OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result) override;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EAnimalState mCurrentState;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EAnimalTransition mCurrentTransition;
+
+	UPROPERTY()
 	uint8 mTraversalCount;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Max Traversals"))
 	uint8 mMaxTraversalCount;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	UAnimInstance* mAnimation;
 
 	UFUNCTION(BlueprintCallable)
 	void OnSpawn();

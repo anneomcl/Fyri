@@ -1,68 +1,68 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Animal.h"
+#include "AnimalController.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
+#include "AnimalCharacter.h"
 
-void AAnimal::BeginPlay()
+void AAnimalController::BeginPlay()
 {
 	Super::BeginPlay();
 
 	mTraversalCount = 0;
-	mMaxTraversalCount = 10;
 
 	UGameplayStatics::GetAllActorsOfClass(this, ATargetPoint::StaticClass(), mWaypoints);
-
 }
 
-void AAnimal::Tick(float DeltaSeconds)
+void AAnimalController::Tick(float DeltaSeconds)
 {
 }
 
-void AAnimal::OnSpawn()
+void AAnimalController::OnSpawn()
 {
 	mCurrentState = EAnimalState::Spawn;
+
+	mCurrentTransition = EAnimalTransition::SpawnToTraverse;
 	OnTraverse();
 }
 
-void AAnimal::OnTraverse()
+void AAnimalController::OnTraverse()
 {
 	mCurrentState = EAnimalState::Traverse;
+
 	GoToRandomWaypoint();
 }
 
 // traversal transition
-void AAnimal::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result)
+void AAnimalController::OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result)
 {
+	mTraversalCount++;
+	mCurrentTransition = EAnimalTransition::TraverseToIdle;
 	OnIdle();
 }
 
-void AAnimal::OnIdle()
+void AAnimalController::OnIdle()
 {
-	// idle animation
-	/*if (mAnimation != nullptr)
-	{
-		mAnimation->triggers
-	}*/
-
 	mCurrentState = EAnimalState::Idle;
+
 	if (mTraversalCount >= mMaxTraversalCount)
 	{
+		mCurrentTransition = EAnimalTransition::IdleToExit;
 		OnExit();
 	}
 	else
 	{
+		mCurrentTransition = EAnimalTransition::IdleToTraverse;
 		OnTraverse();
 	}
 }
 
-void AAnimal::OnExit()
+void AAnimalController::OnExit()
 {
-	// go to exit waypoint
-	// fade?
+	mCurrentState = EAnimalState::Exit;
 }
 
-ATargetPoint* AAnimal::GetRandomWaypoint()
+ATargetPoint* AAnimalController::GetRandomWaypoint()
 {
 	if (mWaypoints.Num() > 0)
 	{
@@ -73,7 +73,7 @@ ATargetPoint* AAnimal::GetRandomWaypoint()
 	return nullptr;
 }
 
-void AAnimal::GoToRandomWaypoint()
+void AAnimalController::GoToRandomWaypoint()
 {
 	MoveToActor(GetRandomWaypoint());
 }

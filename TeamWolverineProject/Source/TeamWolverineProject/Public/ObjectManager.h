@@ -8,7 +8,8 @@
 #include "Engine\Classes\Components\ActorComponent.h"
 #include "GameFramework\Actor.h"
 #include "GameData.h"
-
+#include "AnimalController.h"
+#include "AnimalCharacter.h"
 #include "ObjectManager.generated.h"
 
 class ATile;
@@ -143,14 +144,21 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
 	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
+	void OnAnimalSpawned(ACharacter* spawnedObject);
+
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
+
+	UFUNCTION(BlueprintCallable)
+	void SpawnAnimal();
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn")
 	void SpawnObject();
@@ -167,6 +175,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
 	UGameObjectInventory* mObjectInventory;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Animal Inventory"))
+	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
+
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
 	FGameSpawnProbabilities mSpawnProbabilities;
 
@@ -179,8 +190,8 @@ private:
 	TSubclassOf<APlantableObject> GetObject() const;
 
 	TArray<ATile*> mTiles;
-	TSet<ATile*> mUsedTiles; //TODO: move to be on tile
 	TArray<APlantableObject*> mObjects;
+	TArray<AAnimalCharacter*> mAnimals;
 
 	EPlantableObjectType mCurrentlySelectedPlantableObject;
 };

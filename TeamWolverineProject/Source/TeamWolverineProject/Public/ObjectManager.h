@@ -8,15 +8,14 @@
 #include "Engine\Classes\Components\ActorComponent.h"
 #include "GameFramework\Actor.h"
 #include "GameData.h"
-
+#include "AnimalController.h"
+#include "AnimalCharacter.h"
 #include "ObjectManager.generated.h"
 
 class ATile;
 class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
-
-
 
 UCLASS()
 class UInteractionResult : public UDataAsset
@@ -53,8 +52,14 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Terrain Type"))
 	ETileType mTerrainType;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Required Amount"))
+	uint8 mRequiredAmount;
+
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Result"))
 	UInteractionResult* mInteractionResult;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Name"))
+	FName mInteractionName;
 
 #if WITH_EDITOR
 	virtual bool CanEditChange(const UProperty* InProperty) const override;
@@ -143,14 +148,21 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
 	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
+	void OnAnimalSpawned(ACharacter* spawnedObject);
+
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
+
+	UFUNCTION(BlueprintCallable)
+	void SpawnAnimal();
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn")
 	void SpawnObject();
@@ -161,14 +173,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
 	void ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
-	TArray<UObjectInteraction*> mObjectInteractions;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
-	UGameObjectInventory* mObjectInventory;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
-	FGameSpawnProbabilities mSpawnProbabilities;
+	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
+	bool HasPlantedRequiredQuantityOfObject(FName interactionName) const;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
@@ -178,9 +184,23 @@ private:
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
 	TSubclassOf<APlantableObject> GetObject() const;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
+	TArray<UObjectInteraction*> mObjectInteractions;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Inventory"))
+	UGameObjectInventory* mObjectInventory;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
+	FGameSpawnProbabilities mSpawnProbabilities;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Inventory"))
+	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
+
+	TMap<FName, uint8> mPlantedAmounts;
+
 	TArray<ATile*> mTiles;
-	TSet<ATile*> mUsedTiles; //TODO: move to be on tile
 	TArray<APlantableObject*> mObjects;
+	TArray<AAnimalCharacter*> mAnimals;
 
 	EPlantableObjectType mCurrentlySelectedPlantableObject;
 };

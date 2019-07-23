@@ -14,6 +14,8 @@
 #include "Engine/Engine.h"
 #include <Experimental/Chaos/Public/Chaos/Pair.h>
 #include "GameFramework/Actor.h"
+#include "AnimalController.h"
+#include "AnimalCharacter.h"
 
 #define BIG_FLOAT 99999999999.f
 
@@ -40,6 +42,21 @@ AObjectManagerComponent::~AObjectManagerComponent()
 void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+	SpawnAnimal();
+
+	for (UObjectInteraction* interaction : mObjectInteractions)
+	{
+		mPlantedAmounts.Add(interaction->mInteractionName);
+	}
 }
 
 void AObjectManagerComponent::Init(TArray<ATile*> tiles)
@@ -49,6 +66,16 @@ void AObjectManagerComponent::Init(TArray<ATile*> tiles)
 
 void AObjectManagerComponent::Tick(float DeltaSeconds)
 {
+	for (AAnimalCharacter* animal : mAnimals)
+	{
+		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
+		if (controller->mCurrentState == EAnimalState::Kill)
+		{
+			mAnimals.Remove(animal);
+			animal->Destroy();
+		}
+	}
+
 	for (APlantableObject* object : mObjects)
 	{
 #ifdef DEBUG_RENDER //TODO.PKH: make this changeable in runtime instead!
@@ -60,6 +87,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 			if (interaction == nullptr)
 				continue;
 
+			bool succeededToInteract = false;
 			if (interaction->mObjectType == EObjectType::EPlantable)
 			{
 				//If interaction is object + object
@@ -73,9 +101,10 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
 						if (isObjectInteraction && interaction->mInteractionResult != nullptr)
 						{
+							succeededToInteract = true;
+
 							object->OnInteractWithNeighbor(neighbor.Key);
 							neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
-							OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 						}
 					}
 				}
@@ -89,9 +118,20 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType) || object->GetObjectType() == interaction->mPlantableObjectType && tileType == interaction->mTerrainType);
 				if (isObjectInteraction && interaction->mInteractionResult != nullptr)
 				{
+					succeededToInteract = true;
+
 					object->OnInteractWithTile();
-					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 				}
+			}
+				
+			if (succeededToInteract)
+			{
+				if (mPlantedAmounts.Contains(interaction->mInteractionName))
+				{
+					++mPlantedAmounts[interaction->mInteractionName];
+				}
+
+				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 			}
 		}
 	}
@@ -122,6 +162,23 @@ void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeTo
 		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newFancyProbability;
 		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newMythicalProbability;
 	}
+}
+
+bool AObjectManagerComponent::HasPlantedRequiredQuantityOfObject(FName interactionName) const
+{
+	for (UObjectInteraction* interaction : mObjectInteractions)
+	{
+		if (interaction->mInteractionName != interactionName)
+			continue;
+
+		if (mPlantedAmounts.Contains(interactionName))
+		{
+			return mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
+		}
+	}
+
+	ensureMsgf(false, TEXT("No interaction with the name %s was found when trying to check if has planted the required quantity."), *interactionName.ToString());
+	return false;
 }
 
 const TMap<ENeighborLocationType, APlantableObject*> AObjectManagerComponent::FindNeighborsForObject(APlantableObject* spawnedObject) const
@@ -366,15 +423,15 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr && !mUsedTiles.Contains(closestTile))
+		if (closestTile != nullptr && closestTile->mIsTraversable && !closestTile->HasBeenInteractedWith())
 		{
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
-				mUsedTiles.Add(closestTile);
 				mObjects.Add(spawnedObject);
+				closestTile->OnInteractWithObjectOnTile();
 
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
@@ -389,6 +446,43 @@ void AObjectManagerComponent::SpawnObject()
 
 				OnObjectSpawned(spawnedObject);
 			}
+		}
+	}
+}
+
+void AObjectManagerComponent::SpawnAnimal()
+{
+	if (mAnimalInventory.Num() <= 0)
+		return;
+
+	//TODO.AM: Fix so it uses real animal index
+	TSubclassOf<AAnimalCharacter> objectToSpawn = mAnimalInventory[0];
+
+	TArray<ATile*> availableTiles;
+	for (ATile* tile : mTiles)
+	{
+		if (tile->mIsTraversable)
+		{
+			availableTiles.Add(tile);
+		}
+	}
+
+	const uint8 tileIndex = FMath::RandRange(0, mTiles.Num() - 1);
+	if (!availableTiles.IsValidIndex(tileIndex))
+		return;
+
+	ATile* spawnTile = availableTiles[tileIndex];
+
+	FActorSpawnParameters spawnInfo;
+	if (AAnimalCharacter* spawnedObject = GetWorld()->SpawnActor<AAnimalCharacter>(objectToSpawn, spawnTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+	{
+		AAnimalController* controller = Cast<AAnimalController>(spawnedObject->GetController());
+
+		if (controller != nullptr)
+		{
+			controller->OnSpawn();
+			mAnimals.Add(spawnedObject);
+			OnAnimalSpawned(spawnedObject);
 		}
 	}
 }

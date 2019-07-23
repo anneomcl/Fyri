@@ -452,6 +452,10 @@ void AObjectManagerComponent::SpawnObject()
 
 void AObjectManagerComponent::SpawnAnimal()
 {
+	if (mAnimalInventory.Num() <= 0)
+		return;
+
+	//TODO.AM: Fix so it uses real animal index
 	TSubclassOf<AAnimalCharacter> objectToSpawn = mAnimalInventory[0];
 
 	TArray<ATile*> availableTiles;
@@ -463,14 +467,16 @@ void AObjectManagerComponent::SpawnAnimal()
 		}
 	}
 
-	ATile* spawnTile = availableTiles[FMath::RandRange(0, mTiles.Num() - 1)];
+	const uint8 tileIndex = FMath::RandRange(0, mTiles.Num() - 1);
+	if (!availableTiles.IsValidIndex(tileIndex))
+		return;
+
+	ATile* spawnTile = availableTiles[tileIndex];
 
 	FActorSpawnParameters spawnInfo;
 	if (AAnimalCharacter* spawnedObject = GetWorld()->SpawnActor<AAnimalCharacter>(objectToSpawn, spawnTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 	{
-
-		AAnimalController* controller =
-			Cast<AAnimalController>(spawnedObject->GetController());
+		AAnimalController* controller = Cast<AAnimalController>(spawnedObject->GetController());
 
 		if (controller != nullptr)
 		{

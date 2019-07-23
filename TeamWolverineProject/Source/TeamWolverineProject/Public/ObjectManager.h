@@ -176,12 +176,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
 	bool HasPlantedRequiredQuantityOfObject(FName interactionName) const;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Animal Inventory"))
-	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
-	FGameSpawnProbabilities mSpawnProbabilities;
-
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
 	void DebugRenderObject(APlantableObject* objectToRender) const;
@@ -198,6 +192,9 @@ private:
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
 	FGameSpawnProbabilities mSpawnProbabilities;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Inventory"))
+	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
 
 	TMap<FName, uint8> mPlantedAmounts;
 

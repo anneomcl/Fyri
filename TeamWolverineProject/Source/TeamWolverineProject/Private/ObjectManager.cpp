@@ -19,8 +19,15 @@
 
 //#define DEBUG_RENDER
 
+FSpawnTierProbabilities::FSpawnTierProbabilities()
+	: mCommonProbability(90)
+	, mFancyProbability(10)
+	, mMythicalProbability(0)
+{
+}
+
 AObjectManagerComponent::AObjectManagerComponent()
-	:mObjectIndex(0)
+	: mCurrentlySelectedPlantableObject(EPlantableObjectType::Plant)
 {
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -48,31 +55,73 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 		DebugRenderObject(object);
 #endif
 
-		for (const TPair<ENeighborLocationType, APlantableObject*>& neighbor : object->GetNeighbors())
+		for (UObjectInteraction* interaction : mObjectInteractions)
 		{
-			for (UObjectInteraction* interaction : mObjectInteractions)
+			if (interaction == nullptr)
+				continue;
+
+			if (interaction->mObjectType == EObjectType::EPlantable)
 			{
-				if (interaction != nullptr && !object->HasInteractedWithNeighborBefore(neighbor.Key))
+				//If interaction is object + object
+
+				for (const TPair<ENeighborLocationType, APlantableObject*>& neighbor : object->GetNeighbors())
 				{
-					//TODO.PKH: should location be object or neighbor, or in between the two?
-
-					const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mTypeB) || object->GetObjectType() == interaction->mTypeB && neighbor.Value->GetObjectType() == interaction->mTypeA);
-
-					if (isObjectInteraction && interaction->mInteractionResult != nullptr)
+					if (!object->HasInteractedWithNeighborBefore(neighbor.Key))
 					{
-						object->OnInteract(neighbor.Key);
-						neighbor.Value->OnInteract(APlantableObject::GetOppositeLocationType(neighbor.Key));
-						OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
+						//TODO.PKH: should location be object or neighbor, or in between the two?
+
+						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
+						if (isObjectInteraction && interaction->mInteractionResult != nullptr)
+						{
+							object->OnInteractWithNeighbor(neighbor.Key);
+							neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
+							OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
+						}
 					}
+				}
+			}
+			else if (interaction->mObjectType == EObjectType::ETerrain && !object->HasInteractedWithCurrentTileBefore())
+			{
+				//If interaction is object + terrain
+
+				const ETileType tileType = object->GetTileTypeForCurrentTile();
+
+				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType) || object->GetObjectType() == interaction->mPlantableObjectType && tileType == interaction->mTerrainType);
+				if (isObjectInteraction && interaction->mInteractionResult != nullptr)
+				{
+					object->OnInteractWithTile();
+					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 				}
 			}
 		}
 	}
 }
 
-void AObjectManagerComponent::UpdateCurrentObject(uint8 objectIndex)
+void AObjectManagerComponent::UpdateCurrentlySelectedPlantableObject(EPlantableObjectType objectType)
 {
-	mObjectIndex = objectIndex;
+	mCurrentlySelectedPlantableObject = objectType;
+}
+
+void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability)
+{
+	if (typeToChangeProbabilityOf == EPlantableObjectType::Food)
+	{
+		mSpawnProbabilities.mEdibleProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mMythicalProbability = newMythicalProbability;
+	}
+	else if (typeToChangeProbabilityOf == EPlantableObjectType::Plant)
+	{
+		mSpawnProbabilities.mPlantProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mPlantProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mPlantProbabilities.mMythicalProbability = newMythicalProbability;
+	}
+	else if (typeToChangeProbabilityOf == EPlantableObjectType::Tree)
+	{
+		mSpawnProbabilities.mTreeProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newMythicalProbability;
+	}
 }
 
 const TMap<ENeighborLocationType, APlantableObject*> AObjectManagerComponent::FindNeighborsForObject(APlantableObject* spawnedObject) const
@@ -144,7 +193,7 @@ void AObjectManagerComponent::GatherObjectIfIsNeighbor(TMap<ENeighborLocationTyp
 
 	if (closestLocationType != INVALID_LOCATIONTYPE)
 	{
-		const float tileSize = 110.f; //TODO.PKH: calculate this instead
+		const float tileSize = 260.f; //TODO.PKH: calculate this instead
 		if (objects.Contains(closestLocationType))
 		{
 			const TTuple<APlantableObject*, float> oldLeft = objects.FindRef(closestLocationType);
@@ -214,48 +263,52 @@ FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationT
 TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 {
 	UPlantableInventory* invCategory = nullptr;
-	switch (mObjectIndex)
+	switch (mCurrentlySelectedPlantableObject)
 	{
-	case 0:
+	case EPlantableObjectType::Plant:
 		invCategory = mObjectInventory->mPlantInventory;
 		break;
-	case 1:
+	case EPlantableObjectType::Tree:
 		invCategory = mObjectInventory->mTreeInventory;
 		break;
-	case 2:
+	case EPlantableObjectType::Food:
 		invCategory = mObjectInventory->mEdibleInventory;
 		break;
 	}
 
-	USpawnTierProbabilities* probability = nullptr;
-	switch (mObjectIndex)
+	FSpawnTierProbabilities probability;
+	switch (mCurrentlySelectedPlantableObject)
 	{
-	case 0:
-		probability = mSpawnProbabilities->mPlantProbabilities;
+	case EPlantableObjectType::Plant:
+		probability = mSpawnProbabilities.mPlantProbabilities;
 		break;
-	case 1:
-		probability = mSpawnProbabilities->mTreeProbabilities;
+	case EPlantableObjectType::Tree:
+		probability = mSpawnProbabilities.mTreeProbabilities;
 		break;
-	case 2:
-		probability = mSpawnProbabilities->mEdibleProbabilities;
+	case EPlantableObjectType::Food:
+		probability = mSpawnProbabilities.mEdibleProbabilities;
 		break;
 	}
 
-	SpawnTier tier;
-	if (probability != nullptr)
+	ESpawnTier tier = ESpawnTier::Common;
+
+	const float randVal = FMath::RandRange(0.f, 100.f);
+	if (randVal <= probability.mCommonProbability)
 	{
-		float randVal = FMath::RandRange(0.f, 100.f);
-		if (randVal <= probability->mCommonProbability)
+		tier = ESpawnTier::Common;
+	}
+	else if (randVal >= (100.f - probability.mMythicalProbability))
+	{
+		if (invCategory != nullptr)
 		{
-			tier = SpawnTier::Common;
+			tier = ESpawnTier::Mythical;
 		}
-		else if (randVal >= probability->mMythicalProbability)
+	}
+	else
+	{
+		if (invCategory != nullptr)
 		{
-			tier = SpawnTier::Mythical;
-		}
-		else
-		{
-			tier = SpawnTier::Fancy;
+			tier = ESpawnTier::Fancy;
 		}
 	}
 
@@ -264,13 +317,13 @@ TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 	{
 		switch (tier)
 		{
-		case SpawnTier::Common:
+		case ESpawnTier::Common:
 			inventory = invCategory->mCommonObjectInventory;
 			break;
-		case SpawnTier::Fancy:
+		case ESpawnTier::Fancy:
 			inventory = invCategory->mFancyObjectInventory;
 			break;
-		case SpawnTier::Mythical:
+		case ESpawnTier::Mythical:
 			inventory = invCategory->mMythicalObjectInventory;
 			break;
 		}
@@ -278,16 +331,19 @@ TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 
 	if (inventory.Num() > 0)
 	{
-		float itemIndex = FMath::RandRange(0, inventory.Num() - 1);
+		const float itemIndex = FMath::RandRange(0, inventory.Num() - 1);
 		return inventory[itemIndex];
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void AObjectManagerComponent::SpawnObject()
 {
 	TSubclassOf<APlantableObject> objectToSpawn = GetObject();
+
+	if (objectToSpawn == nullptr)
+		return;
 
 	FHitResult hitResult;
 	GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursor(ECollisionChannel::ECC_WorldStatic, false, hitResult);
@@ -334,6 +390,24 @@ void AObjectManagerComponent::SpawnObject()
 				OnObjectSpawned(spawnedObject);
 			}
 		}
+	}
+}
+
+#if WITH_EDITOR
+bool UObjectInteraction::CanEditChange(const UProperty* InProperty) const
+{
+	const bool ParentVal = Super::CanEditChange(InProperty);
+
+	// Can we edit plantable object?
+	if (InProperty->GetFName() == GET_MEMBER_NAME_CHECKED(UObjectInteraction, mPlantableObjectType))
+	{
+		return mObjectType == EObjectType::EPlantable;
+	}
+
+	// Can we edit terrain?
+	if (InProperty->GetFName() == GET_MEMBER_NAME_CHECKED(UObjectInteraction, mTerrainType))
+	{
+		return mObjectType == EObjectType::ETerrain;
 	}
 }
 

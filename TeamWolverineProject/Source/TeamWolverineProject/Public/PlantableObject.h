@@ -4,24 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GameData.h"
+
 #include "PlantableObject.generated.h"
+
 class ATile;
-
-UENUM()
-enum class EObjectType
-{
-	Plant,
-	Food,
-	Tree
-};
-
-enum class ENeighborLocationType 
-{ 
-	Left, 
-	Right, 
-	Up, 
-	Down 
-};
 
 UCLASS()
 class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
@@ -34,11 +21,14 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		void OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors);
 		void SetNeighbor(APlantableObject* newNeighbor, ENeighborLocationType locationType);
-		void OnInteract(ENeighborLocationType locationTypeForNeighbor);
+		void OnInteractWithNeighbor(ENeighborLocationType locationTypeForNeighbor);
+		void OnInteractWithTile();
 
-		EObjectType GetObjectType() const { return mObjectType; }
+		ETileType GetTileTypeForCurrentTile() const;
+		EPlantableObjectType GetObjectType() const { return mObjectType; }
 		const TMap<ENeighborLocationType, APlantableObject*>& GetNeighbors() { return mNeighbors; }
 		bool HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const;
+		bool HasInteractedWithCurrentTileBefore() const;
 
 		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
@@ -52,5 +42,5 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		TArray<ENeighborLocationType> mNeighborsWeHaveHadInteractionWith;
 
 		UPROPERTY(EditAnywhere, meta=(DisplayName = "Object Type"))
-		EObjectType mObjectType;
+		EPlantableObjectType mObjectType;
 };

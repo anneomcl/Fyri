@@ -40,6 +40,11 @@ AObjectManagerComponent::~AObjectManagerComponent()
 void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	for (UObjectInteraction* interaction : mObjectInteractions)
+	{
+		mPlantedAmounts.Add(interaction->mInteractionName);
+	}
 }
 
 void AObjectManagerComponent::Init(TArray<ATile*> tiles)
@@ -60,6 +65,9 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 			if (interaction == nullptr)
 				continue;
 
+			//TODO.PKH: should it only trigger result if >= required??
+
+			bool succeededToInteract = false;
 			if (interaction->mObjectType == EObjectType::EPlantable)
 			{
 				//If interaction is object + object
@@ -73,9 +81,10 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
 						if (isObjectInteraction && interaction->mInteractionResult != nullptr)
 						{
+							succeededToInteract = true;
+
 							object->OnInteractWithNeighbor(neighbor.Key);
 							neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
-							OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 						}
 					}
 				}
@@ -89,9 +98,20 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType) || object->GetObjectType() == interaction->mPlantableObjectType && tileType == interaction->mTerrainType);
 				if (isObjectInteraction && interaction->mInteractionResult != nullptr)
 				{
+					succeededToInteract = true;
+
 					object->OnInteractWithTile();
-					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 				}
+			}
+				
+			if (succeededToInteract)
+			{
+				if (mPlantedAmounts.Contains(interaction->mInteractionName))
+				{
+					++mPlantedAmounts[interaction->mInteractionName];
+				}
+
+				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
 			}
 		}
 	}
@@ -122,6 +142,23 @@ void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeTo
 		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newFancyProbability;
 		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newMythicalProbability;
 	}
+}
+
+bool AObjectManagerComponent::HasPlantedRequiredQuantityOfObject(FName interactionName) const
+{
+	for (UObjectInteraction* interaction : mObjectInteractions)
+	{
+		if (interaction->mInteractionName != interactionName)
+			continue;
+
+		if (mPlantedAmounts.Contains(interactionName))
+		{
+			return mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
+		}
+	}
+
+	ensureMsgf(false, TEXT("No interaction with the name %s was found when trying to check if has planted the required quantity."), *interactionName.ToString());
+	return false;
 }
 
 const TMap<ENeighborLocationType, APlantableObject*> AObjectManagerComponent::FindNeighborsForObject(APlantableObject* spawnedObject) const

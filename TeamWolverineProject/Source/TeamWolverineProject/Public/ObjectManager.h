@@ -16,8 +16,6 @@ class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
 
-
-
 UCLASS()
 class UInteractionResult : public UDataAsset
 {
@@ -53,8 +51,14 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Terrain Type"))
 	ETileType mTerrainType;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Required Amount"))
+	uint8 mRequiredAmount;
+
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Result"))
 	UInteractionResult* mInteractionResult;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Name"))
+	FName mInteractionName;
 
 #if WITH_EDITOR
 	virtual bool CanEditChange(const UProperty* InProperty) const override;
@@ -161,14 +165,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
 	void ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
-	TArray<UObjectInteraction*> mObjectInteractions;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
-	UGameObjectInventory* mObjectInventory;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
-	FGameSpawnProbabilities mSpawnProbabilities;
+	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
+	bool HasPlantedRequiredQuantityOfObject(FName interactionName) const;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
@@ -177,6 +175,17 @@ private:
 	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
 	TSubclassOf<APlantableObject> GetObject() const;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
+	TArray<UObjectInteraction*> mObjectInteractions;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Inventory"))
+	UGameObjectInventory* mObjectInventory;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
+	FGameSpawnProbabilities mSpawnProbabilities;
+
+	TMap<FName, uint8> mPlantedAmounts;
 
 	TArray<ATile*> mTiles;
 	TSet<ATile*> mUsedTiles; //TODO: move to be on tile

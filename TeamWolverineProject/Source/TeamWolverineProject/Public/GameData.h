@@ -12,7 +12,7 @@ enum class ETileType : uint8
 {
 	Grass,
 	Water,
-	Sand
+	Stone
 };
 
 UENUM(BlueprintType)

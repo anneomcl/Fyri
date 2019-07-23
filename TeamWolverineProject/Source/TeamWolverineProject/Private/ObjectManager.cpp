@@ -431,10 +431,12 @@ void AObjectManagerComponent::SpawnObject()
 
 		if (closestTile != nullptr && closestTile->mIsTraversable && !closestTile->HasBeenInteractedWith())
 		{
+			//Spawn new object
 			FActorSpawnParameters spawnInfo;
 
-			//Spawn new object
-			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+			const FRotator rotation(0.f, FMath::RandRange(0.f, 360.f), 0.f); //Gets a random Yaw/Z rotation
+
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), rotation, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
 				closestTile->OnInteractWithObjectOnTile();

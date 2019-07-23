@@ -76,6 +76,13 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 		}
 	}
 
+#ifdef DEBUG_RENDER
+	for (ATile* tile : mTiles)
+	{
+		DrawDebugSphere(GetWorld(), tile->GetActorLocation(), 5.f, 6, FColor::Green, false);
+	}
+#endif
+
 	for (APlantableObject* object : mObjects)
 	{
 #ifdef DEBUG_RENDER //TODO.PKH: make this changeable in runtime instead!
@@ -268,41 +275,40 @@ void AObjectManagerComponent::GatherObjectIfIsNeighbor(TMap<ENeighborLocationTyp
 
 void AObjectManagerComponent::DebugRenderObject(APlantableObject* objectToRender) const
 {
-	if (GEngine)
+	const TMap<ENeighborLocationType, APlantableObject*> neighbors = objectToRender->GetNeighbors();
+
+	FString upText = "Up: -\n";
+	FString downText = "Down: -\n";
+	FString leftText = "Left: -\n";
+	FString rightText = "Right: -\n";
+
+	FColor colorToUse = FColor::Red;
+
+	if (neighbors.Contains(ENeighborLocationType::Up))
 	{
-		const TMap<ENeighborLocationType, APlantableObject*> neighbors = objectToRender->GetNeighbors();
-
-		FString upText = "Up: -\n";
-		FString downText = "Down: -\n";
-		FString leftText = "Left: -\n";
-		FString rightText = "Right: -\n";
-
-		FColor colorToUse = FColor::Red;
-
-		if (neighbors.Contains(ENeighborLocationType::Up))
-		{
-			upText = "Up: " + neighbors[ENeighborLocationType::Up]->GetName() + "\n";
-			colorToUse = FColor::Green;
-		}
-		if (neighbors.Contains(ENeighborLocationType::Down))
-		{
-			downText = "Down: " + neighbors[ENeighborLocationType::Down]->GetName() + "\n";
-			colorToUse = FColor::Green;
-		}
-		if (neighbors.Contains(ENeighborLocationType::Left))
-		{
-			leftText = "Left: " + neighbors[ENeighborLocationType::Left]->GetName() + "\n";
-			colorToUse = FColor::Green;
-		}
-		if (neighbors.Contains(ENeighborLocationType::Right))
-		{
-			rightText = "Right: " + neighbors[ENeighborLocationType::Right]->GetName() + "\n";
-			colorToUse = FColor::Green;
-		}
-
-		const FString neighborText = "Neighbors:\n" + upText + downText + leftText + rightText;
-		DrawDebugString(GetWorld(), objectToRender->GetActorLocation() + (FVector::UpVector * 5.f), neighborText, NULL, colorToUse);
+		upText = "Up: " + neighbors[ENeighborLocationType::Up]->GetName() + "\n";
+		colorToUse = FColor::Green;
 	}
+	if (neighbors.Contains(ENeighborLocationType::Down))
+	{
+		downText = "Down: " + neighbors[ENeighborLocationType::Down]->GetName() + "\n";
+		colorToUse = FColor::Green;
+	}
+	if (neighbors.Contains(ENeighborLocationType::Left))
+	{
+		leftText = "Left: " + neighbors[ENeighborLocationType::Left]->GetName() + "\n";
+		colorToUse = FColor::Green;
+	}
+	if (neighbors.Contains(ENeighborLocationType::Right))
+	{
+		rightText = "Right: " + neighbors[ENeighborLocationType::Right]->GetName() + "\n";
+		colorToUse = FColor::Green;
+	}
+
+	const FString neighborText = "Neighbors:\n" + upText + downText + leftText + rightText;
+	DrawDebugString(GetWorld(), objectToRender->GetActorLocation() + (FVector::UpVector * 5.f), neighborText, NULL, colorToUse);
+
+	DrawDebugSphere(GetWorld(), objectToRender->GetActorLocation(), 10.f, 6, FColor::Magenta);
 }
 
 FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationType locationType) const

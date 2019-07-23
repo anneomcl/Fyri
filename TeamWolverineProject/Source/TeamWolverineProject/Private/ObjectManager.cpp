@@ -65,8 +65,6 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 			if (interaction == nullptr)
 				continue;
 
-			//TODO.PKH: should it only trigger result if >= required??
-
 			bool succeededToInteract = false;
 			if (interaction->mObjectType == EObjectType::EPlantable)
 			{

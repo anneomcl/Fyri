@@ -15,7 +15,7 @@ enum class ETileType : uint8
 	Sand
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlantableObjectType : uint8
 {
 	Plant,

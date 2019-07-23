@@ -61,12 +61,14 @@ public:
 #endif
 };
 
-UCLASS()
-class USpawnTierProbabilities : public UDataAsset
+USTRUCT()
+struct FSpawnTierProbabilities
 {
 	GENERATED_BODY()
 
 public:
+	FSpawnTierProbabilities();
+
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Common Probability"))
 	uint8 mCommonProbability;
 
@@ -77,23 +79,23 @@ public:
 	uint8 mMythicalProbability;
 };
 
-UCLASS()
-class UGameSpawnProbabilities : public UDataAsset
+USTRUCT()
+struct FGameSpawnProbabilities
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Plant Probabilities"))
-	USpawnTierProbabilities* mPlantProbabilities;
+	FSpawnTierProbabilities mPlantProbabilities;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Tree Probabilities"))
-	USpawnTierProbabilities* mTreeProbabilities;
+	FSpawnTierProbabilities mTreeProbabilities;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Edible Probabilities"))
-	USpawnTierProbabilities* mEdibleProbabilities;
+	FSpawnTierProbabilities mEdibleProbabilities;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Probabilities"))
-	USpawnTierProbabilities* mAnimalProbabilities;
+	FSpawnTierProbabilities mAnimalProbabilities;
 };
 
 UCLASS()
@@ -121,13 +123,13 @@ class UGameObjectInventory : public UDataAsset
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Plant Inventory"))
-		UPlantableInventory* mPlantInventory;
+	UPlantableInventory* mPlantInventory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Tree Inventory"))
-		UPlantableInventory* mTreeInventory;
+	UPlantableInventory* mTreeInventory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Edible Inventory"))
-		UPlantableInventory* mEdibleInventory;
+	UPlantableInventory* mEdibleInventory;
 };
 
 UCLASS(meta=(BlueprintSpawnableComponent))
@@ -154,7 +156,10 @@ public:
 	void SpawnObject();
 
 	UFUNCTION(BlueprintCallable)
-	void UpdateCurrentObject(uint8 objectIndex);
+	void UpdateCurrentlySelectedPlantableObject(EPlantableObjectType objectType);
+
+	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
+	void ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;
@@ -162,8 +167,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Object Inventory"))
 	UGameObjectInventory* mObjectInventory;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Game Spawn Probabilities"))
-	UGameSpawnProbabilities* mSpawnProbabilities;
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Game Spawn Probabilities"))
+	FGameSpawnProbabilities mSpawnProbabilities;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
@@ -177,5 +182,5 @@ private:
 	TSet<ATile*> mUsedTiles; //TODO: move to be on tile
 	TArray<APlantableObject*> mObjects;
 
-	uint8 mObjectIndex;
+	EPlantableObjectType mCurrentlySelectedPlantableObject;
 };

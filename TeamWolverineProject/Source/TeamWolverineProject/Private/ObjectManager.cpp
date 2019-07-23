@@ -19,8 +19,15 @@
 
 //#define DEBUG_RENDER
 
+FSpawnTierProbabilities::FSpawnTierProbabilities()
+	: mCommonProbability(90)
+	, mFancyProbability(10)
+	, mMythicalProbability(0)
+{
+}
+
 AObjectManagerComponent::AObjectManagerComponent()
-	: mObjectIndex(0)
+	: mCurrentlySelectedPlantableObject(EPlantableObjectType::Plant)
 {
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -90,9 +97,31 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 	}
 }
 
-void AObjectManagerComponent::UpdateCurrentObject(uint8 objectIndex)
+void AObjectManagerComponent::UpdateCurrentlySelectedPlantableObject(EPlantableObjectType objectType)
 {
-	mObjectIndex = objectIndex;
+	mCurrentlySelectedPlantableObject = objectType;
+}
+
+void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability)
+{
+	if (typeToChangeProbabilityOf == EPlantableObjectType::Food)
+	{
+		mSpawnProbabilities.mEdibleProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mMythicalProbability = newMythicalProbability;
+	}
+	else if (typeToChangeProbabilityOf == EPlantableObjectType::Plant)
+	{
+		mSpawnProbabilities.mPlantProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mPlantProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mPlantProbabilities.mMythicalProbability = newMythicalProbability;
+	}
+	else if (typeToChangeProbabilityOf == EPlantableObjectType::Tree)
+	{
+		mSpawnProbabilities.mTreeProbabilities.mCommonProbability = newCommonProbability;
+		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newFancyProbability;
+		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newMythicalProbability;
+	}
 }
 
 const TMap<ENeighborLocationType, APlantableObject*> AObjectManagerComponent::FindNeighborsForObject(APlantableObject* spawnedObject) const
@@ -234,46 +263,50 @@ FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationT
 TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 {
 	UPlantableInventory* invCategory = nullptr;
-	switch (mObjectIndex)
+	switch (mCurrentlySelectedPlantableObject)
 	{
-	case 0:
+	case EPlantableObjectType::Plant:
 		invCategory = mObjectInventory->mPlantInventory;
 		break;
-	case 1:
+	case EPlantableObjectType::Tree:
 		invCategory = mObjectInventory->mTreeInventory;
 		break;
-	case 2:
+	case EPlantableObjectType::Food:
 		invCategory = mObjectInventory->mEdibleInventory;
 		break;
 	}
 
-	USpawnTierProbabilities* probability = nullptr;
-	switch (mObjectIndex)
+	FSpawnTierProbabilities probability;
+	switch (mCurrentlySelectedPlantableObject)
 	{
-	case 0:
-		probability = mSpawnProbabilities->mPlantProbabilities;
+	case EPlantableObjectType::Plant:
+		probability = mSpawnProbabilities.mPlantProbabilities;
 		break;
-	case 1:
-		probability = mSpawnProbabilities->mTreeProbabilities;
+	case EPlantableObjectType::Tree:
+		probability = mSpawnProbabilities.mTreeProbabilities;
 		break;
-	case 2:
-		probability = mSpawnProbabilities->mEdibleProbabilities;
+	case EPlantableObjectType::Food:
+		probability = mSpawnProbabilities.mEdibleProbabilities;
 		break;
 	}
 
 	ESpawnTier tier = ESpawnTier::Common;
-	if (probability != nullptr)
+
+	const float randVal = FMath::RandRange(0.f, 100.f);
+	if (randVal <= probability.mCommonProbability)
 	{
-		const float randVal = FMath::RandRange(0.f, 100.f);
-		if (randVal <= probability->mCommonProbability)
-		{
-			tier = ESpawnTier::Common;
-		}
-		else if (randVal >= probability->mMythicalProbability)
+		tier = ESpawnTier::Common;
+	}
+	else if (randVal >= (100.f - probability.mMythicalProbability))
+	{
+		if (invCategory != nullptr)
 		{
 			tier = ESpawnTier::Mythical;
 		}
-		else
+	}
+	else
+	{
+		if (invCategory != nullptr)
 		{
 			tier = ESpawnTier::Fancy;
 		}
@@ -308,6 +341,9 @@ TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 void AObjectManagerComponent::SpawnObject()
 {
 	TSubclassOf<APlantableObject> objectToSpawn = GetObject();
+
+	if (objectToSpawn == nullptr)
+		return;
 
 	FHitResult hitResult;
 	GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursor(ECollisionChannel::ECC_WorldStatic, false, hitResult);

@@ -45,7 +45,10 @@ void AObjectManagerComponent::BeginPlay()
 
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
-		mPlantedAmounts.Add(interaction->mInteractionName);
+		if (interaction != nullptr)
+		{
+			mPlantedAmounts.Add(interaction->mInteractionName);
+		}
 	}
 }
 

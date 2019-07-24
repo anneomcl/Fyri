@@ -28,11 +28,9 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-
 	UPROPERTY(EditAnywhere, Meta = (DisplayName="Tile Type"))
 	ETileType mTileType;
 
 	bool mIsTraversable;
 	bool mHasBeenInteractedWith;
-
 };

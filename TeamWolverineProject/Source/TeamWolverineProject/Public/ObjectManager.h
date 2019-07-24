@@ -31,6 +31,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UParticleSystem* mParticleEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<AAnimalCharacter> mAnimal;
 };
 
 UCLASS()
@@ -162,7 +165,7 @@ public:
 	void Init(TArray<ATile*> tiles);
 
 	UFUNCTION(BlueprintCallable)
-	void SpawnAnimal();
+	void SpawnAnimal(TSubclassOf<AAnimalCharacter> animal);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn")
 	void SpawnObject();

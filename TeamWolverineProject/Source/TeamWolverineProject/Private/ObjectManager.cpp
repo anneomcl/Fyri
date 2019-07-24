@@ -43,16 +43,6 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		mPlantedAmounts.Add(interaction->mInteractionName);
@@ -450,13 +440,9 @@ void AObjectManagerComponent::SpawnObject()
 	}
 }
 
-void AObjectManagerComponent::SpawnAnimal()
+void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 {
-	if (mAnimalInventory.Num() <= 0)
-		return;
-
-	//TODO.AM: Fix so it uses real animal index
-	TSubclassOf<AAnimalCharacter> objectToSpawn = mAnimalInventory[0];
+	TSubclassOf<AAnimalCharacter> objectToSpawn = animal;
 
 	TArray<ATile*> availableTiles;
 	for (ATile* tile : mTiles)

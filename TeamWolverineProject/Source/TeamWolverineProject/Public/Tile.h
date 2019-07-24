@@ -23,16 +23,15 @@ public:
 	ETileType GetTileType() const { return mTileType; }
 	bool HasBeenInteractedWith() const { return mHasBeenInteractedWith; }
 
+	UPROPERTY(EditAnywhere, Meta = (DisplayName = "Tile Is Plantable / Traversable"))
 	bool mIsTraversable;
 
 protected:
 	virtual void BeginPlay() override;
 
 private:	
-
 	UPROPERTY(EditAnywhere, Meta = (DisplayName="Tile Type"))
 	ETileType mTileType;
 
 	bool mHasBeenInteractedWith;
-
 };

@@ -169,7 +169,10 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interaction->mInteractionName))
 	{
-		return mPlantedAmounts[interaction->mInteractionName] >= interaction->mRequiredAmount;
+		const bool reachedRequiredAmount = mPlantedAmounts[interaction->mInteractionName] >= interaction->mRequiredAmount;
+		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
+
+		return hasARequiredAmount && reachedRequiredAmount;
 	}
 
 	return false;

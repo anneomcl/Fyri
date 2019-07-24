@@ -73,3 +73,8 @@ TeamWolverineProject/Plugins/*/Intermediate/*
 # Cache files for the editor to use
 TeamWolverineProject/DerivedDataCache/*
 TeamWolverineProject/enc_temp_folder/*
+TeamWolverineProject/Delete_Files.bat
+TeamWolverineProject/Clear_Directory.bat
+TeamWolverineProject/Content/StarterContent/Architecture/Floor_400x400.uasset
+TeamWolverineProject/Content/StarterContent/Architecture/Floor_400x400.uasset
+TeamWolverineProject/Content/StarterContent/Architecture/Floor_400x400.uasset

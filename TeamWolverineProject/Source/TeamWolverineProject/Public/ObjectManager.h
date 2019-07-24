@@ -23,14 +23,17 @@ class UInteractionResult : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Animation"))
 	UAnimInstance* mAnimation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Sound"))
 	USoundBase* mSound;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Particle Effect"))
 	UParticleSystem* mParticleEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Animal"))
+	TSubclassOf<AAnimalCharacter> mAnimal;
 };
 
 UCLASS()
@@ -150,7 +153,7 @@ public:
 
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
-	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
+	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation, const FName interactionName);
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);
@@ -162,7 +165,7 @@ public:
 	void Init(TArray<ATile*> tiles);
 
 	UFUNCTION(BlueprintCallable)
-	void SpawnAnimal();
+	void SpawnAnimal(TSubclassOf<AAnimalCharacter> animal);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn")
 	void SpawnObject();

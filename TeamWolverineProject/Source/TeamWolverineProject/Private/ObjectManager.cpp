@@ -43,16 +43,6 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-	SpawnAnimal();
-
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		mPlantedAmounts.Add(interaction->mInteractionName);
@@ -69,19 +59,12 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 	for (AAnimalCharacter* animal : mAnimals)
 	{
 		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
-		if (controller->mCurrentState == EAnimalState::Kill)
+		if (controller != nullptr && controller->GetCurrentState() == EAnimalState::Kill)
 		{
 			mAnimals.Remove(animal);
 			animal->Destroy();
 		}
 	}
-
-#ifdef DEBUG_RENDER
-	for (ATile* tile : mTiles)
-	{
-		DrawDebugSphere(GetWorld(), tile->GetActorLocation(), 5.f, 6, FColor::Green, false);
-	}
-#endif
 
 	for (APlantableObject* object : mObjects)
 	{
@@ -138,7 +121,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interaction->mInteractionName];
 				}
 
-				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
+				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
 			}
 		}
 	}
@@ -275,40 +258,41 @@ void AObjectManagerComponent::GatherObjectIfIsNeighbor(TMap<ENeighborLocationTyp
 
 void AObjectManagerComponent::DebugRenderObject(APlantableObject* objectToRender) const
 {
-	const TMap<ENeighborLocationType, APlantableObject*> neighbors = objectToRender->GetNeighbors();
-
-	FString upText = "Up: -\n";
-	FString downText = "Down: -\n";
-	FString leftText = "Left: -\n";
-	FString rightText = "Right: -\n";
-
-	FColor colorToUse = FColor::Red;
-
-	if (neighbors.Contains(ENeighborLocationType::Up))
+	if (GEngine)
 	{
-		upText = "Up: " + neighbors[ENeighborLocationType::Up]->GetName() + "\n";
-		colorToUse = FColor::Green;
-	}
-	if (neighbors.Contains(ENeighborLocationType::Down))
-	{
-		downText = "Down: " + neighbors[ENeighborLocationType::Down]->GetName() + "\n";
-		colorToUse = FColor::Green;
-	}
-	if (neighbors.Contains(ENeighborLocationType::Left))
-	{
-		leftText = "Left: " + neighbors[ENeighborLocationType::Left]->GetName() + "\n";
-		colorToUse = FColor::Green;
-	}
-	if (neighbors.Contains(ENeighborLocationType::Right))
-	{
-		rightText = "Right: " + neighbors[ENeighborLocationType::Right]->GetName() + "\n";
-		colorToUse = FColor::Green;
-	}
+		const TMap<ENeighborLocationType, APlantableObject*> neighbors = objectToRender->GetNeighbors();
 
-	const FString neighborText = "Neighbors:\n" + upText + downText + leftText + rightText;
-	DrawDebugString(GetWorld(), objectToRender->GetActorLocation() + (FVector::UpVector * 5.f), neighborText, NULL, colorToUse);
+		FString upText = "Up: -\n";
+		FString downText = "Down: -\n";
+		FString leftText = "Left: -\n";
+		FString rightText = "Right: -\n";
 
-	DrawDebugSphere(GetWorld(), objectToRender->GetActorLocation(), 10.f, 6, FColor::Magenta);
+		FColor colorToUse = FColor::Red;
+
+		if (neighbors.Contains(ENeighborLocationType::Up))
+		{
+			upText = "Up: " + neighbors[ENeighborLocationType::Up]->GetName() + "\n";
+			colorToUse = FColor::Green;
+		}
+		if (neighbors.Contains(ENeighborLocationType::Down))
+		{
+			downText = "Down: " + neighbors[ENeighborLocationType::Down]->GetName() + "\n";
+			colorToUse = FColor::Green;
+		}
+		if (neighbors.Contains(ENeighborLocationType::Left))
+		{
+			leftText = "Left: " + neighbors[ENeighborLocationType::Left]->GetName() + "\n";
+			colorToUse = FColor::Green;
+		}
+		if (neighbors.Contains(ENeighborLocationType::Right))
+		{
+			rightText = "Right: " + neighbors[ENeighborLocationType::Right]->GetName() + "\n";
+			colorToUse = FColor::Green;
+		}
+
+		const FString neighborText = "Neighbors:\n" + upText + downText + leftText + rightText;
+		DrawDebugString(GetWorld(), objectToRender->GetActorLocation() + (FVector::UpVector * 5.f), neighborText, NULL, colorToUse);
+	}
 }
 
 FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationType locationType) const
@@ -429,17 +413,20 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr && closestTile->mIsTraversable && !closestTile->HasBeenInteractedWith())
+		if (closestTile != nullptr)
 		{
-			//Spawn new object
+			const bool isTraversable = closestTile->IsTraversable();
+			const bool isUsed = closestTile->IsUsed();
+
+			if (!isTraversable || isUsed)
+				return;
+
 			FActorSpawnParameters spawnInfo;
 
-			const FRotator rotation(0.f, FMath::RandRange(0.f, 360.f), 0.f); //Gets a random Yaw/Z rotation
-
-			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), rotation, spawnInfo))
+			//Spawn new object
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
-				closestTile->OnInteractWithObjectOnTile();
 
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
@@ -453,23 +440,20 @@ void AObjectManagerComponent::SpawnObject()
 				spawnedObject->OnSpawn(closestTile, newNeighbors);
 
 				OnObjectSpawned(spawnedObject);
+				closestTile->OnObjectSpawnOnTile();
 			}
 		}
 	}
 }
 
-void AObjectManagerComponent::SpawnAnimal()
+void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 {
-	if (mAnimalInventory.Num() <= 0)
-		return;
-
-	//TODO.AM: Fix so it uses real animal index
-	TSubclassOf<AAnimalCharacter> objectToSpawn = mAnimalInventory[0];
+	TSubclassOf<AAnimalCharacter> objectToSpawn = animal;
 
 	TArray<ATile*> availableTiles;
 	for (ATile* tile : mTiles)
 	{
-		if (tile->mIsTraversable)
+		if (tile->IsTraversable())
 		{
 			availableTiles.Add(tile);
 		}

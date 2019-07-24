@@ -8,10 +8,11 @@
 
 ATile::ATile()
 	: mTileType(ETileType::Grass)
+	, mIsTraversable(true)
 	, mHasBeenInteractedWith(false)
+	, mIsUsed(false)
 {
 	PrimaryActorTick.bCanEverTick = true;
-	mIsTraversable = true;
 }
 
 void ATile::BeginPlay()
@@ -27,5 +28,10 @@ void ATile::Tick(float DeltaTime)
 void ATile::OnInteractWithObjectOnTile()
 {
 	mHasBeenInteractedWith = true;
+}
+
+void ATile::OnObjectSpawnOnTile()
+{
+	mIsUsed = true;
 }
 

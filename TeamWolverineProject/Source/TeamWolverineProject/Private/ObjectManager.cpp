@@ -59,7 +59,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 	for (AAnimalCharacter* animal : mAnimals)
 	{
 		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
-		if (controller->mCurrentState == EAnimalState::Kill)
+		if (controller != nullptr && controller->GetCurrentState() == EAnimalState::Kill)
 		{
 			mAnimals.Remove(animal);
 			animal->Destroy();
@@ -413,7 +413,7 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr && closestTile->mIsTraversable && !closestTile->HasBeenInteractedWith())
+		if (closestTile != nullptr && closestTile->IsTraversable() && !closestTile->HasBeenInteractedWith())
 		{
 			FActorSpawnParameters spawnInfo;
 
@@ -447,7 +447,7 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 	TArray<ATile*> availableTiles;
 	for (ATile* tile : mTiles)
 	{
-		if (tile->mIsTraversable)
+		if (tile->IsTraversable())
 		{
 			availableTiles.Add(tile);
 		}

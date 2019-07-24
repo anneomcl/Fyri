@@ -61,6 +61,9 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Result"))
 	UInteractionResult* mInteractionResult;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Required Amount Reached Result"))
+	UInteractionResult* mRequiredAmountReachedResult;
+
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Name"))
 	FName mInteractionName;
 
@@ -155,6 +158,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
 	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation, const FName interactionName);
 	
+	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
+	void OnInteractionReachedRequiredAmount(UInteractionResult* requiredAmountReachedResult, const FVector& interactionLocation, const FName interactionName);
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);
 
@@ -176,8 +182,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
 	void ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability);
 
-	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
-	bool HasPlantedRequiredQuantityOfObject(FName interactionName) const;
+	UFUNCTION(BlueprintCallable, Category = "Spawn Probability", meta = (Tooltip = "Will check if has reached the required amount on this interaction"))
+	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;

@@ -89,7 +89,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 						//TODO.PKH: should location be object or neighbor, or in between the two?
 
 						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
-						if (isObjectInteraction && interaction->mInteractionResult != nullptr)
+						if (isObjectInteraction)
 						{
 							succeededToInteract = true;
 
@@ -106,7 +106,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				const ETileType tileType = object->GetTileTypeForCurrentTile();
 
 				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType) || object->GetObjectType() == interaction->mPlantableObjectType && tileType == interaction->mTerrainType);
-				if (isObjectInteraction && interaction->mInteractionResult != nullptr)
+				if (isObjectInteraction)
 				{
 					succeededToInteract = true;
 
@@ -121,7 +121,15 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interaction->mInteractionName];
 				}
 
-				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
+				if (HasReachedRequiredInteractionAmount(interaction))
+				{
+					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interaction->mInteractionName);
+					mPlantedAmounts[interaction->mInteractionName] = 0;
+				}
+				else
+				{
+					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
+				}
 			}
 		}
 	}
@@ -154,20 +162,16 @@ void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeTo
 	}
 }
 
-bool AObjectManagerComponent::HasPlantedRequiredQuantityOfObject(FName interactionName) const
+bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const
 {
-	for (UObjectInteraction* interaction : mObjectInteractions)
-	{
-		if (interaction->mInteractionName != interactionName)
-			continue;
+	if (!ensureMsgf(interaction != nullptr, TEXT("Interaction sent in to HasReachedRequiredInteractionAmount was nullptr!")))
+		return false;
 
-		if (mPlantedAmounts.Contains(interactionName))
-		{
-			return mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
-		}
+	if (mPlantedAmounts.Contains(interaction->mInteractionName))
+	{
+		return mPlantedAmounts[interaction->mInteractionName] >= interaction->mRequiredAmount;
 	}
 
-	ensureMsgf(false, TEXT("No interaction with the name %s was found when trying to check if has planted the required quantity."), *interactionName.ToString());
 	return false;
 }
 

@@ -153,7 +153,7 @@ public:
 
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
-	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
+	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation, const FName interactionName);
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);

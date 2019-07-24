@@ -121,7 +121,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interaction->mInteractionName];
 				}
 
-				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
+				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
 			}
 		}
 	}

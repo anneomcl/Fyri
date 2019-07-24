@@ -31,6 +31,8 @@ private:
 	UPROPERTY(EditAnywhere, Meta = (DisplayName="Tile Type"))
 	ETileType mTileType;
 
+	UPROPERTY(EditAnywhere, Meta = (DisplayName = "Is Traversable"))
 	bool mIsTraversable;
+
 	bool mHasBeenInteractedWith;
 };

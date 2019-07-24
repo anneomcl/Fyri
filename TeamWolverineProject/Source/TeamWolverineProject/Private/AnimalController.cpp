@@ -4,6 +4,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 #include "AnimalCharacter.h"
+#include "DrawDebugHelpers.h"
+#include "GameFramework/CharacterMovementComponent.h"
+
+#define DEBUG_RENDER
 
 void AAnimalController::BeginPlay()
 {
@@ -16,6 +20,7 @@ void AAnimalController::BeginPlay()
 
 void AAnimalController::Tick(float DeltaSeconds)
 {
+	Super::Tick(DeltaSeconds);
 }
 
 void AAnimalController::OnSpawn()
@@ -39,6 +44,11 @@ void AAnimalController::OnMoveCompleted(FAIRequestID RequestID, const FPathFollo
 	mTraversalCount++;
 	mCurrentTransition = EAnimalTransition::TraverseToIdle;
 	OnIdle();
+}
+
+void AAnimalController::SetCurrentState(EAnimalState newState)
+{
+	mCurrentState = newState;
 }
 
 void AAnimalController::OnIdle()
@@ -75,5 +85,19 @@ ATargetPoint* AAnimalController::GetRandomWaypoint()
 
 void AAnimalController::GoToRandomWaypoint()
 {
-	MoveToActor(GetRandomWaypoint());
+	ATargetPoint* wayPoint = GetRandomWaypoint();
+	MoveToActor(wayPoint);
+
+	if (AAnimalCharacter* character = Cast<AAnimalCharacter>(GetCharacter()))
+	{
+		if (UCharacterMovementComponent* movementComponent = Cast<UCharacterMovementComponent>(character->GetMovementComponent()))
+		{
+			movementComponent->bOrientRotationToMovement = true;
+		}
+	}
+
+#ifdef DEBUG_RENDER
+	DrawDebugString(GetWorld(), wayPoint->GetActorLocation(), "waypoint", NULL, FColor::Green, 20.f);
+	DrawDebugSphere(GetWorld(), wayPoint->GetActorLocation(), 10.f, 6, FColor::Green, false, 20.f);
+#endif
 }

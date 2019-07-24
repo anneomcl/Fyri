@@ -32,6 +32,9 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
+		FString mName;
+
 	protected:
 		virtual void BeginPlay() override;
 

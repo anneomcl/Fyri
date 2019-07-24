@@ -151,7 +151,6 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
-
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
 	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation);
 	
@@ -160,6 +159,9 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnAnimalSpawned(ACharacter* spawnedObject);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
+	void OnObjectFirstSpawned(const FString& objectName);
 
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
@@ -200,6 +202,8 @@ private:
 	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
 
 	TMap<FName, uint8> mPlantedAmounts;
+
+	TSet<FString> mDiscoveredObjects;
 
 	TArray<ATile*> mTiles;
 	TArray<APlantableObject*> mObjects;

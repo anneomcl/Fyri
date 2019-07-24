@@ -423,6 +423,13 @@ void AObjectManagerComponent::SpawnObject()
 			//Spawn new object
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
+				FString name = spawnedObject->GetName();
+				if (!mDiscoveredObjects.Contains(spawnedObject->mName))
+				{
+					mDiscoveredObjects.Add(spawnedObject->mName);
+					OnObjectFirstSpawned(spawnedObject->mName);
+				}
+
 				mObjects.Add(spawnedObject);
 
 				//Find Neighbors for newly spawned object
@@ -469,6 +476,13 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 		if (controller != nullptr)
 		{
 			controller->OnSpawn();
+
+			if (!mDiscoveredObjects.Contains(spawnedObject->mName))
+			{
+				mDiscoveredObjects.Add(spawnedObject->mName);
+				OnObjectFirstSpawned(spawnedObject->mName);
+			}
+
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);
 		}

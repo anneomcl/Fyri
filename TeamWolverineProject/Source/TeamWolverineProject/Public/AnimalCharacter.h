@@ -18,6 +18,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UParticleSystem* mParticleEffect;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
+	FString mName;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

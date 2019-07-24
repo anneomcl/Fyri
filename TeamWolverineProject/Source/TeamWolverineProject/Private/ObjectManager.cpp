@@ -413,7 +413,10 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		if (closestTile != nullptr && closestTile->IsTraversable() && !closestTile->HasBeenInteractedWith())
+		const bool isTraversable = closestTile->IsTraversable();
+		const bool isValidTile = closestTile != nullptr;
+
+		if (isValidTile && isTraversable)
 		{
 			FActorSpawnParameters spawnInfo;
 
@@ -421,7 +424,6 @@ void AObjectManagerComponent::SpawnObject()
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
-				closestTile->OnInteractWithObjectOnTile();
 
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);

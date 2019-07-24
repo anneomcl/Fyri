@@ -8,10 +8,10 @@
 
 ATile::ATile()
 	: mTileType(ETileType::Grass)
+	, mIsTraversable(true)
 	, mHasBeenInteractedWith(false)
 {
 	PrimaryActorTick.bCanEverTick = true;
-	mIsTraversable = true;
 }
 
 void ATile::BeginPlay()

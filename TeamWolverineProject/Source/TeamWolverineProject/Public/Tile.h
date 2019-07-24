@@ -19,10 +19,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void OnInteractWithObjectOnTile();
+	void OnObjectSpawnOnTile();
 
 	ETileType GetTileType() const { return mTileType; }
 	bool HasBeenInteractedWith() const { return mHasBeenInteractedWith; }
 	bool IsTraversable() const { return mIsTraversable; }
+	bool IsUsed() const { return mIsUsed; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -35,4 +37,5 @@ private:
 	bool mIsTraversable;
 
 	bool mHasBeenInteractedWith;
+	bool mIsUsed;
 };

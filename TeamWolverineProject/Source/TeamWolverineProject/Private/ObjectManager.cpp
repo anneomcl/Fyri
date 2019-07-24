@@ -121,7 +121,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interaction->mInteractionName];
 				}
 
-				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation());
+				OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
 			}
 		}
 	}
@@ -413,11 +413,14 @@ void AObjectManagerComponent::SpawnObject()
 			}
 		}
 
-		const bool isTraversable = closestTile->IsTraversable();
-		const bool isValidTile = closestTile != nullptr;
-
-		if (isValidTile && isTraversable)
+		if (closestTile != nullptr)
 		{
+			const bool isTraversable = closestTile->IsTraversable();
+			const bool isUsed = closestTile->IsUsed();
+
+			if (!isTraversable || isUsed)
+				return;
+
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
@@ -437,6 +440,7 @@ void AObjectManagerComponent::SpawnObject()
 				spawnedObject->OnSpawn(closestTile, newNeighbors);
 
 				OnObjectSpawned(spawnedObject);
+				closestTile->OnObjectSpawnOnTile();
 			}
 		}
 	}

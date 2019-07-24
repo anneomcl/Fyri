@@ -7,7 +7,7 @@
 #include "DrawDebugHelpers.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-#define DEBUG_RENDER
+//#define DEBUG_RENDER
 
 void AAnimalController::BeginPlay()
 {

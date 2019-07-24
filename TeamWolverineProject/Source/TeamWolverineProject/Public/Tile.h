@@ -22,17 +22,17 @@ public:
 
 	ETileType GetTileType() const { return mTileType; }
 	bool HasBeenInteractedWith() const { return mHasBeenInteractedWith; }
-
-	bool mIsTraversable;
+	bool IsTraversable() const { return mIsTraversable; }
 
 protected:
 	virtual void BeginPlay() override;
 
 private:	
-
 	UPROPERTY(EditAnywhere, Meta = (DisplayName="Tile Type"))
 	ETileType mTileType;
 
-	bool mHasBeenInteractedWith;
+	UPROPERTY(EditAnywhere, Meta = (DisplayName = "Is Traversable"))
+	bool mIsTraversable;
 
+	bool mHasBeenInteractedWith;
 };

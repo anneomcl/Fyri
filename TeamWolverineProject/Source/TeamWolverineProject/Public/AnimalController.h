@@ -41,17 +41,8 @@ public:
 
 	virtual void OnMoveCompleted(FAIRequestID RequestID, const FPathFollowingResult& Result) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EAnimalState mCurrentState;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EAnimalTransition mCurrentTransition;
-
-	UPROPERTY()
-	uint8 mTraversalCount;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Max Traversals"))
-	uint8 mMaxTraversalCount;
+	UFUNCTION(BlueprintCallable)
+	void SetCurrentState(EAnimalState newState);
 
 	UFUNCTION(BlueprintCallable)
 	void OnSpawn();
@@ -65,13 +56,28 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void OnExit();
 
+	UFUNCTION(BlueprintCallable)
+	EAnimalState GetCurrentState() const { return mCurrentState; }
+
 private:
-	UPROPERTY()
-		TArray<AActor*> mWaypoints;
+	UFUNCTION(BlueprintCallable)
+	void GoToRandomWaypoint();
 
 	UFUNCTION()
-		ATargetPoint* GetRandomWaypoint();
+	ATargetPoint* GetRandomWaypoint();
 
-	UFUNCTION(BlueprintCallable)
-		void GoToRandomWaypoint();
+	UPROPERTY()
+	TArray<AActor*> mWaypoints;
+
+	UPROPERTY(EditAnywhere)
+	EAnimalState mCurrentState;
+
+	UPROPERTY(EditAnywhere)
+	EAnimalTransition mCurrentTransition;
+
+	UPROPERTY()
+	uint8 mTraversalCount;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Max Traversals"))
+	uint8 mMaxTraversalCount;
 };

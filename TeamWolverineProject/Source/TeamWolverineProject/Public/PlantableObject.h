@@ -37,6 +37,9 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
 		FString mName;
 
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Spawn Tier"))
+		ESpawnTier mSpawnTier;
+
 	protected:
 		virtual void BeginPlay() override;
 

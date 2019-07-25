@@ -43,6 +43,8 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	mJournalBorderTier = ESpawnTier::Normal;
+
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		if (interaction != nullptr)
@@ -444,6 +446,7 @@ void AObjectManagerComponent::SpawnObject()
 
 				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
 				{
+					mJournalBorderTier = spawnedObject->mSpawnTier;
 					mDiscoveredTypes.Add(spawnedObject->mName);
 				}
 
@@ -493,6 +496,7 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 		{
 			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
 			{
+				mJournalBorderTier = spawnedObject->mSpawnTier;
 				mDiscoveredTypes.Add(spawnedObject->mName);
 			}
 

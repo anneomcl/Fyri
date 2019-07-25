@@ -17,6 +17,7 @@ class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
 
+
 USTRUCT(BlueprintType)
 struct FSpawnTierProbabilities
 {
@@ -196,6 +197,9 @@ public:
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Page Mappings"))
 	TMap<FString, UTexture2D*> mJournalPageMappings;
+
+	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Journal Border"))
+	ESpawnTier mJournalBorderTier;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;

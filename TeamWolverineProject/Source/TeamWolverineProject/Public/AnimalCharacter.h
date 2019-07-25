@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameData.h"
 #include "AnimalCharacter.generated.h"
 
 UCLASS()
@@ -18,6 +19,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UParticleSystem* mParticleEffect;
 
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -28,6 +30,9 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Spawn Tier"))
+	ESpawnTier mSpawnTier;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
 	FString mName;

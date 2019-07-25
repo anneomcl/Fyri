@@ -43,6 +43,8 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	mJournalBorderTier = ESpawnTier::Normal;
+
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		if (interaction != nullptr)
@@ -129,7 +131,11 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				if (HasReachedRequiredInteractionAmount(interaction))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
-					mPlantedAmounts[interactionName] = 0;
+
+					if (interaction->mShouldRestartAfterReachedRequired)
+					{
+						mPlantedAmounts[interactionName] = 0;
+					}
 				}
 				else
 				{
@@ -176,7 +182,7 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount; //Only want to trigger it the first time (hence == instead of >=)
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
 		return hasARequiredAmount && reachedRequiredAmount;
@@ -446,6 +452,7 @@ void AObjectManagerComponent::SpawnObject()
 
 				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
 				{
+					mJournalBorderTier = spawnedObject->mSpawnTier;
 					mDiscoveredTypes.Add(spawnedObject->mName);
 				}
 
@@ -503,6 +510,7 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 		{
 			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
 			{
+				mJournalBorderTier = spawnedObject->mSpawnTier;
 				mDiscoveredTypes.Add(spawnedObject->mName);
 			}
 

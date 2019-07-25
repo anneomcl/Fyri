@@ -17,6 +17,27 @@ class APlantableObject;
 class UAnimInstance;
 class UParticleSystem;
 
+USTRUCT(BlueprintType)
+struct FSpawnTierProbabilities
+{
+	GENERATED_BODY()
+
+public:
+	FSpawnTierProbabilities();
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Type"))
+	EPlantableObjectType mObjectType;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Common Probability"))
+	uint8 mCommonProbability;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Fancy Probability"))
+	uint8 mFancyProbability;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Mythical Probability"))
+	uint8 mMythicalProbability;
+};
+
 UCLASS()
 class UInteractionResult : public UDataAsset
 {
@@ -34,6 +55,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Animal"))
 	TSubclassOf<AAnimalCharacter> mAnimal;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Should Change Spawn Probabilities"))
+	bool mShouldChangeSpawnProbabilities;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayName = "Spawn Probabilities", EditCondition = "mShouldChangeSpawnProbabilities"))
+	FSpawnTierProbabilities mSpawnProbabilities;
 };
 
 UCLASS()
@@ -73,24 +100,6 @@ public:
 };
 
 USTRUCT()
-struct FSpawnTierProbabilities
-{
-	GENERATED_BODY()
-
-public:
-	FSpawnTierProbabilities();
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Common Probability"))
-	uint8 mCommonProbability;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Fancy Probability"))
-	uint8 mFancyProbability;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Mythical Probability"))
-	uint8 mMythicalProbability;
-};
-
-USTRUCT()
 struct FGameSpawnProbabilities
 {
 	GENERATED_BODY()
@@ -104,9 +113,6 @@ public:
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Edible Probabilities"))
 	FSpawnTierProbabilities mEdibleProbabilities;
-
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Probabilities"))
-	FSpawnTierProbabilities mAnimalProbabilities;
 };
 
 UCLASS()
@@ -156,10 +162,10 @@ public:
 
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
-	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation, const FName interactionName);
+	void OnInteractionStart(UInteractionResult* interactionResult, const FVector& interactionLocation, const FString& interactionName);
 	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
-	void OnInteractionReachedRequiredAmount(UInteractionResult* requiredAmountReachedResult, const FVector& interactionLocation, const FName interactionName);
+	void OnInteractionReachedRequiredAmount(UInteractionResult* requiredAmountReachedResult, const FVector& interactionLocation, const FString& interactionName);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnObjectSpawned(APlantableObject* spawnedObject);
@@ -180,7 +186,7 @@ public:
 	void UpdateCurrentlySelectedPlantableObject(EPlantableObjectType objectType);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability")
-	void ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability);
+	void ChangeSpawnProbability(FSpawnTierProbabilities newSpawnProbabilities);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability", meta = (Tooltip = "Will check if has reached the required amount on this interaction"))
 	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
@@ -211,7 +217,7 @@ private:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Inventory"))
 	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
 
-	TMap<FName, uint8> mPlantedAmounts;
+	TMap<FString, uint8> mPlantedAmounts;
 
 	TArray<ATile*> mTiles;
 	TArray<APlantableObject*> mObjects;

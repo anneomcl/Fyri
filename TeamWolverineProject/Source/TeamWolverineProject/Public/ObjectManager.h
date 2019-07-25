@@ -197,7 +197,7 @@ private:
 
 	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
-	TSubclassOf<APlantableObject> GetObject() const;
+	TSubclassOf<APlantableObject> GetObjectClassToSpawn() const;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;

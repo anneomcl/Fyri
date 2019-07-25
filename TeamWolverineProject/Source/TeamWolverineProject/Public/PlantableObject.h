@@ -44,7 +44,7 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		virtual void BeginPlay() override;
 
 	private:
-		void SetMeshToMatchGrowingState();
+		bool SetMeshToMatchGrowingState();
 
 		TMap<ENeighborLocationType, APlantableObject*> mNeighbors;
 		TArray<ENeighborLocationType> mNeighborsWeHaveHadInteractionWith;

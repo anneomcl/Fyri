@@ -131,7 +131,11 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				if (HasReachedRequiredInteractionAmount(interaction))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
-					mPlantedAmounts[interactionName] = 0;
+
+					if (interaction->mShouldRestartAfterReachedRequired)
+					{
+						mPlantedAmounts[interactionName] = 0;
+					}
 				}
 				else
 				{
@@ -178,7 +182,7 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount; //Only want to trigger it the first time (hence == instead of >=)
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
 		return hasARequiredAmount && reachedRequiredAmount;
@@ -440,7 +444,9 @@ void AObjectManagerComponent::SpawnObject()
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
-			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+			const FRotator randomRotation(0.f, FMath::RandRange(0.f, 360.f), 0.f);
+
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), randomRotation, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
 
@@ -448,6 +454,14 @@ void AObjectManagerComponent::SpawnObject()
 				{
 					mJournalBorderTier = spawnedObject->mSpawnTier;
 					mDiscoveredTypes.Add(spawnedObject->mName);
+				}
+
+				if (UMeshComponent* meshComponent = spawnedObject->FindComponentByClass<UMeshComponent>())
+				{
+					const float randomScaleValue = FMath::RandRange(0.8f, 1.2f);
+					const FVector randomScale(randomScaleValue, randomScaleValue, randomScaleValue);
+
+					meshComponent->SetWorldScale3D(randomScale);
 				}
 
 				//Find Neighbors for newly spawned object

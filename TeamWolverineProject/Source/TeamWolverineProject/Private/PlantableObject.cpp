@@ -2,6 +2,7 @@
 #include "PlantableObject.h"
 #include "Tile.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 
 APlantableObject::APlantableObject()
 	: mObjectType(EPlantableObjectType::Plant)
@@ -26,6 +27,7 @@ bool APlantableObject::SetMeshToMatchGrowingState()
 		if (mPlantableMeshes.Contains(mCurrentGrowingStage) && mPlantableMeshes[mCurrentGrowingStage] != nullptr)
 		{
 			meshComponent->SetStaticMesh(mPlantableMeshes[mCurrentGrowingStage]);
+			meshComponent->SetMaterial(0, mPlantableMeshes[mCurrentGrowingStage]->GetMaterial(0));
 			return true;
 		}
 	}

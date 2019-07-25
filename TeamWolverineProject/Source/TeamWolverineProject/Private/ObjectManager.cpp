@@ -321,7 +321,7 @@ FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationT
 		return FVector::ForwardVector;
 }
 
-TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
+TSubclassOf<APlantableObject> AObjectManagerComponent::GetObjectClassToSpawn() const
 {
 	UPlantableInventory* invCategory = nullptr;
 	switch (mCurrentlySelectedPlantableObject)
@@ -401,7 +401,7 @@ TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 
 void AObjectManagerComponent::SpawnObject()
 {
-	TSubclassOf<APlantableObject> objectToSpawn = GetObject();
+	TSubclassOf<APlantableObject> objectToSpawn = GetObjectClassToSpawn();
 
 	if (objectToSpawn == nullptr)
 		return;

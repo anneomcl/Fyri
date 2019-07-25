@@ -9,6 +9,7 @@
 #include "PlantableObject.generated.h"
 
 class ATile;
+class UStaticMesh;
 
 UCLASS()
 class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
@@ -19,8 +20,9 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		virtual void Tick(float DeltaTime) override;
 
-		void OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors);
 		void SetNeighbor(APlantableObject* newNeighbor, ENeighborLocationType locationType);
+		void Grow();
+		void OnSpawn(ATile* closestTile, const TMap<ENeighborLocationType, APlantableObject*>& neighbors);
 		void OnInteractWithNeighbor(ENeighborLocationType locationTypeForNeighbor);
 		void OnInteractWithTile();
 
@@ -39,11 +41,23 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		virtual void BeginPlay() override;
 
 	private:
-		TMap<ENeighborLocationType, APlantableObject*> mNeighbors;
-		ATile* mCurrentTile;
+		void SetMeshToMatchGrowingState();
 
+		TMap<ENeighborLocationType, APlantableObject*> mNeighbors;
 		TArray<ENeighborLocationType> mNeighborsWeHaveHadInteractionWith;
 
-		UPROPERTY(EditAnywhere, meta=(DisplayName = "Object Type"))
-			EPlantableObjectType mObjectType;
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Plantable Meshes", Tooltip = "The meshes that will be used for the different stages"))
+		TMap<EGrowingStage, UStaticMesh*> mPlantableMeshes;
+
+		ATile* mCurrentTile;
+
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Type"))
+		EPlantableObjectType mObjectType;
+
+		EGrowingStage mCurrentGrowingStage;
+
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Time Until Next Growing Stage", Tooltip = "How much time it should take to get to the next growing stage, in seconds"))
+		float mTimeUntilNextGrowingStage; //TODO.PKH: Maybe add a different time for each stage??
+
+		float mTimeSpentInCurrentStage;
 };

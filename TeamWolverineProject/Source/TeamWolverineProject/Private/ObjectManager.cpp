@@ -47,7 +47,8 @@ void AObjectManagerComponent::BeginPlay()
 	{
 		if (interaction != nullptr)
 		{
-			mPlantedAmounts.Add(interaction->mInteractionName);
+			const FString interactionName = interaction->GetName();
+			mPlantedAmounts.Add(interactionName);
 		}
 	}
 }
@@ -119,19 +120,20 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				
 			if (succeededToInteract)
 			{
-				if (mPlantedAmounts.Contains(interaction->mInteractionName))
+				const FString interactionName = interaction->GetName();
+				if (mPlantedAmounts.Contains(interactionName))
 				{
-					++mPlantedAmounts[interaction->mInteractionName];
+					++mPlantedAmounts[interactionName];
 				}
 
 				if (HasReachedRequiredInteractionAmount(interaction))
 				{
-					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interaction->mInteractionName);
-					mPlantedAmounts[interaction->mInteractionName] = 0;
+					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
+					mPlantedAmounts[interactionName] = 0;
 				}
 				else
 				{
-					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interaction->mInteractionName);
+					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interactionName);
 				}
 			}
 		}
@@ -143,25 +145,25 @@ void AObjectManagerComponent::UpdateCurrentlySelectedPlantableObject(EPlantableO
 	mCurrentlySelectedPlantableObject = objectType;
 }
 
-void AObjectManagerComponent::ChangeSpawnProbability(EPlantableObjectType typeToChangeProbabilityOf, uint8 newCommonProbability, uint8 newFancyProbability, uint8 newMythicalProbability)
+void AObjectManagerComponent::ChangeSpawnProbability(FSpawnTierProbabilities newSpawnProbabilities)
 {
-	if (typeToChangeProbabilityOf == EPlantableObjectType::Food)
+	if (newSpawnProbabilities.mObjectType == EPlantableObjectType::Food)
 	{
-		mSpawnProbabilities.mEdibleProbabilities.mCommonProbability = newCommonProbability;
-		mSpawnProbabilities.mEdibleProbabilities.mFancyProbability = newFancyProbability;
-		mSpawnProbabilities.mEdibleProbabilities.mMythicalProbability = newMythicalProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mCommonProbability = newSpawnProbabilities.mCommonProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mFancyProbability = newSpawnProbabilities.mFancyProbability;
+		mSpawnProbabilities.mEdibleProbabilities.mMythicalProbability = newSpawnProbabilities.mMythicalProbability;
 	}
-	else if (typeToChangeProbabilityOf == EPlantableObjectType::Plant)
+	else if (newSpawnProbabilities.mObjectType == EPlantableObjectType::Plant)
 	{
-		mSpawnProbabilities.mPlantProbabilities.mCommonProbability = newCommonProbability;
-		mSpawnProbabilities.mPlantProbabilities.mFancyProbability = newFancyProbability;
-		mSpawnProbabilities.mPlantProbabilities.mMythicalProbability = newMythicalProbability;
+		mSpawnProbabilities.mPlantProbabilities.mCommonProbability = newSpawnProbabilities.mCommonProbability;
+		mSpawnProbabilities.mPlantProbabilities.mFancyProbability = newSpawnProbabilities.mFancyProbability;
+		mSpawnProbabilities.mPlantProbabilities.mMythicalProbability = newSpawnProbabilities.mMythicalProbability;
 	}
-	else if (typeToChangeProbabilityOf == EPlantableObjectType::Tree)
+	else if (newSpawnProbabilities.mObjectType == EPlantableObjectType::Tree)
 	{
-		mSpawnProbabilities.mTreeProbabilities.mCommonProbability = newCommonProbability;
-		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newFancyProbability;
-		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newMythicalProbability;
+		mSpawnProbabilities.mTreeProbabilities.mCommonProbability = newSpawnProbabilities.mCommonProbability;
+		mSpawnProbabilities.mTreeProbabilities.mFancyProbability = newSpawnProbabilities.mFancyProbability;
+		mSpawnProbabilities.mTreeProbabilities.mMythicalProbability = newSpawnProbabilities.mMythicalProbability;
 	}
 }
 
@@ -170,9 +172,11 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 	if (!ensureMsgf(interaction != nullptr, TEXT("Interaction sent in to HasReachedRequiredInteractionAmount was nullptr!")))
 		return false;
 
-	if (mPlantedAmounts.Contains(interaction->mInteractionName))
+	const FString interactionName = interaction->GetName();
+
+	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interaction->mInteractionName] >= interaction->mRequiredAmount;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
 		return hasARequiredAmount && reachedRequiredAmount;

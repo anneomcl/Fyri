@@ -191,13 +191,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability", meta = (Tooltip = "Will check if has reached the required amount on this interaction"))
 	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
 
+	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Discovered Objects"))
+	TSet<FString> mDiscoveredTypes;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Page Mappings"))
+	TMap<FString, UTexture2D*> mJournalPageMappings;
+
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;
 	void DebugRenderObject(APlantableObject* objectToRender) const;
 
 	const TMap<ENeighborLocationType, APlantableObject*> FindNeighborsForObject(APlantableObject* spawnedObject) const;
 	FVector GetDirectionFromLocationType(ENeighborLocationType locationType) const;
-	TSubclassOf<APlantableObject> GetObject() const;
+	TSubclassOf<APlantableObject> GetObjectClassToSpawn() const;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Interactions"))
 	TArray<UObjectInteraction*> mObjectInteractions;

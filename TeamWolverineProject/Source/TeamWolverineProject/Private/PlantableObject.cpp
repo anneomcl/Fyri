@@ -1,9 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "PlantableObject.h"
 #include "Tile.h"
+#include "Components/StaticMeshComponent.h"
 
 APlantableObject::APlantableObject()
 	: mObjectType(EPlantableObjectType::Plant)
+	, mCurrentGrowingStage(EGrowingStage::Sprout)
+	, mTimeUntilNextGrowingStage(60.f)
+	, mTimeSpentInCurrentStage(0.f)
 {
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -11,11 +15,38 @@ APlantableObject::APlantableObject()
 void APlantableObject::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetMeshToMatchGrowingState();
+}
+
+bool APlantableObject::SetMeshToMatchGrowingState()
+{
+	if (UStaticMeshComponent* meshComponent = FindComponentByClass<UStaticMeshComponent>())
+	{
+		if (mPlantableMeshes.Contains(mCurrentGrowingStage) && mPlantableMeshes[mCurrentGrowingStage] != nullptr)
+		{
+			meshComponent->SetStaticMesh(mPlantableMeshes[mCurrentGrowingStage]);
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void APlantableObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (mCurrentGrowingStage < EGrowingStage::MAX && mPlantableMeshes.Num() > 0)
+	{
+		mTimeSpentInCurrentStage += DeltaTime;
+
+		if (mTimeSpentInCurrentStage >= mTimeUntilNextGrowingStage)
+		{
+			Grow();
+			mTimeSpentInCurrentStage = 0.f;
+		}
+	}
 }
 
 bool APlantableObject::HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const
@@ -55,6 +86,25 @@ void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocat
 	else
 	{
 		mNeighbors.Add(locationType, newNeighbor);
+	}
+}
+
+void APlantableObject::Grow()
+{
+	bool succeededToGrow = false;
+	while (!succeededToGrow)
+	{
+		const uint8 nextStageAsInt = static_cast<uint8>(mCurrentGrowingStage) + 1;
+		const uint8 maxEnumValueAsInt = static_cast<uint8>(EGrowingStage::MAX) - 1;
+
+		if (nextStageAsInt > maxEnumValueAsInt)
+			return;
+
+		mCurrentGrowingStage = static_cast<EGrowingStage>(nextStageAsInt);
+
+		succeededToGrow = SetMeshToMatchGrowingState();
+
+		//send Grow-event to BPs, for playing event
 	}
 }
 

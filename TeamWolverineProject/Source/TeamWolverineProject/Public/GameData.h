@@ -23,6 +23,17 @@ enum class EPlantableObjectType : uint8
 	Tree
 };
 
+UENUM(BlueprintType)
+enum class EGrowingStage : uint8
+{
+	Sprout,
+	Young,
+	Old,
+	VeryOld,
+
+	MAX UMETA(Hidden)
+};
+
 enum class ENeighborLocationType : uint8
 {
 	Left,

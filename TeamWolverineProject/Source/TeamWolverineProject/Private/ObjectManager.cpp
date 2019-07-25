@@ -321,7 +321,7 @@ FVector AObjectManagerComponent::GetDirectionFromLocationType(ENeighborLocationT
 		return FVector::ForwardVector;
 }
 
-TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
+TSubclassOf<APlantableObject> AObjectManagerComponent::GetObjectClassToSpawn() const
 {
 	UPlantableInventory* invCategory = nullptr;
 	switch (mCurrentlySelectedPlantableObject)
@@ -401,7 +401,7 @@ TSubclassOf<APlantableObject> AObjectManagerComponent::GetObject() const
 
 void AObjectManagerComponent::SpawnObject()
 {
-	TSubclassOf<APlantableObject> objectToSpawn = GetObject();
+	TSubclassOf<APlantableObject> objectToSpawn = GetObjectClassToSpawn();
 
 	if (objectToSpawn == nullptr)
 		return;
@@ -441,6 +441,11 @@ void AObjectManagerComponent::SpawnObject()
 			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
+
+				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+				{
+					mDiscoveredTypes.Add(spawnedObject->mName);
+				}
 
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
@@ -486,6 +491,11 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
+			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+			{
+				mDiscoveredTypes.Add(spawnedObject->mName);
+			}
+
 			controller->OnSpawn();
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);

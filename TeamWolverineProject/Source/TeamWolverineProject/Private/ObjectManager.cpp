@@ -442,6 +442,11 @@ void AObjectManagerComponent::SpawnObject()
 			{
 				mObjects.Add(spawnedObject);
 
+				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+				{
+					mDiscoveredTypes.Add(spawnedObject->mName);
+				}
+
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
 
@@ -486,6 +491,11 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
+			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+			{
+				mDiscoveredTypes.Add(spawnedObject->mName);
+			}
+
 			controller->OnSpawn();
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);

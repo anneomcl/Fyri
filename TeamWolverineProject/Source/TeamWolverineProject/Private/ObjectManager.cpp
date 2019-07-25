@@ -438,6 +438,11 @@ void AObjectManagerComponent::SpawnObject()
 			{
 				mObjects.Add(spawnedObject);
 
+				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+				{
+					mDiscoveredTypes.Add(spawnedObject->mName);
+				}
+
 				//Find Neighbors for newly spawned object
 				const TMap<ENeighborLocationType, APlantableObject*> newNeighbors = FindNeighborsForObject(spawnedObject);
 

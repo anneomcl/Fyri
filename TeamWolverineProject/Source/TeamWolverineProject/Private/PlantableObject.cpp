@@ -19,27 +19,33 @@ void APlantableObject::BeginPlay()
 	SetMeshToMatchGrowingState();
 }
 
-void APlantableObject::SetMeshToMatchGrowingState()
+bool APlantableObject::SetMeshToMatchGrowingState()
 {
 	if (UStaticMeshComponent* meshComponent = FindComponentByClass<UStaticMeshComponent>())
 	{
-		if (mPlantableMeshes.Contains(mCurrentGrowingStage))
+		if (mPlantableMeshes.Contains(mCurrentGrowingStage) && mPlantableMeshes[mCurrentGrowingStage] != nullptr)
 		{
 			meshComponent->SetStaticMesh(mPlantableMeshes[mCurrentGrowingStage]);
+			return true;
 		}
 	}
+
+	return false;
 }
 
 void APlantableObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	mTimeSpentInCurrentStage += DeltaTime;
-
-	if (mTimeSpentInCurrentStage >= mTimeUntilNextGrowingStage)
+	if (mCurrentGrowingStage < EGrowingStage::MAX && mPlantableMeshes.Num() > 0)
 	{
-		Grow();
-		mTimeSpentInCurrentStage = 0.f;
+		mTimeSpentInCurrentStage += DeltaTime;
+
+		if (mTimeSpentInCurrentStage >= mTimeUntilNextGrowingStage)
+		{
+			Grow();
+			mTimeSpentInCurrentStage = 0.f;
+		}
 	}
 }
 
@@ -85,17 +91,21 @@ void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocat
 
 void APlantableObject::Grow()
 {
-	uint8 nextStageAsInt = static_cast<uint8>(mCurrentGrowingStage) + 1;
-	const uint8 maxEnumValueAsInt = static_cast<uint8>(EGrowingStage::AMOUNT) - 1;
+	bool succeededToGrow = false;
+	while (!succeededToGrow)
+	{
+		const uint8 nextStageAsInt = static_cast<uint8>(mCurrentGrowingStage) + 1;
+		const uint8 maxEnumValueAsInt = static_cast<uint8>(EGrowingStage::MAX) - 1;
 
-	if (nextStageAsInt > maxEnumValueAsInt)
-		nextStageAsInt = 0;
+		if (nextStageAsInt > maxEnumValueAsInt)
+			return;
 
-	mCurrentGrowingStage = static_cast<EGrowingStage>(nextStageAsInt);
+		mCurrentGrowingStage = static_cast<EGrowingStage>(nextStageAsInt);
 
-	SetMeshToMatchGrowingState();
+		succeededToGrow = SetMeshToMatchGrowingState();
 
-	//play grow VFX
+		//send Grow-event to BPs, for playing event
+	}
 }
 
 void APlantableObject::OnInteractWithNeighbor(ENeighborLocationType locationTypeForNeighbor)

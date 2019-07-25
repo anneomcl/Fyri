@@ -491,6 +491,11 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
+			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+			{
+				mDiscoveredTypes.Add(spawnedObject->mName);
+			}
+
 			controller->OnSpawn();
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);

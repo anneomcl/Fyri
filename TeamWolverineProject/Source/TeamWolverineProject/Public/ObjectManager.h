@@ -194,7 +194,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Discovered Objects"))
 	TSet<FString> mDiscoveredTypes;
 
-	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "Journal Page Mappings"))
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Page Mappings"))
 	TMap<FString, UTexture2D*> mJournalPageMappings;
 
 private:

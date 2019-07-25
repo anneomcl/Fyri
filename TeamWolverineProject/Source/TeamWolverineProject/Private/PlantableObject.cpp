@@ -34,12 +34,15 @@ void APlantableObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	mTimeSpentInCurrentStage += DeltaTime;
-
-	if (mTimeSpentInCurrentStage >= mTimeUntilNextGrowingStage)
+	if (mCurrentGrowingStage < EGrowingStage::MAX)
 	{
-		Grow();
-		mTimeSpentInCurrentStage = 0.f;
+		mTimeSpentInCurrentStage += DeltaTime;
+
+		if (mTimeSpentInCurrentStage >= mTimeUntilNextGrowingStage)
+		{
+			Grow();
+			mTimeSpentInCurrentStage = 0.f;
+		}
 	}
 }
 
@@ -86,10 +89,7 @@ void APlantableObject::SetNeighbor(APlantableObject* newNeighbor, ENeighborLocat
 void APlantableObject::Grow()
 {
 	uint8 nextStageAsInt = static_cast<uint8>(mCurrentGrowingStage) + 1;
-	const uint8 maxEnumValueAsInt = static_cast<uint8>(EGrowingStage::AMOUNT) - 1;
-
-	if (nextStageAsInt > maxEnumValueAsInt)
-		nextStageAsInt = 0;
+	const uint8 maxEnumValueAsInt = static_cast<uint8>(EGrowingStage::MAX) - 1;
 
 	mCurrentGrowingStage = static_cast<EGrowingStage>(nextStageAsInt);
 

@@ -31,7 +31,7 @@ enum class EGrowingStage : uint8
 	Old,
 	VeryOld,
 
-	AMOUNT
+	MAX UMETA(Hidden)
 };
 
 enum class ENeighborLocationType : uint8

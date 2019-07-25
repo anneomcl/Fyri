@@ -129,7 +129,11 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				if (HasReachedRequiredInteractionAmount(interaction))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
-					mPlantedAmounts[interactionName] = 0;
+
+					if (interaction->mShouldRestartAfterReachedRequired)
+					{
+						mPlantedAmounts[interactionName] = 0;
+					}
 				}
 				else
 				{
@@ -176,7 +180,7 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] >= interaction->mRequiredAmount;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount; //Only want to trigger it the first time (hence == instead of >=)
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
 		return hasARequiredAmount && reachedRequiredAmount;

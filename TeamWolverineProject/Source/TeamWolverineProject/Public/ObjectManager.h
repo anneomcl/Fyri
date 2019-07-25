@@ -94,6 +94,9 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Name"))
 	FName mInteractionName;
 
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Should Restart After Reached Required"))
+	bool mShouldRestartAfterReachedRequired = false;
+
 #if WITH_EDITOR
 	virtual bool CanEditChange(const UProperty* InProperty) const override;
 #endif

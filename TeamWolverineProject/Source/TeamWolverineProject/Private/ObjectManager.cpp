@@ -438,13 +438,23 @@ void AObjectManagerComponent::SpawnObject()
 			FActorSpawnParameters spawnInfo;
 
 			//Spawn new object
-			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), { 0.0f, 0.0f, 0.0f }, spawnInfo))
+			const FRotator randomRotation(0.f, FMath::RandRange(0.f, 360.f), 0.f);
+
+			if (APlantableObject* spawnedObject = GetWorld()->SpawnActor<APlantableObject>(objectToSpawn, closestTile->GetActorLocation(), randomRotation, spawnInfo))
 			{
 				mObjects.Add(spawnedObject);
 
 				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
 				{
 					mDiscoveredTypes.Add(spawnedObject->mName);
+				}
+
+				if (UMeshComponent* meshComponent = spawnedObject->FindComponentByClass<UMeshComponent>())
+				{
+					const float randomScaleValue = FMath::RandRange(0.8f, 1.2f);
+					const FVector randomScale(randomScaleValue, randomScaleValue, randomScaleValue);
+
+					meshComponent->SetWorldScale3D(randomScale);
 				}
 
 				//Find Neighbors for newly spawned object

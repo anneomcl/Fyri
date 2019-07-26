@@ -34,8 +34,8 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Spawn Tier"))
 	ESpawnTier mSpawnTier;
 
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
-	FString mName;
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Index"))
+	int32 mIndex;
 
 private:
 	uint8 mStoppedTimer;

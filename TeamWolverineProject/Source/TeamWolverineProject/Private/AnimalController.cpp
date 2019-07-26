@@ -14,6 +14,7 @@ void AAnimalController::BeginPlay()
 	Super::BeginPlay();
 
 	mTraversalCount = 0;
+	mTimeSpentInIdle = 0.f;
 
 	UGameplayStatics::GetAllActorsOfClass(this, ATargetPoint::StaticClass(), mWaypoints);
 }
@@ -21,6 +22,18 @@ void AAnimalController::BeginPlay()
 void AAnimalController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+
+	if (mCurrentState == EAnimalState::Idle)
+	{
+		mTimeSpentInIdle += GetWorld()->GetDeltaSeconds();
+
+		if (mTimeSpentInIdle >= 4.f)
+		{
+			mCurrentTransition = EAnimalTransition::IdleToTraverse;
+			OnTraverse();
+			mTimeSpentInIdle = 0.f;
+		}
+	}
 }
 
 void AAnimalController::OnSpawn()
@@ -59,11 +72,6 @@ void AAnimalController::OnIdle()
 	{
 		mCurrentTransition = EAnimalTransition::IdleToExit;
 		OnExit();
-	}
-	else
-	{
-		mCurrentTransition = EAnimalTransition::IdleToTraverse;
-		OnTraverse();
 	}
 }
 

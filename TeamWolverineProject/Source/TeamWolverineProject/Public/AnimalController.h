@@ -59,6 +59,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	EAnimalState GetCurrentState() const { return mCurrentState; }
 
+	UFUNCTION(BlueprintCallable)
+	EAnimalTransition GetAnimalTransition() const { return mCurrentTransition; }
+
 private:
 	UFUNCTION(BlueprintCallable)
 	void GoToRandomWaypoint();
@@ -80,4 +83,6 @@ private:
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Max Traversals"))
 	uint8 mMaxTraversalCount;
+
+	float mTimeSpentInIdle;
 };

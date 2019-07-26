@@ -97,10 +97,13 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
 						if (isObjectInteraction)
 						{
-							succeededToInteract = true;
+							if (object->mCurrentGrowingStage >= EGrowingStage::Young)
+							{
+								succeededToInteract = true;
 
-							object->OnInteractWithNeighbor(neighbor.Key);
-							neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
+								object->OnInteractWithNeighbor(neighbor.Key);
+								neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
+							}
 						}
 					}
 				}
@@ -111,12 +114,15 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 
 				const ETileType tileType = object->GetTileTypeForCurrentTile();
 
-				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType) || object->GetObjectType() == interaction->mPlantableObjectType && tileType == interaction->mTerrainType);
+				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType));
 				if (isObjectInteraction)
 				{
-					succeededToInteract = true;
+					if (object->mCurrentGrowingStage >= EGrowingStage::Young)
+					{
+						succeededToInteract = true;
 
-					object->OnInteractWithTile();
+						object->OnInteractWithTile();
+					}
 				}
 			}
 				

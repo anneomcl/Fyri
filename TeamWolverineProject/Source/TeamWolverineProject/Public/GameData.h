@@ -42,9 +42,10 @@ enum class ENeighborLocationType : uint8
 	Down
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESpawnTier : uint8
 {
+	Normal,
 	Common,
 	Fancy,
 	Mythical

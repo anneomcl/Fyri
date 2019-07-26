@@ -97,13 +97,10 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 						const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && neighbor.Value->GetObjectType() == interaction->mPlantableObjectType) || object->GetObjectType() == interaction->mPlantableObjectType && neighbor.Value->GetObjectType() == interaction->mTypeA);
 						if (isObjectInteraction)
 						{
-							if (object->mCurrentGrowingStage >= EGrowingStage::Young)
-							{
-								succeededToInteract = true;
+							succeededToInteract = true;
 
-								object->OnInteractWithNeighbor(neighbor.Key);
-								neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
-							}
+							object->OnInteractWithNeighbor(neighbor.Key);
+							neighbor.Value->OnInteractWithNeighbor(APlantableObject::GetOppositeLocationType(neighbor.Key));
 						}
 					}
 				}
@@ -117,12 +114,9 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				const bool isObjectInteraction = ((object->GetObjectType() == interaction->mTypeA && tileType == interaction->mTerrainType));
 				if (isObjectInteraction)
 				{
-					if (object->mCurrentGrowingStage >= EGrowingStage::Young)
-					{
-						succeededToInteract = true;
+					succeededToInteract = true;
 
-						object->OnInteractWithTile();
-					}
+					object->OnInteractWithTile();
 				}
 			}
 				
@@ -134,7 +128,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interactionName];
 				}
 
-				if (HasReachedRequiredInteractionAmount(interaction))
+				if (HasReachedRequiredInteractionAmount(interaction) && object->mCurrentGrowingStage >= EGrowingStage::Young)
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 

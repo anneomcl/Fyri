@@ -35,8 +35,8 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
-		UPROPERTY(EditAnywhere, meta = (DisplayName = "Name"))
-		FString mName;
+		UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Index"))
+		int32 mIndex;
 
 		UPROPERTY(EditAnywhere, meta = (DisplayName = "Spawn Tier"))
 		ESpawnTier mSpawnTier;

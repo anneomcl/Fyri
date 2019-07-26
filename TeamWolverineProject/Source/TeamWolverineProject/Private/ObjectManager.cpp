@@ -450,10 +450,10 @@ void AObjectManagerComponent::SpawnObject()
 			{
 				mObjects.Add(spawnedObject);
 
-				if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+				if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
 				{
 					mJournalBorderTier = spawnedObject->mSpawnTier;
-					mDiscoveredTypes.Add(spawnedObject->mName);
+					mDiscoveredTypes.Add(spawnedObject->mIndex);
 				}
 
 				if (UMeshComponent* meshComponent = spawnedObject->FindComponentByClass<UMeshComponent>())
@@ -508,10 +508,10 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
-			if (!mDiscoveredTypes.Contains(spawnedObject->mName))
+			if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
 			{
 				mJournalBorderTier = spawnedObject->mSpawnTier;
-				mDiscoveredTypes.Add(spawnedObject->mName);
+				mDiscoveredTypes.Add(spawnedObject->mIndex);
 			}
 
 			controller->OnSpawn();

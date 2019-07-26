@@ -196,7 +196,7 @@ public:
 	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
 
 	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Discovered Objects"))
-	TSet<FString> mDiscoveredTypes;
+	TSet<int32> mDiscoveredTypes;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Page Mappings"))
 	TMap<FString, UTexture2D*> mJournalPageMappings;

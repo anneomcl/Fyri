@@ -31,6 +31,7 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		const TMap<ENeighborLocationType, APlantableObject*>& GetNeighbors() { return mNeighbors; }
 		bool HasInteractedWithNeighborBefore(ENeighborLocationType neighborLocationType) const;
 		bool HasInteractedWithCurrentTileBefore() const;
+		EGrowingStage mCurrentGrowingStage;
 
 		static ENeighborLocationType GetOppositeLocationType(ENeighborLocationType originalType);
 
@@ -56,8 +57,6 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 
 		UPROPERTY(EditAnywhere, meta = (DisplayName = "Object Type"))
 		EPlantableObjectType mObjectType;
-
-		EGrowingStage mCurrentGrowingStage;
 
 		UPROPERTY(EditAnywhere, meta = (DisplayName = "Time Until Next Growing Stage", Tooltip = "How much time it should take to get to the next growing stage, in seconds"))
 		float mTimeUntilNextGrowingStage; //TODO.PKH: Maybe add a different time for each stage??

@@ -5,8 +5,8 @@
 #include "Engine/StaticMesh.h"
 
 APlantableObject::APlantableObject()
-	: mObjectType(EPlantableObjectType::Plant)
-	, mCurrentGrowingStage(EGrowingStage::Sprout)
+	: mCurrentGrowingStage(EGrowingStage::Sprout),
+	mObjectType(EPlantableObjectType::Plant)
 	, mTimeUntilNextGrowingStage(60.f)
 	, mTimeSpentInCurrentStage(0.f)
 {

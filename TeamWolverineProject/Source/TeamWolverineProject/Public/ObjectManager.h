@@ -193,7 +193,7 @@ public:
 	void ChangeSpawnProbability(FSpawnTierProbabilities newSpawnProbabilities);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability", meta = (Tooltip = "Will check if has reached the required amount on this interaction"))
-	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
+	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction, EGrowingStage mCurrentObjectsGrowingStage) const;
 
 	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Discovered Objects"))
 	TSet<int32> mDiscoveredTypes;

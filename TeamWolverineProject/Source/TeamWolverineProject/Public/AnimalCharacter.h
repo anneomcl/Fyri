@@ -19,6 +19,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UParticleSystem* mParticleEffect;
 
+	UFUNCTION(BlueprintCallable)
+	ESpawnTier GetSpawnTier() const { return mSpawnTier; }
 
 protected:
 	// Called when the game starts or when spawned
@@ -39,5 +41,4 @@ public:
 
 private:
 	uint8 mStoppedTimer;
-
 };

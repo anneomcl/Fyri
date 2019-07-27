@@ -41,6 +41,12 @@ class TEAMWOLVERINEPROJECT_API APlantableObject : public AActor
 		UPROPERTY(EditAnywhere, meta = (DisplayName = "Spawn Tier"))
 		ESpawnTier mSpawnTier;
 
+		UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
+		void OnGrow();
+
+		UFUNCTION(BlueprintImplementableEvent, Category = "Interaction")
+		void OnFinalGrow();
+
 	protected:
 		virtual void BeginPlay() override;
 

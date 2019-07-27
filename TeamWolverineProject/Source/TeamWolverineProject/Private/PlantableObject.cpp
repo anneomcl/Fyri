@@ -108,6 +108,16 @@ void APlantableObject::Grow()
 
 		//send Grow-event to BPs, for playing event
 	}
+
+	if (mCurrentGrowingStage >= EGrowingStage::VeryOld)
+	{
+		OnFinalGrow();
+	}
+	else
+	{
+		OnGrow();
+	}
+
 }
 
 void APlantableObject::OnInteractWithNeighbor(ENeighborLocationType locationTypeForNeighbor)

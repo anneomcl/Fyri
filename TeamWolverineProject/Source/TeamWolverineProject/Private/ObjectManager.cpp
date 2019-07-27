@@ -128,7 +128,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interactionName];
 				}
 
-				if (HasReachedRequiredInteractionAmount(interaction) && object->mCurrentGrowingStage >= EGrowingStage::Young)
+				if (HasReachedRequiredInteractionAmount(interaction, object->mCurrentGrowingStage))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 
@@ -173,7 +173,7 @@ void AObjectManagerComponent::ChangeSpawnProbability(FSpawnTierProbabilities new
 	}
 }
 
-bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const
+bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInteraction* interaction, EGrowingStage mCurrentObjectsGrowingStage) const
 {
 	if (!ensureMsgf(interaction != nullptr, TEXT("Interaction sent in to HasReachedRequiredInteractionAmount was nullptr!")))
 		return false;
@@ -182,10 +182,13 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount; //Only want to trigger it the first time (hence == instead of >=)
+		//Only want to trigger it the first time (hence == instead of >= )
+		
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount && mCurrentObjectsGrowingStage >= EGrowingStage::Young;
+		const bool surpassedRequiredButWasntOldEnough = mPlantedAmounts[interactionName] > interaction->mRequiredAmount && mCurrentObjectsGrowingStage < EGrowingStage::Young;
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
-		return hasARequiredAmount && reachedRequiredAmount;
+		return hasARequiredAmount && (reachedRequiredAmount || surpassedRequiredButWasntOldEnough);
 	}
 
 	return false;

@@ -43,8 +43,6 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	mJournalBorderTier = ESpawnTier::Normal;
-
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		if (interaction != nullptr)
@@ -64,6 +62,12 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 {
 	for (AAnimalCharacter* animal : mAnimals)
 	{
+		if (!mDiscoveredTypes.Contains(animal->mIndex))
+		{
+			OnDiscoveredObject();
+			mDiscoveredTypes.Add(animal->mIndex);
+		}
+
 		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
 		if (controller != nullptr && controller->GetCurrentState() == EAnimalState::Kill)
 		{
@@ -77,6 +81,12 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 #ifdef DEBUG_RENDER //TODO.PKH: make this changeable in runtime instead!
 		DebugRenderObject(object);
 #endif
+
+		if (!mDiscoveredTypes.Contains(object->mIndex) && object->mCurrentGrowingStage > EGrowingStage::Sprout)
+		{
+			OnDiscoveredObject();
+			mDiscoveredTypes.Add(object->mIndex);
+		}
 
 		for (UObjectInteraction* interaction : mObjectInteractions)
 		{
@@ -128,7 +138,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					++mPlantedAmounts[interactionName];
 				}
 
-				if (HasReachedRequiredInteractionAmount(interaction) && object->mCurrentGrowingStage >= EGrowingStage::Young)
+				if (HasReachedRequiredInteractionAmount(interaction, object->mCurrentGrowingStage))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 
@@ -173,7 +183,7 @@ void AObjectManagerComponent::ChangeSpawnProbability(FSpawnTierProbabilities new
 	}
 }
 
-bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const
+bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInteraction* interaction, EGrowingStage mCurrentObjectsGrowingStage) const
 {
 	if (!ensureMsgf(interaction != nullptr, TEXT("Interaction sent in to HasReachedRequiredInteractionAmount was nullptr!")))
 		return false;
@@ -182,10 +192,13 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 
 	if (mPlantedAmounts.Contains(interactionName))
 	{
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount; //Only want to trigger it the first time (hence == instead of >=)
+		//Only want to trigger it the first time (hence == instead of >= )
+		
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount && mCurrentObjectsGrowingStage >= EGrowingStage::Young;
+		const bool surpassedRequiredButWasntOldEnough = mPlantedAmounts[interactionName] > interaction->mRequiredAmount && mCurrentObjectsGrowingStage < EGrowingStage::Young;
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
-		return hasARequiredAmount && reachedRequiredAmount;
+		return hasARequiredAmount && (reachedRequiredAmount || surpassedRequiredButWasntOldEnough);
 	}
 
 	return false;
@@ -450,12 +463,6 @@ void AObjectManagerComponent::SpawnObject()
 			{
 				mObjects.Add(spawnedObject);
 
-				if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
-				{
-					mJournalBorderTier = spawnedObject->mSpawnTier;
-					mDiscoveredTypes.Add(spawnedObject->mIndex);
-				}
-
 				if (UMeshComponent* meshComponent = spawnedObject->FindComponentByClass<UMeshComponent>())
 				{
 					const float randomScaleValue = FMath::RandRange(0.8f, 1.2f);
@@ -508,12 +515,6 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
-			if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
-			{
-				mJournalBorderTier = spawnedObject->mSpawnTier;
-				mDiscoveredTypes.Add(spawnedObject->mIndex);
-			}
-
 			controller->OnSpawn();
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);

@@ -177,6 +177,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
 	void OnAnimalSpawned(ACharacter* spawnedObject);
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Spawn")
+	void OnDiscoveredObject();
+
 	UFUNCTION(BlueprintCallable)
 	void Init(TArray<ATile*> tiles);
 
@@ -193,16 +196,13 @@ public:
 	void ChangeSpawnProbability(FSpawnTierProbabilities newSpawnProbabilities);
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn Probability", meta = (Tooltip = "Will check if has reached the required amount on this interaction"))
-	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction) const;
+	bool HasReachedRequiredInteractionAmount(UObjectInteraction* interaction, EGrowingStage mCurrentObjectsGrowingStage) const;
 
 	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Discovered Objects"))
 	TSet<int32> mDiscoveredTypes;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Journal Page Mappings"))
 	TMap<FString, UTexture2D*> mJournalPageMappings;
-
-	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Journal Border"))
-	ESpawnTier mJournalBorderTier;
 
 private:
 	void GatherObjectIfIsNeighbor(TMap<ENeighborLocationType, TTuple<APlantableObject*, float>>& objects, APlantableObject* objectToCheckWith, const FVector& objectsDirection, const float distanceToObject) const;

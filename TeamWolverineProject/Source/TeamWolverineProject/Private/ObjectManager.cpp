@@ -43,8 +43,6 @@ void AObjectManagerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	mJournalBorderTier = ESpawnTier::Normal;
-
 	for (UObjectInteraction* interaction : mObjectInteractions)
 	{
 		if (interaction != nullptr)
@@ -64,6 +62,12 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 {
 	for (AAnimalCharacter* animal : mAnimals)
 	{
+		if (!mDiscoveredTypes.Contains(animal->mIndex))
+		{
+			OnDiscoveredObject();
+			mDiscoveredTypes.Add(animal->mIndex);
+		}
+
 		AAnimalController* controller = Cast<AAnimalController>(animal->GetController());
 		if (controller != nullptr && controller->GetCurrentState() == EAnimalState::Kill)
 		{
@@ -77,6 +81,12 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 #ifdef DEBUG_RENDER //TODO.PKH: make this changeable in runtime instead!
 		DebugRenderObject(object);
 #endif
+
+		if (!mDiscoveredTypes.Contains(object->mIndex) && object->mCurrentGrowingStage > EGrowingStage::Sprout)
+		{
+			OnDiscoveredObject();
+			mDiscoveredTypes.Add(object->mIndex);
+		}
 
 		for (UObjectInteraction* interaction : mObjectInteractions)
 		{
@@ -453,12 +463,6 @@ void AObjectManagerComponent::SpawnObject()
 			{
 				mObjects.Add(spawnedObject);
 
-				if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
-				{
-					mJournalBorderTier = spawnedObject->mSpawnTier;
-					mDiscoveredTypes.Add(spawnedObject->mIndex);
-				}
-
 				if (UMeshComponent* meshComponent = spawnedObject->FindComponentByClass<UMeshComponent>())
 				{
 					const float randomScaleValue = FMath::RandRange(0.8f, 1.2f);
@@ -511,12 +515,6 @@ void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 
 		if (controller != nullptr)
 		{
-			if (!mDiscoveredTypes.Contains(spawnedObject->mIndex))
-			{
-				mJournalBorderTier = spawnedObject->mSpawnTier;
-				mDiscoveredTypes.Add(spawnedObject->mIndex);
-			}
-
 			controller->OnSpawn();
 			mAnimals.Add(spawnedObject);
 			OnAnimalSpawned(spawnedObject);

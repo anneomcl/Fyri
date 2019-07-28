@@ -142,7 +142,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 
-					if (interaction->mShouldRestartAfterReachedRequired && object->mCurrentGrowingStage >= EGrowingStage::Young)
+					if (interaction->mShouldRestartAfterReachedRequired)
 					{
 						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
 					}
@@ -150,26 +150,6 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				else
 				{
 					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interactionName);
-				}
-			}
-			else
-			{
-				const bool surpassedRequiredButWasntOldEnoughBefore = mPlantedAmounts[interactionName].mCurrentAmountPlanted > interaction->mRequiredAmount && object->mCurrentGrowingStage > EGrowingStage::Sprout;
-
-				if (surpassedRequiredButWasntOldEnoughBefore && !mPlantedAmounts[interactionName].mHasCompletedInteraction)
-				{
-					// do action
-					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
-
-					if (interaction->mShouldRestartAfterReachedRequired)
-					{
-						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
-						DrawDebugString(GetWorld(), object->GetActorLocation() + (FVector::UpVector * 5.f), TEXT("Reset ") + interactionName, NULL, FColor::Green);
-					}
-					else
-					{
-						mPlantedAmounts[interactionName].mHasCompletedInteraction = true;
-					}
 				}
 			}
 		}
@@ -214,7 +194,7 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 	{
 		//Only want to trigger it the first time (hence == instead of >= )
 		
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName].mCurrentAmountPlanted == interaction->mRequiredAmount && mCurrentObjectsGrowingStage >= EGrowingStage::Young;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName].mCurrentAmountPlanted == interaction->mRequiredAmount;
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
 		const bool returnVal = hasARequiredAmount && reachedRequiredAmount;

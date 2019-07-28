@@ -164,7 +164,6 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 					if (interaction->mShouldRestartAfterReachedRequired)
 					{
 						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
-						DrawDebugString(GetWorld(), object->GetActorLocation() + (FVector::UpVector * 5.f), TEXT("Reset ") + interactionName, NULL, FColor::Green);
 					}
 				}
 			}

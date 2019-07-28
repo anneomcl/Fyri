@@ -130,26 +130,42 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				}
 			}
 				
+			const FString interactionName = interaction->GetName();
 			if (succeededToInteract)
 			{
-				const FString interactionName = interaction->GetName();
 				if (mPlantedAmounts.Contains(interactionName))
 				{
-					++mPlantedAmounts[interactionName];
+					++mPlantedAmounts[interactionName].mCurrentAmountPlanted;
 				}
 
 				if (HasReachedRequiredInteractionAmount(interaction, object->mCurrentGrowingStage))
 				{
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 
-					if (interaction->mShouldRestartAfterReachedRequired)
+					if (interaction->mShouldRestartAfterReachedRequired && object->mCurrentGrowingStage >= EGrowingStage::Young)
 					{
-						mPlantedAmounts[interactionName] = 0;
+						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
 					}
 				}
 				else
 				{
 					OnInteractionStart(interaction->mInteractionResult, object->GetActorLocation(), interactionName);
+				}
+			}
+			else
+			{
+				const bool surpassedRequiredButWasntOldEnoughBefore = mPlantedAmounts[interactionName].mCurrentAmountPlanted > interaction->mRequiredAmount && object->mCurrentGrowingStage > EGrowingStage::Sprout;
+
+				if (surpassedRequiredButWasntOldEnoughBefore && !mPlantedAmounts[interactionName].mHasReachedAmount)
+				{
+					mPlantedAmounts[interactionName].mHasReachedAmount = true;
+					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
+
+					if (interaction->mShouldRestartAfterReachedRequired)
+					{
+						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
+						DrawDebugString(GetWorld(), object->GetActorLocation() + (FVector::UpVector * 5.f), TEXT("Reset ") + interactionName, NULL, FColor::Green);
+					}
 				}
 			}
 		}
@@ -194,11 +210,17 @@ bool AObjectManagerComponent::HasReachedRequiredInteractionAmount(UObjectInterac
 	{
 		//Only want to trigger it the first time (hence == instead of >= )
 		
-		const bool reachedRequiredAmount = mPlantedAmounts[interactionName] == interaction->mRequiredAmount && mCurrentObjectsGrowingStage >= EGrowingStage::Young;
-		const bool surpassedRequiredButWasntOldEnough = mPlantedAmounts[interactionName] > interaction->mRequiredAmount && mCurrentObjectsGrowingStage < EGrowingStage::Young;
+		const bool reachedRequiredAmount = mPlantedAmounts[interactionName].mCurrentAmountPlanted == interaction->mRequiredAmount && mCurrentObjectsGrowingStage >= EGrowingStage::Young;
 		const bool hasARequiredAmount = interaction->mRequiredAmount > 0;
 
-		return hasARequiredAmount && (reachedRequiredAmount || surpassedRequiredButWasntOldEnough);
+		const bool returnVal = hasARequiredAmount && reachedRequiredAmount;
+
+		if (returnVal)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	return false;
@@ -492,6 +514,9 @@ void AObjectManagerComponent::SpawnObject()
 void AObjectManagerComponent::SpawnAnimal(TSubclassOf<AAnimalCharacter> animal)
 {
 	TSubclassOf<AAnimalCharacter> objectToSpawn = animal;
+
+	if (objectToSpawn == nullptr)
+		return;
 
 	TArray<ATile*> availableTiles;
 	for (ATile* tile : mTiles)

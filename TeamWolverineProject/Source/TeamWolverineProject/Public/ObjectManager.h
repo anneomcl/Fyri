@@ -227,7 +227,7 @@ private:
 	struct FPlantedAmountData
 	{
 		uint8 mCurrentAmountPlanted = 0;
-		bool mHasReachedAmount = false;
+		bool mHasCompletedInteraction = false;
 	};
 
 	TMap<FString, FPlantedAmountData> mPlantedAmounts;

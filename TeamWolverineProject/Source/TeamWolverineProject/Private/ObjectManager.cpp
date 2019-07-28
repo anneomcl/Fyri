@@ -156,15 +156,19 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 			{
 				const bool surpassedRequiredButWasntOldEnoughBefore = mPlantedAmounts[interactionName].mCurrentAmountPlanted > interaction->mRequiredAmount && object->mCurrentGrowingStage > EGrowingStage::Sprout;
 
-				if (surpassedRequiredButWasntOldEnoughBefore && !mPlantedAmounts[interactionName].mHasReachedAmount)
+				if (surpassedRequiredButWasntOldEnoughBefore && !mPlantedAmounts[interactionName].mHasCompletedInteraction)
 				{
-					mPlantedAmounts[interactionName].mHasReachedAmount = true;
+					// do action
 					OnInteractionReachedRequiredAmount(interaction->mRequiredAmountReachedResult, object->GetActorLocation(), interactionName);
 
 					if (interaction->mShouldRestartAfterReachedRequired)
 					{
 						mPlantedAmounts[interactionName].mCurrentAmountPlanted = 0;
 						DrawDebugString(GetWorld(), object->GetActorLocation() + (FVector::UpVector * 5.f), TEXT("Reset ") + interactionName, NULL, FColor::Green);
+					}
+					else
+					{
+						mPlantedAmounts[interactionName].mHasCompletedInteraction = true;
 					}
 				}
 			}

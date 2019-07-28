@@ -84,7 +84,7 @@ public:
 	ETileType mTerrainType;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Required Amount"))
-	uint8 mRequiredAmount;
+	uint8 mRequiredAmount = 0;
 
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Interaction Result"))
 	UInteractionResult* mInteractionResult;
@@ -224,7 +224,13 @@ private:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Animal Inventory"))
 	TArray<TSubclassOf<AAnimalCharacter>> mAnimalInventory;
 
-	TMap<FString, uint8> mPlantedAmounts;
+	struct FPlantedAmountData
+	{
+		uint8 mCurrentAmountPlanted = 0;
+		bool mHasReachedAmount = false;
+	};
+
+	TMap<FString, FPlantedAmountData> mPlantedAmounts;
 
 	TArray<ATile*> mTiles;
 	TArray<APlantableObject*> mObjects;

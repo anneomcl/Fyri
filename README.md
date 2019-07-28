@@ -1,1 +1,1 @@
-<img align="center" src="title.png" alt="Fyri"> 
+<img align="middle" src="title.png" alt="Fyri"> 

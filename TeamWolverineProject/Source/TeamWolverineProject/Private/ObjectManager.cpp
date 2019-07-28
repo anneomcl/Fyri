@@ -135,7 +135,7 @@ void AObjectManagerComponent::Tick(float DeltaSeconds)
 				const FString interactionName = interaction->GetName();
 				if (mPlantedAmounts.Contains(interactionName))
 				{
-					++mPlantedAmounts[interactionName];
+					mPlantedAmounts[interactionName] += 1;
 				}
 
 				if (HasReachedRequiredInteractionAmount(interaction, object->mCurrentGrowingStage))
